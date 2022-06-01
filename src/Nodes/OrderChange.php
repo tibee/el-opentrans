@@ -16,6 +16,8 @@ use Naugrim\OpenTrans\Nodes\OrderChange\Header;
  *
  * @Serializer\XmlRoot("ORDERCHANGE")
  * @Serializer\ExclusionPolicy("all")
+ * @Serializer\XmlNamespace(uri="http://www.opentrans.org/XMLSchema/2.1")
+ * @Serializer\XmlNamespace(uri="http://www.bmecat.org/bmecat/2005", prefix="bme")
  */
 class OrderChange implements NodeInterface
 {

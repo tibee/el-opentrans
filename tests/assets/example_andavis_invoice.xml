@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<INVOICE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" version="2.1" xmlns="http://www.opentrans.org/XMLSchema/2.1">
+  <INVOICE_HEADER>
+    <CONTROL_INFO>
+      <GENERATOR_INFO>orderManager OmExchange 1.0</GENERATOR_INFO>
+      <GENERATION_DATE>2013-11-27 08:41:39</GENERATION_DATE>
+    </CONTROL_INFO>
+    <INVOICE_INFO>
+      <INVOICE_ID>R1000</INVOICE_ID>
+      <INVOICE_DATE>2013-11-27 00:00:00</INVOICE_DATE>
+      <INVOICE_TYPE>invoice</INVOICE_TYPE>
+      <DELIVERYNOTE_ID>L1000</DELIVERYNOTE_ID>
+      <DELIVERY_DATE>
+        <DELIVERY_START_DATE>2013-11-27 00:00:00</DELIVERY_START_DATE>
+        <DELIVERY_END_DATE>2013-11-27 00:00:00</DELIVERY_END_DATE>
+      </DELIVERY_DATE>
+      <PARTIES>
+        <PARTY>
+          <PARTY_ID type="party_specific" xmlns="http://www.bmecat.org/bmecat/2005">4</PARTY_ID>
+          <PARTY_ROLE>delivery</PARTY_ROLE>
+          <ADDRESS>
+            <NAME xmlns="http://www.bmecat.org/bmecat/2005">Muster GmbH</NAME>
+            <NAME xmlns="http://www.bmecat.org/bmecat/2005">Kay Friebertshäuser</NAME>
+            <STREET xmlns="http://www.bmecat.org/bmecat/2005">Mühlgasse 8</STREET>
+            <ZIP xmlns="http://www.bmecat.org/bmecat/2005">90403</ZIP>
+            <CITY xmlns="http://www.bmecat.org/bmecat/2005">Nürnberg</CITY>
+            <COUNTRY_CODED xmlns="http://www.bmecat.org/bmecat/2005">DE </COUNTRY_CODED>
+            <PHONE type="office" xmlns="http://www.bmecat.org/bmecat/2005">0911 240 330 0</PHONE>
+            <EMAIL xmlns="http://www.bmecat.org/bmecat/2005">friebertshaeuser@muster.de</EMAIL>
+          </ADDRESS>
+        </PARTY>
+        <PARTY>
+          <PARTY_ID type="party_specific" xmlns="http://www.bmecat.org/bmecat/2005">4</PARTY_ID>
+          <PARTY_ROLE>invoice_recipient</PARTY_ROLE>
+          <ADDRESS>
+            <NAME xmlns="http://www.bmecat.org/bmecat/2005">Muster GmbH</NAME>
+            <NAME xmlns="http://www.bmecat.org/bmecat/2005">Kay Friebertshäuser</NAME>
+            <STREET xmlns="http://www.bmecat.org/bmecat/2005">Mühlgasse 8</STREET>
+            <ZIP xmlns="http://www.bmecat.org/bmecat/2005">90403</ZIP>
+            <CITY xmlns="http://www.bmecat.org/bmecat/2005">Nürnberg</CITY>
+            <COUNTRY_CODED xmlns="http://www.bmecat.org/bmecat/2005">DE </COUNTRY_CODED>
+            <PHONE type="office" xmlns="http://www.bmecat.org/bmecat/2005">0911 240 330 0</PHONE>
+            <EMAIL xmlns="http://www.bmecat.org/bmecat/2005">friebertshaeuser@muster.de</EMAIL>
+          </ADDRESS>
+        </PARTY>
+        <PARTY>
+          <PARTY_ID type="supplier_specific" xmlns="http://www.bmecat.org/bmecat/2005">19999</PARTY_ID>
+          <PARTY_ROLE>buyer</PARTY_ROLE>
+          <ADDRESS>
+            <NAME xmlns="http://www.bmecat.org/bmecat/2005">Sporthandel 5000 Shopkunde</NAME>
+            <CONTACT_DETAILS>
+              <CONTACT_NAME xmlns="http://www.bmecat.org/bmecat/2005">Benutzer Service</CONTACT_NAME>
+            </CONTACT_DETAILS>
+            <STREET xmlns="http://www.bmecat.org/bmecat/2005">Strasse</STREET>
+            <ZIP xmlns="http://www.bmecat.org/bmecat/2005">12345</ZIP>
+            <CITY xmlns="http://www.bmecat.org/bmecat/2005">Stadt</CITY>
+          </ADDRESS>
+        </PARTY>
+        <PARTY>
+          <PARTY_ROLE>supplier</PARTY_ROLE>
+          <ADDRESS>
+            <NAME xmlns="http://www.bmecat.org/bmecat/2005">Sporthandel 5000</NAME>
+            <STREET xmlns="http://www.bmecat.org/bmecat/2005">Schlossallee 7</STREET>
+            <ZIP xmlns="http://www.bmecat.org/bmecat/2005">10001</ZIP>
+            <CITY xmlns="http://www.bmecat.org/bmecat/2005">Kiel</CITY>
+            <EMAIL xmlns="http://www.bmecat.org/bmecat/2005">service@muster.de</EMAIL>
+          </ADDRESS>
+        </PARTY>
+      </PARTIES>
+      <CURRENCY xmlns="http://www.bmecat.org/bmecat/2005">EUR</CURRENCY>
+      <ACCOUNTING_INFO xmlns="http://www.bmecat.org/bmecat/2005">
+        <COST_CATEGORY_ID type="cost_center" />
+      </ACCOUNTING_INFO>
+      <HEADER_UDX>
+        <UDX.MUSTER.COSTCENTER_OBJECT_NUMBER>4</UDX.MUSTER.COSTCENTER_OBJECT_NUMBER>
+      </HEADER_UDX>
+    </INVOICE_INFO>
+    <ORDER_HISTORY>
+      <ORDER_ID>100000079</ORDER_ID>
+      <ORDER_DATE>2013-11-27 08:36:00</ORDER_DATE>
+    </ORDER_HISTORY>
+  </INVOICE_HEADER>
+  <INVOICE_ITEM_LIST>
+    <INVOICE_ITEM type="order_item">
+      <LINE_ITEM_ID>1</LINE_ITEM_ID>
+      <PRODUCT_ID>
+        <SUPPLIER_PID xmlns="http://www.bmecat.org/bmecat/2005">10004</SUPPLIER_PID>
+        <DESCRIPTION_SHORT xmlns="http://www.bmecat.org/bmecat/2005">Avid Scheibenbremse Elixir 5 HR 160 mm</DESCRIPTION_SHORT>
+      </PRODUCT_ID>
+      <QUANTITY>5.000000</QUANTITY>
+      <ORDER_UNIT xmlns="http://www.bmecat.org/bmecat/2005">C62</ORDER_UNIT>
+      <PRODUCT_PRICE_FIX>
+        <PRICE_AMOUNT xmlns="http://www.bmecat.org/bmecat/2005">91.8992</PRICE_AMOUNT>
+        <TAX_DETAILS_FIX>
+          <CALCULATION_SEQUENCE xmlns="http://www.bmecat.org/bmecat/2005">1</CALCULATION_SEQUENCE>
+          <TAX_TYPE xmlns="http://www.bmecat.org/bmecat/2005">vat</TAX_TYPE>
+          <TAX xmlns="http://www.bmecat.org/bmecat/2005">0.1900</TAX>
+          <TAX_AMOUNT>87.3042</TAX_AMOUNT>
+        </TAX_DETAILS_FIX>
+      </PRODUCT_PRICE_FIX>
+      <PRICE_LINE_AMOUNT>459.4960</PRICE_LINE_AMOUNT>
+      <CUSTOMER_ORDER_REFERENCE>
+        <LINE_ITEM_ID>92</LINE_ITEM_ID>
+      </CUSTOMER_ORDER_REFERENCE>
+      <ITEM_UDX>
+        <UDX.MUSTER.ORDER_UNIT_TEXT>Stück</UDX.MUSTER.ORDER_UNIT_TEXT>
+      </ITEM_UDX>
+    </INVOICE_ITEM>
+    <INVOICE_ITEM type="order_item">
+      <LINE_ITEM_ID>2</LINE_ITEM_ID>
+      <PRODUCT_ID>
+        <SUPPLIER_PID xmlns="http://www.bmecat.org/bmecat/2005">10003</SUPPLIER_PID>
+        <DESCRIPTION_SHORT xmlns="http://www.bmecat.org/bmecat/2005">biff Bad-Reiniger Citro </DESCRIPTION_SHORT>
+      </PRODUCT_ID>
+      <QUANTITY>10.000000</QUANTITY>
+      <ORDER_UNIT xmlns="http://www.bmecat.org/bmecat/2005">C62</ORDER_UNIT>
+      <PRODUCT_PRICE_FIX>
+        <PRICE_AMOUNT xmlns="http://www.bmecat.org/bmecat/2005">41.9664</PRICE_AMOUNT>
+        <TAX_DETAILS_FIX>
+          <CALCULATION_SEQUENCE xmlns="http://www.bmecat.org/bmecat/2005">1</CALCULATION_SEQUENCE>
+          <TAX_TYPE xmlns="http://www.bmecat.org/bmecat/2005">vat</TAX_TYPE>
+          <TAX xmlns="http://www.bmecat.org/bmecat/2005">0.1900</TAX>
+          <TAX_AMOUNT>79.7361</TAX_AMOUNT>
+        </TAX_DETAILS_FIX>
+      </PRODUCT_PRICE_FIX>
+      <PRICE_LINE_AMOUNT>419.6640</PRICE_LINE_AMOUNT>
+      <CUSTOMER_ORDER_REFERENCE>
+        <LINE_ITEM_ID>93</LINE_ITEM_ID>
+      </CUSTOMER_ORDER_REFERENCE>
+      <ITEM_UDX>
+        <UDX.MUSTER.ORDER_UNIT_TEXT>1 Flasche(n)</UDX.MUSTER.ORDER_UNIT_TEXT>
+      </ITEM_UDX>
+    </INVOICE_ITEM>
+    <INVOICE_ITEM type="order_item">
+      <LINE_ITEM_ID>3</LINE_ITEM_ID>
+      <PRODUCT_ID>
+        <SUPPLIER_PID xmlns="http://www.bmecat.org/bmecat/2005">10002</SUPPLIER_PID>
+        <DESCRIPTION_SHORT xmlns="http://www.bmecat.org/bmecat/2005">Core - Riot XR3</DESCRIPTION_SHORT>
+      </PRODUCT_ID>
+      <QUANTITY>1.000000</QUANTITY>
+      <ORDER_UNIT xmlns="http://www.bmecat.org/bmecat/2005">C62</ORDER_UNIT>
+      <PRODUCT_PRICE_FIX>
+        <PRICE_AMOUNT xmlns="http://www.bmecat.org/bmecat/2005">797.4790</PRICE_AMOUNT>
+        <TAX_DETAILS_FIX>
+          <CALCULATION_SEQUENCE xmlns="http://www.bmecat.org/bmecat/2005">1</CALCULATION_SEQUENCE>
+          <TAX_TYPE xmlns="http://www.bmecat.org/bmecat/2005">vat</TAX_TYPE>
+          <TAX xmlns="http://www.bmecat.org/bmecat/2005">0.1900</TAX>
+          <TAX_AMOUNT>151.5210</TAX_AMOUNT>
+        </TAX_DETAILS_FIX>
+      </PRODUCT_PRICE_FIX>
+      <PRICE_LINE_AMOUNT>797.4790</PRICE_LINE_AMOUNT>
+      <CUSTOMER_ORDER_REFERENCE>
+        <LINE_ITEM_ID>94</LINE_ITEM_ID>
+      </CUSTOMER_ORDER_REFERENCE>
+      <ITEM_UDX>
+        <UDX.MUSTER.ORDER_UNIT_TEXT>Stück</UDX.MUSTER.ORDER_UNIT_TEXT>
+      </ITEM_UDX>
+    </INVOICE_ITEM>
+    <INVOICE_ITEM type="extra_item">
+      <LINE_ITEM_ID>28</LINE_ITEM_ID>
+      <PRODUCT_ID>
+        <DESCRIPTION_SHORT xmlns="http://www.bmecat.org/bmecat/2005">Flat Rate - Fixed</DESCRIPTION_SHORT>
+      </PRODUCT_ID>
+      <QUANTITY>0</QUANTITY>
+      <ORDER_UNIT xmlns="http://www.bmecat.org/bmecat/2005">04</ORDER_UNIT>
+      <PRODUCT_PRICE_FIX>
+        <PRICE_AMOUNT xmlns="http://www.bmecat.org/bmecat/2005">68.9075</PRICE_AMOUNT>
+        <ALLOW_OR_CHARGES_FIX>
+          <ALLOW_OR_CHARGE type="surcharge">
+            <ALLOW_OR_CHARGE_TYPE>freight</ALLOW_OR_CHARGE_TYPE>
+            <ALLOW_OR_CHARGE_VALUE>
+              <AOC_PERCENTAGE_FACTOR>0</AOC_PERCENTAGE_FACTOR>
+            </ALLOW_OR_CHARGE_VALUE>
+          </ALLOW_OR_CHARGE>
+        </ALLOW_OR_CHARGES_FIX>
+        <TAX_DETAILS_FIX>
+          <CALCULATION_SEQUENCE xmlns="http://www.bmecat.org/bmecat/2005">1</CALCULATION_SEQUENCE>
+          <TAX_TYPE xmlns="http://www.bmecat.org/bmecat/2005">vat</TAX_TYPE>
+          <TAX xmlns="http://www.bmecat.org/bmecat/2005">0.1900</TAX>
+          <TAX_AMOUNT>13.0924</TAX_AMOUNT>
+        </TAX_DETAILS_FIX>
+      </PRODUCT_PRICE_FIX>
+      <PRICE_LINE_AMOUNT>68.9075</PRICE_LINE_AMOUNT>
+    </INVOICE_ITEM>
+  </INVOICE_ITEM_LIST>
+  <INVOICE_SUMMARY>
+    <TOTAL_ITEM_NUM>4</TOTAL_ITEM_NUM>
+    <NET_VALUE_GOODS>1745.5500</NET_VALUE_GOODS>
+    <TOTAL_AMOUNT>2077.2000</TOTAL_AMOUNT>
+    <TOTAL_TAX>
+      <TAX_DETAILS_FIX>
+        <CALCULATION_SEQUENCE xmlns="http://www.bmecat.org/bmecat/2005">1</CALCULATION_SEQUENCE>
+        <TAX_TYPE xmlns="http://www.bmecat.org/bmecat/2005">vat</TAX_TYPE>
+        <TAX_AMOUNT>331.6500</TAX_AMOUNT>
+      </TAX_DETAILS_FIX>
+    </TOTAL_TAX>
+  </INVOICE_SUMMARY>
+</INVOICE>

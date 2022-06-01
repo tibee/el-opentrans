@@ -9,98 +9,154 @@ use JMS\Serializer\Annotation as Serializer;
 class Address extends \Naugrim\BMEcat\Nodes\Address
 {
     /**
-     * @Serializer\SerializedName("bme:NAME")
+     * @Serializer\Expose
+     * @Serializer\Type("string")
+     * @Serializer\SerializedName("NAME")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.bmecat.org/bmecat/2005")
      */
     protected $name;
 
     /**
-     * @Serializer\SerializedName("bme:NAME2")
+     * @Serializer\Expose
+     * @Serializer\Type("string")
+     * @Serializer\SerializedName("NAME2")
+     * @Serializer\XmlElement(namespace="http://www.bmecat.org/bmecat/2005")
      */
     protected $name2;
 
     /**
-     * @Serializer\SerializedName("bme:NAME3")
+     * @Serializer\Expose
+     * @Serializer\Type("string")
+     * @Serializer\SerializedName("NAME3")
+     * @Serializer\XmlElement(namespace="http://www.bmecat.org/bmecat/2005")
      */
     protected $name3;
 
     /**
-     * @Serializer\SerializedName("bme:DEPARTMENT")
+     * @Serializer\Expose
+     * @Serializer\Type("string")
+     * @Serializer\SerializedName("DEPARTMENT")
+     * @Serializer\XmlElement(namespace="http://www.bmecat.org/bmecat/2005")
      */
     protected $department;
 
     /**
+     * @Serializer\Expose
+     * @Serializer\Type("Naugrim\BMEcat\Nodes\Contact\Details")
      * @Serializer\SerializedName("CONTACT_DETAILS")
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\ContactDetails")
      */
     protected $contactDetails;
 
     /**
-     * @Serializer\SerializedName("bme:STREET")
+     * @Serializer\Expose
+     * @Serializer\Type("string")
+     * @Serializer\SerializedName("STREET")
+     * @Serializer\XmlElement(namespace="http://www.bmecat.org/bmecat/2005")
      */
     protected $street;
 
     /**
-     * @Serializer\SerializedName("bme:ZIP")
+     * @Serializer\Expose
+     * @Serializer\Type("string")
+     * @Serializer\SerializedName("ZIP")
+     * @Serializer\XmlElement(namespace="http://www.bmecat.org/bmecat/2005")
      */
     protected $zip;
 
     /**
-     * @Serializer\SerializedName("bme:BOXNO")
+     * @Serializer\Expose
+     * @Serializer\Type("string")
+     * @Serializer\SerializedName("BOXNO")
+     * @Serializer\XmlElement(namespace="http://www.bmecat.org/bmecat/2005")
      */
     protected $boxno;
 
     /**
-     * @Serializer\SerializedName("bme:ZIPBOX")
+     * @Serializer\Expose
+     * @Serializer\Type("string")
+     * @Serializer\SerializedName("ZIPBOX")
+     * @Serializer\XmlElement(namespace="http://www.bmecat.org/bmecat/2005")
      */
     protected $zipbox;
 
     /**
-     * @Serializer\SerializedName("bme:CITY")
+     * @Serializer\Expose
+     * @Serializer\Type("string")
+     * @Serializer\SerializedName("CITY")
+     * @Serializer\XmlElement(namespace="http://www.bmecat.org/bmecat/2005")
      */
     protected $city;
 
     /**
-     * @Serializer\SerializedName("bme:COUNTRY")
+     * @Serializer\Expose
+     * @Serializer\Type("string")
+     * @Serializer\SerializedName("COUNTRY")
+     * @Serializer\XmlElement(namespace="http://www.bmecat.org/bmecat/2005")
      */
     protected $country;
 
     /**
-     * @Serializer\SerializedName("bme:COUNTRY_CODED")
+     * @Serializer\Expose
+     * @Serializer\Type("string")
+     * @Serializer\SerializedName("COUNTRY_CODED")
+     * @Serializer\XmlElement(namespace="http://www.bmecat.org/bmecat/2005")
      */
     protected $countryCoded;
 
     /**
-     * @Serializer\SerializedName("bme:VAT_ID")
+     * @Serializer\Expose
+     * @Serializer\Type("string")
+     * @Serializer\SerializedName("VATID")
+     * @Serializer\XmlElement(namespace="http://www.bmecat.org/bmecat/2005")
      */
     protected $vatId;
 
     /**
-     * @Serializer\SerializedName("bme:PHONE")
+     * @Serializer\Expose
+     * @Serializer\Type("Naugrim\BMEcat\Nodes\Phone")
+     * @Serializer\SerializedName("PHONE")
+     * @Serializer\XmlElement(namespace="http://www.bmecat.org/bmecat/2005")
      */
     protected $phone;
 
     /**
-     * @Serializer\SerializedName("bme:FAX")
+     * @Serializer\Expose
+     * @Serializer\Type("string")
+     * @Serializer\SerializedName("FAX")
+     * @Serializer\XmlElement(namespace="http://www.bmecat.org/bmecat/2005")
      */
     protected $fax;
 
     /**
-     * @Serializer\SerializedName("bme:EMAIL")
+     * @Serializer\Expose
+     * @Serializer\Type("string")
+     * @Serializer\SerializedName("EMAIL")
+     * @Serializer\XmlElement(namespace="http://www.bmecat.org/bmecat/2005")
      */
     protected $email;
 
     /**
-     * @Serializer\SerializedName("bme:PUBLIC_KEY")
+     * @Serializer\Expose
+     * @Serializer\Type("Naugrim\BMEcat\Nodes\Crypto\PublicKey")
+     * @Serializer\SerializedName("PUBLIC_KEY")
+     * @Serializer\XmlElement(namespace="http://www.bmecat.org/bmecat/2005")
      */
     protected $publicKey;
 
     /**
-     * @Serializer\SerializedName("bme:URL")
+     * @Serializer\Expose
+     * @Serializer\Type("string")
+     * @Serializer\SerializedName("URL")
+     * @Serializer\XmlElement(namespace="http://www.bmecat.org/bmecat/2005")
      */
     protected $url;
 
     /**
-     * @Serializer\SerializedName("bme:ADDRESS_REMARKS")
+     * @Serializer\Expose
+     * @Serializer\Type("string")
+     * @Serializer\SerializedName("ADDRESS_REMARKS")
+     * @Serializer\XmlElement(namespace="http://www.bmecat.org/bmecat/2005")
      */
     protected $addressRemarks;
 }

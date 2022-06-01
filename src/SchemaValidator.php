@@ -13,17 +13,19 @@ class SchemaValidator
     ];
 
     /**
-     * Validates the given XML-string against the BMEcat XSD-files.
+     * Validates the given XML-string against the opentrans XSD-files.
      *
      * @param string $xml
      *
      * @param string $version
      * @param string|null $type
+     *
      * @return bool
+     *
      * @throws SchemaValidationException
      * @throws UnsupportedVersionException
      */
-    public static function isValid(string $xml, string $version = '2005.1', string $type = null)
+    public static function isValid(string $xml, string $version = '2.1', string $type = null): bool
     {
         libxml_use_internal_errors(true);
 
@@ -37,13 +39,16 @@ class SchemaValidator
 
         libxml_use_internal_errors(false);
         libxml_clear_errors();
+
         return $validated;
     }
 
     /**
      * @param string $version
      * @param string|null $type
+     *
      * @return string
+     *
      * @throws UnsupportedVersionException
      */
     protected static function getSchemaForVersion(string $version, string $type = null): string

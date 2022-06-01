@@ -32,7 +32,8 @@ class Agreement implements NodeInterface
     /**
      * @Serializer\Expose
      * @Serializer\Type("string")
-     * @Serializer\SerializedName("bme:AGREEMENT_ID")
+     * @Serializer\SerializedName("AGREEMENT_ID")
+     * @Serializer\XmlElement(namespace="http://www.bmecat.org/bmecat/2005")
      *
      * @var string
      */
@@ -41,7 +42,8 @@ class Agreement implements NodeInterface
     /**
      * @Serializer\Expose
      * @Serializer\Type("string")
-     * @Serializer\SerializedName("bme:AGREEMENT_LINE_ID")
+     * @Serializer\SerializedName("AGREEMENT_LINE_ID")
+     * @Serializer\XmlElement(namespace="http://www.bmecat.org/bmecat/2005")
      *
      * @var string
      */
@@ -50,7 +52,8 @@ class Agreement implements NodeInterface
     /**
      * @Serializer\Expose
      * @Serializer\Type("string")
-     * @Serializer\SerializedName("bme:AGREEMENT_START_DATE")
+     * @Serializer\SerializedName("AGREEMENT_START_DATE")
+     * @Serializer\XmlElement(namespace="http://www.bmecat.org/bmecat/2005")
      *
      * @var string
      */
@@ -59,7 +62,8 @@ class Agreement implements NodeInterface
     /**
      * @Serializer\Expose
      * @Serializer\Type("string")
-     * @Serializer\SerializedName("bme:AGREEMENT_END_DATE")
+     * @Serializer\SerializedName("AGREEMENT_END_DATE")
+     * @Serializer\XmlElement(namespace="http://www.bmecat.org/bmecat/2005")
      *
      * @var string
      */
@@ -68,7 +72,8 @@ class Agreement implements NodeInterface
     /**
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\BMEcat\Nodes\SupplierIdRef")
-     * @Serializer\SerializedName("bme:SUPPLIER_IDREF")
+     * @Serializer\SerializedName("SUPPLIER_IDREF")
+     * @Serializer\XmlElement(namespace="http://www.bmecat.org/bmecat/2005")
      *
      * @var SupplierIdRef
      */

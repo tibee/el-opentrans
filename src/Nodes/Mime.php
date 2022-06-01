@@ -15,7 +15,8 @@ class Mime implements NodeInterface
     /**
      * @Serializer\Expose
      * @Serializer\Type("string")
-     * @Serializer\SerializedName("bme:MIME_TYPE")
+     * @Serializer\SerializedName("MIME_TYPE")
+     * @Serializer\XmlElement(namespace="http://www.bmecat.org/bmecat/2005")
      *
      * @var string
      */
@@ -24,7 +25,8 @@ class Mime implements NodeInterface
     /**
      * @Serializer\Expose
      * @Serializer\Type("string")
-     * @Serializer\SerializedName("bme:MIME_SOURCE")
+     * @Serializer\SerializedName("MIME_SOURCE")
+     * @Serializer\XmlElement(namespace="http://www.bmecat.org/bmecat/2005")
      *
      * @var string
      */
@@ -55,7 +57,8 @@ class Mime implements NodeInterface
     /**
      * @Serializer\Expose
      * @Serializer\Type("string")
-     * @Serializer\SerializedName("bme:MIME_DESCR")
+     * @Serializer\SerializedName("MIME_DESCR")
+     * @Serializer\XmlElement(namespace="http://www.bmecat.org/bmecat/2005")
      *
      * @var string
      */

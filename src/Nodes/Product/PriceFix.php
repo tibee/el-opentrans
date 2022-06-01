@@ -10,7 +10,8 @@ class PriceFix implements NodeInterface
     /**
      * @Serializer\Expose
      * @Serializer\Type("float")
-     * @Serializer\SerializedName("bme:PRICE_AMOUNT")
+     * @Serializer\SerializedName("PRICE_AMOUNT")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.bmecat.org/bmecat/2005")
      *
      * @var float
      */

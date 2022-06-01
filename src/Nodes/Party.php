@@ -13,7 +13,8 @@ class Party implements NodeInterface
     /**
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\PartyId")
-     * @Serializer\SerializedName("bme:PARTY_ID")
+     * @Serializer\SerializedName("PARTY_ID")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.bmecat.org/bmecat/2005")
      *
      * @var PartyId
      */
@@ -23,6 +24,7 @@ class Party implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\PartyRole")
      * @Serializer\SerializedName ("PARTY_ROLE")
+     *
      * @var PartyRole
      */
     protected $role;
@@ -31,9 +33,11 @@ class Party implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\Address")
      * @Serializer\SerializedName ("ADDRESS")
+     *
      * @var Address
      */
     protected $address;
+
     /**
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\Account")

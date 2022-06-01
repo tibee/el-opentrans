@@ -10,60 +10,93 @@ use Naugrim\BMEcat\Nodes\Contact\Details;
 class ContactDetails extends Details
 {
     /**
-     * @Serializer\SerializedName("bme:CONTACT_ID")
+     * @Serializer\Expose
+     * @Serializer\Type("string")
+     * @Serializer\SerializedName("CONTACT_ID")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.bmecat.org/bmecat/2005")
      */
     protected $id;
 
     /**
-     * @Serializer\SerializedName("bme:CONTACT_NAME")
+     * @Serializer\Expose
+     * @Serializer\Type("string")
+     * @Serializer\SerializedName("CONTACT_NAME")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.bmecat.org/bmecat/2005")
      */
     protected $name;
 
     /**
-     * @Serializer\SerializedName("bme:FIRST_NAME")
+     * @Serializer\Expose
+     * @Serializer\Type("string")
+     * @Serializer\SerializedName("FIRST_NAME")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.bmecat.org/bmecat/2005")
      */
     protected $firstName;
 
     /**
-     * @Serializer\SerializedName("bme:TITLE")
+     * @Serializer\Expose
+     * @Serializer\Type("string")
+     * @Serializer\SerializedName("TITLE")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.bmecat.org/bmecat/2005")
      */
     protected $title;
 
     /**
-     * @Serializer\SerializedName("bme:ACADEMIC_TITLE")
+     * @Serializer\Expose
+     * @Serializer\Type("string")
+     * @Serializer\SerializedName("ACADEMIC_TITLE")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.bmecat.org/bmecat/2005")
      */
     protected $academicTitle;
 
     /**
-     * @Serializer\SerializedName("bme:CONTACT_ROLE")
+     * @Serializer\Expose
+     * @Serializer\Type("Naugrim\BMEcat\Nodes\Contact\Role")
+     * @Serializer\SerializedName("CONTACT_ROLE")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.bmecat.org/bmecat/2005")
      */
     protected $role;
 
     /**
-     * @Serializer\SerializedName("bme:CONTACT_DESCRIPTION")
+     * @Serializer\Expose
+     * @Serializer\Type("string")
+     * @Serializer\SerializedName("CONTACT_DESCRIPTION")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.bmecat.org/bmecat/2005")
      */
     protected $description;
 
     /**
-     * @Serializer\SerializedName("bme:PHONE")
+     * @Serializer\Expose
+     * @Serializer\Type("Naugrim\BMEcat\Nodes\Phone")
+     * @Serializer\SerializedName("PHONE")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.bmecat.org/bmecat/2005")
      */
     protected $phone;
 
     /**
-     * @Serializer\SerializedName("bme:FAX")
+     * @Serializer\Expose
+     * @Serializer\Type("Naugrim\BMEcat\Nodes\Fax")
+     * @Serializer\SerializedName("FAX")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.bmecat.org/bmecat/2005")
      *
      */
     protected $fax;
 
     /**
-     * @Serializer\SerializedName("bme:URL")
+     * @Serializer\Expose
+     * @Serializer\Type("string")
+     * @Serializer\SerializedName("URL")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.bmecat.org/bmecat/2005")
      *
      * @var string
      */
     protected $url;
 
     /**
-     * @Serializer\SerializedName("bme:EMAILS")
+     * @Serializer\Expose
+     * @Serializer\Type("Naugrim\BMEcat\Nodes\Emails")
+     * @Serializer\SerializedName("EMAILS")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.bmecat.org/bmecat/2005")
      */
     protected $emails;
 }

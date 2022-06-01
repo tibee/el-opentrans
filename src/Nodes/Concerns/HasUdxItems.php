@@ -16,6 +16,7 @@ trait HasUdxItems
     /**
      * @Serializer\SerializedName("ITEM_UDX")
      * @Serializer\Type ("Naugrim\OpenTrans\Nodes\UdxAggregate")
+     *
      * @var UdxAggregate
      */
     protected $udxItem;
@@ -59,6 +60,7 @@ trait HasUdxItems
 
     /**
      * @param array<string, mixed> $udxData
+     *
      * @return array<string, string>
      * @throws UnknownKeyException
      */

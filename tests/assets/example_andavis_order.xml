@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ORDER xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" version="2.1" type="standard" xmlns="http://www.opentrans.org/XMLSchema/2.1" xmlns:bme="http://www.bmecat.org/bmecat/2005.1">
+    <ORDER_HEADER>
+        <ORDER_INFO>
+            <ORDER_ID>4711</ORDER_ID>
+            <ORDER_DATE>2013-11-27T07:35:34</ORDER_DATE>
+            <DELIVERY_DATE>
+                <DELIVERY_START_DATE>2016-04-27</DELIVERY_START_DATE>
+                <DELIVERY_END_DATE>2016-04-27</DELIVERY_END_DATE>
+            </DELIVERY_DATE>
+            <PARTIES>
+                <PARTY>
+                    <PARTY_ID type="party_specific" xmlns="http://www.bmecat.org/bmecat/2005">4</PARTY_ID>
+                    <PARTY_ROLE>delivery</PARTY_ROLE>
+                    <ADDRESS>
+                        <NAME xmlns="http://www.bmecat.org/bmecat/2005">Muster GmbH</NAME>
+                        <NAME2 xmlns="http://www.bmecat.org/bmecat/2005">2. Stock</NAME2>
+                        <STREET xmlns="http://www.bmecat.org/bmecat/2005">Mühlgasse 8</STREET>
+                        <ZIP xmlns="http://www.bmecat.org/bmecat/2005">90403</ZIP>
+                        <CITY xmlns="http://www.bmecat.org/bmecat/2005">Nürnberg</CITY>
+                        <COUNTRY xmlns="http://www.bmecat.org/bmecat/2005">DE</COUNTRY>
+                        <PHONE xmlns="http://www.bmecat.org/bmecat/2005">0911 240 330 0</PHONE>
+                        <EMAIL xmlns="http://www.bmecat.org/bmecat/2005">stricker@muster.de</EMAIL>
+                        <ADDRESS_REMARKS xmlns="http://www.bmecat.org/bmecat/2005">Beim Hausmeister melden!</ADDRESS_REMARKS>
+                    </ADDRESS>
+                </PARTY>
+                <PARTY>
+                    <PARTY_ID type="party_specific" xmlns="http://www.bmecat.org/bmecat/2005">4</PARTY_ID>
+                    <PARTY_ROLE>invoice_recipient</PARTY_ROLE>
+                    <ADDRESS>
+                        <NAME xmlns="http://www.bmecat.org/bmecat/2005">Muster GmbH</NAME>
+                        <STREET xmlns="http://www.bmecat.org/bmecat/2005">Mühlgasse 8</STREET>
+                        <ZIP xmlns="http://www.bmecat.org/bmecat/2005">90403</ZIP>
+                        <CITY xmlns="http://www.bmecat.org/bmecat/2005">Nürnberg</CITY>
+                        <COUNTRY xmlns="http://www.bmecat.org/bmecat/2005">DE</COUNTRY>
+                        <PHONE xmlns="http://www.bmecat.org/bmecat/2005">0911 240 330 0</PHONE>
+                        <EMAIL xmlns="http://www.bmecat.org/bmecat/2005">stricker@muster.de</EMAIL>
+                    </ADDRESS>
+                </PARTY>
+                <PARTY>
+                    <PARTY_ID type="supplier_specific" xmlns="http://www.bmecat.org/bmecat/2005">4711</PARTY_ID>
+                    <PARTY_ID type="iln" xmlns="http://www.bmecat.org/bmecat/2005">4399902116107</PARTY_ID>
+                    <PARTY_ROLE>buyer</PARTY_ROLE>
+                    <ADDRESS>
+                        <NAME xmlns="http://www.bmecat.org/bmecat/2005">GP Testkunde</NAME>
+                        <STREET xmlns="http://www.bmecat.org/bmecat/2005">Mühlgasse 8</STREET>
+                        <ZIP xmlns="http://www.bmecat.org/bmecat/2005">90403</ZIP>
+                        <CITY xmlns="http://www.bmecat.org/bmecat/2005">Nürnberg</CITY>
+                        <COUNTRY_CODED xmlns="http://www.bmecat.org/bmecat/2005">DE</COUNTRY_CODED>
+                    </ADDRESS>
+                </PARTY>
+                <PARTY>
+                    <PARTY_ID type="buyer_specific" xmlns="http://www.bmecat.org/bmecat/2005">123</PARTY_ID>
+                    <PARTY_ID type="iln" xmlns="http://www.bmecat.org/bmecat/2005">4399902116107</PARTY_ID>
+                    <PARTY_ROLE>supplier</PARTY_ROLE>
+                    <ADDRESS>
+                        <NAME xmlns="http://www.bmecat.org/bmecat/2005">MUSTER Lieferant</NAME>
+                        <STREET xmlns="http://www.bmecat.org/bmecat/2005">Mühlgasse 8</STREET>
+                        <ZIP xmlns="http://www.bmecat.org/bmecat/2005">90403</ZIP>
+                        <CITY xmlns="http://www.bmecat.org/bmecat/2005">Nürnberg</CITY>
+                        <COUNTRY_CODED xmlns="http://www.bmecat.org/bmecat/2005">DE</COUNTRY_CODED>
+                        <PHONE type="office" xmlns="http://www.bmecat.org/bmecat/2005">++ 49 911 240 330 0</PHONE>
+                        <FAX xmlns="http://www.bmecat.org/bmecat/2005">++ 49 911 240 330 10</FAX>
+                        <EMAIL xmlns="http://www.bmecat.org/bmecat/2005">support@bestellung.com</EMAIL>
+                    </ADDRESS>
+                </PARTY>
+            </PARTIES>
+            <ORDER_PARTIES_REFERENCE>
+                <BUYER_IDREF type="supplier_specific" xmlns="http://www.bmecat.org/bmecat/2005">4711</BUYER_IDREF>
+                <SUPPLIER_IDREF type="buyer_specific" xmlns="http://www.bmecat.org/bmecat/2005">123</SUPPLIER_IDREF>
+            </ORDER_PARTIES_REFERENCE>
+            <CURRENCY xmlns="http://www.bmecat.org/bmecat/2005">EUR</CURRENCY>
+            <REMARKS>Anlieferung ab 10 Uhr!</REMARKS>
+        </ORDER_INFO>
+    </ORDER_HEADER>
+
+    <ORDER_ITEM_LIST>
+        <ORDER_ITEM>
+            <LINE_ITEM_ID>123456789</LINE_ITEM_ID>
+            <PRODUCT_ID>
+                <SUPPLIER_PID xmlns="http://www.bmecat.org/bmecat/2005">758584</SUPPLIER_PID>
+                <DESCRIPTION_SHORT xmlns="http://www.bmecat.org/bmecat/2005">Abfallsystemwagen SAX-120 mit 120 Liter Abfallsammler</DESCRIPTION_SHORT>
+            </PRODUCT_ID>
+            <QUANTITY>5.0000</QUANTITY>
+            <ORDER_UNIT xmlns="http://www.bmecat.org/bmecat/2005">C62</ORDER_UNIT>
+            <PRODUCT_PRICE_FIX>
+                <PRICE_AMOUNT xmlns="http://www.bmecat.org/bmecat/2005">124.92</PRICE_AMOUNT>
+                <TAX_DETAILS_FIX>
+                    <CALCULATION_SEQUENCE xmlns="http://www.bmecat.org/bmecat/2005">1</CALCULATION_SEQUENCE>
+                    <TAX_TYPE xmlns="http://www.bmecat.org/bmecat/2005">vat</TAX_TYPE>
+                    <TAX xmlns="http://www.bmecat.org/bmecat/2005">0.1900</TAX>
+                    <TAX_AMOUNT>23.7348</TAX_AMOUNT>
+                </TAX_DETAILS_FIX>
+            </PRODUCT_PRICE_FIX>
+            <ITEM_UDX>
+                <UDX.MUSTER.ORDER_UNIT_TEXT>Stück</UDX.MUSTER.ORDER_UNIT_TEXT>
+            </ITEM_UDX>
+        </ORDER_ITEM>
+        <ORDER_ITEM>
+            <LINE_ITEM_ID>123456790</LINE_ITEM_ID>
+            <PRODUCT_ID>
+                <SUPPLIER_PID xmlns="http://www.bmecat.org/bmecat/2005">777734</SUPPLIER_PID>
+                <DESCRIPTION_SHORT xmlns="http://www.bmecat.org/bmecat/2005">Aufsitzautomat TTV-678/300T</DESCRIPTION_SHORT>
+            </PRODUCT_ID>
+            <QUANTITY>1.0000</QUANTITY>
+            <ORDER_UNIT xmlns="http://www.bmecat.org/bmecat/2005">C62</ORDER_UNIT>
+            <PRODUCT_PRICE_FIX>
+                <PRICE_AMOUNT xmlns="http://www.bmecat.org/bmecat/2005">12900.00</PRICE_AMOUNT>
+                <TAX_DETAILS_FIX>
+                    <CALCULATION_SEQUENCE xmlns="http://www.bmecat.org/bmecat/2005">1</CALCULATION_SEQUENCE>
+                    <TAX_TYPE xmlns="http://www.bmecat.org/bmecat/2005">vat</TAX_TYPE>
+                    <TAX xmlns="http://www.bmecat.org/bmecat/2005">0.1900</TAX>
+                    <TAX_AMOUNT>2451.00</TAX_AMOUNT>
+                </TAX_DETAILS_FIX>
+            </PRODUCT_PRICE_FIX>
+            <ITEM_UDX>
+                <UDX.MUSTER.ORDER_UNIT_TEXT>Stück</UDX.MUSTER.ORDER_UNIT_TEXT>
+            </ITEM_UDX>
+        </ORDER_ITEM>
+    </ORDER_ITEM_LIST>
+    <ORDER_SUMMARY>
+        <TOTAL_ITEM_NUM>2</TOTAL_ITEM_NUM>
+    </ORDER_SUMMARY>
+</ORDER>

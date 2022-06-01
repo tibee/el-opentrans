@@ -14,7 +14,8 @@ class ProductId implements NodeInterface
     /**
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\BMEcat\Nodes\SupplierPid")
-     * @Serializer\SerializedName("bme:SUPPLIER_PID")
+     * @Serializer\SerializedName("SUPPLIER_PID")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.bmecat.org/bmecat/2005")
      *
      * @var SupplierPid
      */
@@ -23,7 +24,8 @@ class ProductId implements NodeInterface
     /**
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\BMEcat\Nodes\SupplierIdRef")
-     * @Serializer\SerializedName("bme:SUPPLIER_IDREF")
+     * @Serializer\SerializedName("SUPPLIER_IDREF")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.bmecat.org/bmecat/2005")
      *
      * @var SupplierIdRef
      */
@@ -59,7 +61,8 @@ class ProductId implements NodeInterface
     /**
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\BMEcat\Nodes\InternationalPid")
-     * @Serializer\SerializedName("bme:INTERNATIONAL_PID")
+     * @Serializer\SerializedName("INTERNATIONAL_PID")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.bmecat.org/bmecat/2005")
      *
      * @var InternationalPid
      */
@@ -68,7 +71,8 @@ class ProductId implements NodeInterface
     /**
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\BMEcat\Nodes\BuyerPid")
-     * @Serializer\SerializedName("bme:BUYER_PID")
+     * @Serializer\SerializedName("BUYER_PID")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.bmecat.org/bmecat/2005")
      *
      * @var BuyerPid
      */
@@ -77,7 +81,8 @@ class ProductId implements NodeInterface
     /**
      * @Serializer\Expose
      * @Serializer\Type("string")
-     * @Serializer\SerializedName("bme:DESCRIPTION_SHORT")
+     * @Serializer\SerializedName("DESCRIPTION_SHORT")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.bmecat.org/bmecat/2005")
      *
      * @var string
      */
@@ -86,7 +91,8 @@ class ProductId implements NodeInterface
     /**
      * @Serializer\Expose
      * @Serializer\Type("string")
-     * @Serializer\SerializedName("bme:DESCRIPTION_LONG")
+     * @Serializer\SerializedName("DESCRIPTION_LONG")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.bmecat.org/bmecat/2005")
      *
      * @var string
      */
@@ -95,7 +101,8 @@ class ProductId implements NodeInterface
     /**
      * @Serializer\Expose
      * @Serializer\Type("string")
-     * @Serializer\SerializedName("bme:PRODUCT_TYPE")
+     * @Serializer\SerializedName("PRODUCT_TYPE")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.bmecat.org/bmecat/2005")
      *
      * @var string
      */

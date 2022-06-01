@@ -16,6 +16,8 @@ use Naugrim\OpenTrans\Nodes\Order\Summary;
  *
  * @Serializer\XmlRoot("ORDER")
  * @Serializer\ExclusionPolicy("all")
+ * @Serializer\XmlNamespace(uri="http://www.opentrans.org/XMLSchema/2.1")
+ * @Serializer\XmlNamespace(uri="http://www.bmecat.org/bmecat/2005", prefix="bme")
  */
 class Order implements NodeInterface
 {
@@ -24,6 +26,7 @@ class Order implements NodeInterface
     /**
      * @Serializer\Expose
      * @Serializer\XmlAttribute
+     * @Serializer\Type("string")
      *
      * @var string
      */

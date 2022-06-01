@@ -49,7 +49,8 @@ class Item implements NodeInterface
     /**
      * @Serializer\Expose
      * @Serializer\Type("string")
-     * @Serializer\SerializedName("bme:ORDER_UNIT")
+     * @Serializer\SerializedName("ORDER_UNIT")
+     * @Serializer\XmlElement(namespace="http://www.bmecat.org/bmecat/2005")
      *
      * @var string
      */

@@ -1,12 +1,12 @@
 {
-    "name": "naugrim/opentrans",
+    "name": "loeffelhardt/el-opentrans",
     "description": "A library to create openTRANS compatible XML documents.",
     "type": "library",
     "license": "MIT",
     "authors": [
         {
-            "name": "Erik Anders",
-            "email": "erik.anders@securepoint.de"
+            "name": "Giovanni Piemontese",
+            "email": "giovanni.piemontese@loeffelhardt.de"
         }
     ],
     "require": {
@@ -14,7 +14,7 @@
         "ext-dom": "*",
         "ext-libxml": "*",
         "jms/serializer": "^3.4",
-        "naugrim/bmecat": "^1.0"
+        "loeffelhardt/el-bmecat": "^1.1.0"
     },
     "autoload": {
         "psr-4": {
