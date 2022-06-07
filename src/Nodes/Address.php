@@ -122,7 +122,7 @@ class Address extends \Naugrim\BMEcat\Nodes\Address
 
     /**
      * @Serializer\Expose
-     * @Serializer\Type("string")
+     * @Serializer\Type("Naugrim\BMEcat\Nodes\Fax")
      * @Serializer\SerializedName("FAX")
      * @Serializer\XmlElement(namespace="http://www.bmecat.org/bmecat/2005")
      */
