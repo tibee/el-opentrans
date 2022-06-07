@@ -18,7 +18,7 @@ class Party implements NodeInterface
      *
      * @var PartyId
      */
-    protected $id;
+    protected $partyId;
 
     /**
      * @Serializer\Expose
@@ -27,7 +27,7 @@ class Party implements NodeInterface
      *
      * @var PartyRole
      */
-    protected $role;
+    protected $partyRole;
 
     /**
      * @Serializer\Expose
@@ -49,36 +49,38 @@ class Party implements NodeInterface
     /**
      * @return PartyId
      */
-    public function getId(): PartyId
+    public function getPartyId(): PartyId
     {
-        return $this->id;
+        return $this->partyId;
     }
 
     /**
-     * @param PartyId $id
+     * @param PartyId $partyId
+     *
      * @return Party
      */
-    public function setId(PartyId $id): Party
+    public function setPartyId(PartyId $partyId): Party
     {
-        $this->id = $id;
+        $this->partyId = $partyId;
         return $this;
     }
 
     /**
      * @return PartyRole
      */
-    public function getRole(): PartyRole
+    public function getPartyRole(): PartyRole
     {
-        return $this->role;
+        return $this->partyRole;
     }
 
     /**
-     * @param PartyRole $role
+     * @param PartyRole $partyRole
+     *
      * @return Party
      */
-    public function setRole(PartyRole $role): Party
+    public function setPartyRole(PartyRole $partyRole): Party
     {
-        $this->role = $role;
+        $this->partyRole = $partyRole;
         return $this;
     }
 

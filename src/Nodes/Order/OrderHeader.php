@@ -11,34 +11,35 @@ use Naugrim\OpenTrans\Nodes\SourcingInfo;
 /**
  * @Serializer\AccessorOrder("custom", custom = {"controlInfo", "sourcingInfo", "info"})
  */
-class Header implements NodeInterface
+class OrderHeader implements NodeInterface
 {
     use HasControlInfo, HasSourcingInfo;
 
     /**
      * @Serializer\Expose
-     * @Serializer\Type("Naugrim\OpenTrans\Nodes\Order\Info")
+     * @Serializer\Type("Naugrim\OpenTrans\Nodes\Order\OrderInfo")
      * @Serializer\SerializedName("ORDER_INFO")
      *
-     * @var Info
+     * @var OrderInfo
      */
-    protected $info;
+    protected $orderInfo;
 
     /**
-     * @return Info
+     * @return OrderInfo
      */
-    public function getInfo(): Info
+    public function getOrderInfo(): OrderInfo
     {
-        return $this->info;
+        return $this->orderInfo;
     }
 
     /**
-     * @param Info $info
-     * @return Header
+     * @param OrderInfo $orderInfo
+     *
+     * @return OrderHeader
      */
-    public function setInfo(Info $info): Header
+    public function setOrderInfo(OrderInfo $orderInfo): OrderHeader
     {
-        $this->info = $info;
+        $this->orderInfo = $orderInfo;
         return $this;
     }
 
@@ -52,9 +53,10 @@ class Header implements NodeInterface
 
     /**
      * @param SourcingInfo $sourcingInfo
-     * @return Header
+     *
+     * @return OrderHeader
      */
-    public function setSourcingInfo(SourcingInfo $sourcingInfo): Header
+    public function setSourcingInfo(SourcingInfo $sourcingInfo): OrderHeader
     {
         $this->sourcingInfo = $sourcingInfo;
         return $this;

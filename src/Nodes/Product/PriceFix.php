@@ -15,23 +15,25 @@ class PriceFix implements NodeInterface
      *
      * @var float
      */
-    protected $amount;
+    protected $priceAmount;
 
     /**
      * @return float
      */
-    public function getAmount(): float
+    public function getPriceAmount(): float
     {
-        return $this->amount;
+        return $this->priceAmount;
     }
 
     /**
-     * @param float $amount
+     * @param float $priceAmount
+     *
      * @return PriceFix
      */
-    public function setAmount(float $amount): PriceFix
+    public function setPriceAmount(float $priceAmount): PriceFix
     {
-        $this->amount = $amount;
+        $this->priceAmount = $priceAmount;
+
         return $this;
     }
 }

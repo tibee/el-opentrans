@@ -27,7 +27,7 @@ class OrderIngoingTest extends TestCase
 
         $this->assertInstanceOf(Order::class, $data);
 
-        $this->assertInstanceOf(Order\Header::class, $data->getHeader());
-        $this->assertEquals(4711, $data->getHeader()->getInfo()->getId());
+        $this->assertInstanceOf(Order\OrderHeader::class, $data->getOrderHeader());
+        $this->assertEquals(4711, $data->getOrderHeader()->getOrderInfo()->getOrderId());
     }
 }

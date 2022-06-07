@@ -52,7 +52,7 @@ class History implements NodeInterface
      *
      * @var string
      */
-    protected $orderDescription;
+    protected $orderDescr;
 
     /**
      * @Serializer\Expose
@@ -165,18 +165,19 @@ class History implements NodeInterface
     /**
      * @return string
      */
-    public function getOrderDescription(): string
+    public function getOrderDescr(): string
     {
-        return $this->orderDescription;
+        return $this->orderDescr;
     }
 
     /**
-     * @param string $orderDescription
+     * @param string $orderDescr
+     *
      * @return History
      */
-    public function setOrderDescription(string $orderDescription): History
+    public function setOrderDescr(string $orderDescr): History
     {
-        $this->orderDescription = $orderDescription;
+        $this->orderDescr = $orderDescr;
         return $this;
     }
 

@@ -56,7 +56,7 @@ class Item implements NodeInterface
      *
      * @var PriceFix
      */
-    protected $priceFix;
+    protected $productPriceFix;
 
     /**
      * @Serializer\Expose
@@ -142,18 +142,19 @@ class Item implements NodeInterface
     /**
      * @return PriceFix
      */
-    public function getPriceFix(): PriceFix
+    public function getProductPriceFix(): PriceFix
     {
-        return $this->priceFix;
+        return $this->productPriceFix;
     }
 
     /**
-     * @param PriceFix $priceFix
+     * @param PriceFix $productPriceFix
+     *
      * @return Item
      */
-    public function setPriceFix(PriceFix $priceFix): Item
+    public function setProductPriceFix(PriceFix $productPriceFix): Item
     {
-        $this->priceFix = $priceFix;
+        $this->productPriceFix = $productPriceFix;
         return $this;
     }
 

@@ -8,9 +8,9 @@ use Naugrim\BMEcat\Exception\InvalidSetterException;
 use Naugrim\BMEcat\Exception\UnknownKeyException;
 use Naugrim\BMEcat\Nodes\Contracts\NodeInterface;
 use Naugrim\OpenTrans\Nodes\Concerns\IsRootNode;
-use Naugrim\OpenTrans\Nodes\Order\Header;
+use Naugrim\OpenTrans\Nodes\Order\OrderHeader;
 use Naugrim\OpenTrans\Nodes\Order\Item;
-use Naugrim\OpenTrans\Nodes\Order\Summary;
+use Naugrim\OpenTrans\Nodes\Order\OrderSummary;
 
 /**
  *
@@ -34,12 +34,12 @@ class Order implements NodeInterface
 
     /**
      * @Serializer\Expose
-     * @Serializer\Type("Naugrim\OpenTrans\Nodes\Order\Header")
+     * @Serializer\Type("Naugrim\OpenTrans\Nodes\Order\OrderHeader")
      * @Serializer\SerializedName("ORDER_HEADER")
      *
-     * @var Header
+     * @var OrderHeader
      */
-    protected $header;
+    protected $orderHeader;
 
     /**
      *
@@ -50,16 +50,16 @@ class Order implements NodeInterface
      *
      * @var Item[]
      */
-    protected $items = [];
+    protected $orderItemList = [];
 
     /**
      * @Serializer\Expose
-     * @Serializer\Type("Naugrim\OpenTrans\Nodes\Order\Summary")
+     * @Serializer\Type("Naugrim\OpenTrans\Nodes\Order\OrderSummary")
      * @Serializer\SerializedName("ORDER_SUMMARY")
      *
-     * @var Summary
+     * @var OrderSummary
      */
-    protected $summary;
+    protected $orderSummary;
 
     /**
      * @return mixed
@@ -80,45 +80,48 @@ class Order implements NodeInterface
     }
 
     /**
-     * @return Header
+     * @return OrderHeader
      */
-    public function getHeader(): Header
+    public function getOrderHeader(): OrderHeader
     {
-        return $this->header;
+        return $this->orderHeader;
     }
 
     /**
-     * @param Header $header
+     * @param OrderHeader $orderHeader
+     *
      * @return Order
      */
-    public function setHeader(Header $header): Order
+    public function setOrderHeader(OrderHeader $orderHeader): Order
     {
-        $this->header = $header;
+        $this->orderHeader = $orderHeader;
         return $this;
     }
 
     /**
      * @return Item[]
      */
-    public function getItems(): array
+    public function getOrderItemList(): array
     {
-        return $this->items;
+        return $this->orderItemList;
     }
 
     /**
-     * @param Item[] $items
+     * @param Item[] $orderItemList
+     *
      * @return Order
      * @throws InvalidSetterException
      * @throws UnknownKeyException
      */
-    public function setItems(array $items): Order
+    public function setOrderItemList(array $orderItemList): Order
     {
-        foreach ($items as $item) {
+        foreach ($orderItemList as $item) {
             if (!$item instanceof Item) {
                 $item = NodeBuilder::fromArray($item, new Item());
             }
             $this->addItem($item);
         }
+
         return $this;
     }
 
@@ -128,25 +131,28 @@ class Order implements NodeInterface
      */
     public function addItem(Item $item): Order
     {
-        $this->items[] = $item;
+        $this->orderItemList[] = $item;
+
         return $this;
     }
 
     /**
-     * @return Summary
+     * @return OrderSummary
      */
-    public function getSummary(): Summary
+    public function getOrderSummary(): OrderSummary
     {
-        return $this->summary;
+        return $this->orderSummary;
     }
 
     /**
-     * @param Summary $summary
+     * @param OrderSummary $orderSummary
+     *
      * @return Order
      */
-    public function setSummary(Summary $summary): Order
+    public function setOrderSummary(OrderSummary $orderSummary): Order
     {
-        $this->summary = $summary;
+        $this->orderSummary = $orderSummary;
+
         return $this;
     }
 }

@@ -11,7 +11,7 @@ use Naugrim\OpenTrans\Nodes\Concerns\HasTotalItemNum;
 /**
  * @Serializer\AccessorOrder("custom", custom = {"totalItemNum", "totalAmount", "allowOrChargesFix"})
  */
-class Summary implements NodeInterface
+class OrderResponseSummary implements NodeInterface
 {
     use HasTotalItemNum, HasTotalAmount;
 
@@ -34,9 +34,10 @@ class Summary implements NodeInterface
 
     /**
      * @param AllowOrChargesFix $allowOrChargesFix
-     * @return Summary
+     *
+     * @return OrderResponseSummary
      */
-    public function setAllowOrChargesFix(AllowOrChargesFix $allowOrChargesFix): Summary
+    public function setAllowOrChargesFix(AllowOrChargesFix $allowOrChargesFix): OrderResponseSummary
     {
         $this->allowOrChargesFix = $allowOrChargesFix;
         return $this;

@@ -25,20 +25,20 @@ class OrderResponseTest extends TestCase
     public function testMinimalInvoice()
     {
         $node = NodeBuilder::fromArray([
-            'header' => [
-                'info' => [
-                    'id' => 'order-id-1',
-                    'date' => (new DateTimeImmutable('2020-01-27'))->format('Y-m-d'),
-                    'sequenceId' => 1,
+            'orderResponseHeader' => [
+                'orderResponseInfo' => [
+                    'orderId' => 'order-id-1',
+                    'orderResponseDate' => (new DateTimeImmutable('2020-01-27'))->format('Y-m-d'),
+                    'orderChangeSequenceId' => 1,
                     'parties' => [
                         [
-                            'id' => ['value' => 'org.de.supplier', 'type' => 'supplier']
+                            'partyId' => ['value' => 'org.de.supplier', 'type' => 'supplier']
                         ],
                         [
-                            'id' => ['value' => 'org.de.buyer', 'type' => 'buyer']
+                            'partyId' => ['value' => 'org.de.buyer', 'type' => 'buyer']
                         ],
                     ],
-                    'partiesReference' => [
+                    'orderPartiesReference' => [
                         'buyerIdRef' => [
                             'value' => 'org.de.buyer',
                         ],
@@ -48,7 +48,7 @@ class OrderResponseTest extends TestCase
                     ]
                 ]
             ],
-            'items' => [
+            'orderResponseItemList' => [
                 [
                     'lineItemId' => 'line-item-id-1',
                     'productId' => [
@@ -60,7 +60,7 @@ class OrderResponseTest extends TestCase
                     'orderUnit' => 'C62',
                 ]
             ],
-            'summary' => [
+            'orderResponseSummary' => [
                 'totalItemNum' => 1,
             ]
         ], new OrderResponse());

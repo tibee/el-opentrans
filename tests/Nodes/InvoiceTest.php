@@ -31,10 +31,10 @@ class InvoiceTest extends TestCase
                     'date' => (new DateTimeImmutable('2020-01-27'))->format('Y-m-d'),
                     'parties' => [
                         [
-                            'id' => ['value' => 'org.de.issuer', 'type' => 'issuer']
+                            'partyId' => ['value' => 'org.de.issuer', 'type' => 'issuer']
                         ],
                         [
-                            'id' => ['value' => 'org.de.rcpt', 'type' => 'buyer']
+                            'partyId' => ['value' => 'org.de.rcpt', 'type' => 'buyer']
                         ],
                     ],
                     'issuerIdRef' => 'org.de.issuer',
@@ -49,7 +49,7 @@ class InvoiceTest extends TestCase
                     'quantity' => 10,
                     'orderUnit' => 'C62',
                     'priceFix' => [
-                        'amount' => 123
+                        'priceAmount' => 123
                     ],
                     'priceLineAmount' => 10 * 123,
                 ]

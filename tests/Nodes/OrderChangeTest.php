@@ -25,20 +25,20 @@ class OrderChangeTest extends TestCase
     public function testMinimalInvoice()
     {
         $node = NodeBuilder::fromArray([
-            'header' => [
-                'info' => [
-                    'id' => 'order-id-1',
-                    'date' => (new DateTimeImmutable('2020-01-27'))->format('Y-m-d'),
-                    'sequenceId' => 1,
+            'orderChangeHeader' => [
+                'orderChangeInfo' => [
+                    'orderId' => 'order-id-1',
+                    'orderChangeDate' => (new DateTimeImmutable('2020-01-27'))->format('Y-m-d'),
+                    'orderChangeSequenceId' => 1,
                     'parties' => [
                         [
-                            'id' => ['value' => 'org.de.supplier', 'type' => 'supplier']
+                            'partyId' => ['value' => 'org.de.supplier', 'type' => 'supplier']
                         ],
                         [
-                            'id' => ['value' => 'org.de.buyer', 'type' => 'buyer']
+                            'partyId' => ['value' => 'org.de.buyer', 'type' => 'buyer']
                         ],
                     ],
-                    'partiesReference' => [
+                    'orderPartiesReference' => [
                         'buyerIdRef' => [
                             'value' => 'org.de.buyer',
                         ],
@@ -48,7 +48,7 @@ class OrderChangeTest extends TestCase
                     ]
                 ]
             ],
-            'items' => [
+            'orderChangeItemList' => [
                 [
                     'lineItemId' => 'line-item-id-1',
                     'productId' => [
@@ -60,7 +60,7 @@ class OrderChangeTest extends TestCase
                     'orderUnit' => 'C62',
                 ]
             ],
-            'summary' => [
+            'orderChangeSummary' => [
                 'totalItemNum' => 1,
             ]
         ], new OrderChange());

@@ -9,7 +9,7 @@ use Naugrim\BMEcat\Exception\UnknownKeyException;
 use Naugrim\BMEcat\Nodes\Contracts\NodeInterface;
 use Naugrim\OpenTrans\Nodes\Party;
 
-class Info implements NodeInterface
+class OrderInfo implements NodeInterface
 {
     /**
      * @Serializer\Expose
@@ -18,7 +18,7 @@ class Info implements NodeInterface
      *
      * @var string
      */
-    protected $id;
+    protected $orderId;
 
     /**
      * @Serializer\Expose
@@ -27,7 +27,7 @@ class Info implements NodeInterface
      *
      * @var string
      */
-    protected $date;
+    protected $orderDate;
 
 
     /**
@@ -53,36 +53,38 @@ class Info implements NodeInterface
     /**
      * @return string
      */
-    public function getId(): string
+    public function getOrderId(): string
     {
-        return $this->id;
+        return $this->orderId;
     }
 
     /**
-     * @param string $id
-     * @return Info
+     * @param string $orderId
+     *
+     * @return OrderInfo
      */
-    public function setId(string $id): Info
+    public function setOrderId(string $orderId): OrderInfo
     {
-        $this->id = $id;
+        $this->orderId = $orderId;
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getDate(): string
+    public function getOrderDate(): string
     {
-        return $this->date;
+        return $this->orderDate;
     }
 
     /**
-     * @param string $date
-     * @return Info
+     * @param string $orderDate
+     *
+     * @return OrderInfo
      */
-    public function setDate(string $date): Info
+    public function setOrderDate(string $orderDate): OrderInfo
     {
-        $this->date = $date;
+        $this->orderDate = $orderDate;
         return $this;
     }
 
@@ -96,11 +98,12 @@ class Info implements NodeInterface
 
     /**
      * @param Party[] $parties
-     * @return Info
+     *
+     * @return OrderInfo
      * @throws InvalidSetterException
      * @throws UnknownKeyException
      */
-    public function setParties(array $parties): Info
+    public function setParties(array $parties): OrderInfo
     {
         foreach ($parties as $party) {
             if (!$party instanceof Party) {
@@ -131,9 +134,10 @@ class Info implements NodeInterface
 
     /**
      * @param PartiesReference $partiesReference
-     * @return Info
+     *
+     * @return OrderInfo
      */
-    public function setPartiesReference(PartiesReference $partiesReference): Info
+    public function setPartiesReference(PartiesReference $partiesReference): OrderInfo
     {
         $this->partiesReference = $partiesReference;
         return $this;

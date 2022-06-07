@@ -1,6 +1,6 @@
 <?php
 
-namespace Naugrim\OpenTrans\Nodes\OrderChange;
+namespace Naugrim\OpenTrans\Nodes\OrderResponse;
 
 use JMS\Serializer\Annotation as Serializer;
 use Naugrim\BMEcat\Builder\NodeBuilder;
@@ -10,7 +10,7 @@ use Naugrim\BMEcat\Nodes\Contracts\NodeInterface;
 use Naugrim\OpenTrans\Nodes\Order\PartiesReference;
 use Naugrim\OpenTrans\Nodes\Party;
 
-class Info implements NodeInterface
+class OrderResponseInfo implements NodeInterface
 {
     /**
      * @Serializer\Expose
@@ -19,16 +19,16 @@ class Info implements NodeInterface
      *
      * @var string
      */
-    protected $id;
+    protected $orderId;
 
     /**
      * @Serializer\Expose
      * @Serializer\Type("string")
-     * @Serializer\SerializedName("ORDERCHANGE_DATE")
+     * @Serializer\SerializedName("ORDERRESPONSE_DATE")
      *
      * @var string
      */
-    protected $date;
+    protected $orderResponseDate;
 
     /**
      * @Serializer\Expose
@@ -37,7 +37,7 @@ class Info implements NodeInterface
      *
      * @var int
      */
-    protected $sequenceId;
+    protected $orderChangeSequenceId;
 
     /**
      *
@@ -57,59 +57,62 @@ class Info implements NodeInterface
      *
      * @var PartiesReference
      */
-    protected $partiesReference;
+    protected $orderPartiesReference;
 
     /**
      * @return string
      */
-    public function getId(): string
+    public function getOrderId(): string
     {
-        return $this->id;
+        return $this->orderId;
     }
 
     /**
-     * @param string $id
-     * @return Info
+     * @param string $orderId
+     *
+     * @return OrderResponseInfo
      */
-    public function setId(string $id): Info
+    public function setOrderId(string $orderId): OrderResponseInfo
     {
-        $this->id = $id;
+        $this->orderId = $orderId;
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getDate(): string
+    public function getOrderResponseDate(): string
     {
-        return $this->date;
+        return $this->orderResponseDate;
     }
 
     /**
-     * @param string $date
-     * @return Info
+     * @param string $orderResponseDate
+     *
+     * @return OrderResponseInfo
      */
-    public function setDate(string $date): Info
+    public function setOrderResponseDate(string $orderResponseDate): OrderResponseInfo
     {
-        $this->date = $date;
+        $this->orderResponseDate = $orderResponseDate;
         return $this;
     }
 
     /**
      * @return int
      */
-    public function getSequenceId(): int
+    public function getOrderChangeSequenceId(): int
     {
-        return $this->sequenceId;
+        return $this->orderChangeSequenceId;
     }
 
     /**
-     * @param int $sequenceId
-     * @return Info
+     * @param int $orderChangeSequenceId
+     *
+     * @return OrderResponseInfo
      */
-    public function setSequenceId(int $sequenceId): Info
+    public function setOrderChangeSequenceId(int $orderChangeSequenceId): OrderResponseInfo
     {
-        $this->sequenceId = $sequenceId;
+        $this->orderChangeSequenceId = $orderChangeSequenceId;
         return $this;
     }
 
@@ -123,11 +126,12 @@ class Info implements NodeInterface
 
     /**
      * @param Party[] $parties
-     * @return Info
+     *
+     * @return OrderResponseInfo
      * @throws InvalidSetterException
      * @throws UnknownKeyException
      */
-    public function setParties(array $parties): Info
+    public function setParties(array $parties): OrderResponseInfo
     {
         foreach ($parties as $party) {
             if (!$party instanceof Party) {
@@ -151,18 +155,19 @@ class Info implements NodeInterface
     /**
      * @return PartiesReference
      */
-    public function getPartiesReference(): PartiesReference
+    public function getOrderPartiesReference(): PartiesReference
     {
-        return $this->partiesReference;
+        return $this->orderPartiesReference;
     }
 
     /**
-     * @param PartiesReference $partiesReference
-     * @return Info
+     * @param PartiesReference $orderPartiesReference
+     *
+     * @return OrderResponseInfo
      */
-    public function setPartiesReference(PartiesReference $partiesReference): Info
+    public function setOrderPartiesReference(PartiesReference $orderPartiesReference): OrderResponseInfo
     {
-        $this->partiesReference = $partiesReference;
+        $this->orderPartiesReference = $orderPartiesReference;
         return $this;
     }
 }

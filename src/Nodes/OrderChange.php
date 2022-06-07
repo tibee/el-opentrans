@@ -9,8 +9,8 @@ use Naugrim\BMEcat\Exception\UnknownKeyException;
 use Naugrim\BMEcat\Nodes\Contracts\NodeInterface;
 use Naugrim\OpenTrans\Nodes\Concerns\IsRootNode;
 use Naugrim\OpenTrans\Nodes\Order\Item;
-use Naugrim\OpenTrans\Nodes\Order\Summary;
-use Naugrim\OpenTrans\Nodes\OrderChange\Header;
+use Naugrim\OpenTrans\Nodes\Order\OrderSummary;
+use Naugrim\OpenTrans\Nodes\OrderChange\OrderChangeHeader;
 
 /**
  *
@@ -25,12 +25,12 @@ class OrderChange implements NodeInterface
 
     /**
      * @Serializer\Expose
-     * @Serializer\Type("Naugrim\OpenTrans\Nodes\OrderChange\Header")
+     * @Serializer\Type("Naugrim\OpenTrans\Nodes\OrderChange\OrderChangeHeader")
      * @Serializer\SerializedName("ORDERCHANGE_HEADER")
      *
-     * @var Header
+     * @var OrderChangeHeader
      */
-    protected $header;
+    protected $orderChangeHeader;
 
     /**
      *
@@ -41,52 +41,54 @@ class OrderChange implements NodeInterface
      *
      * @var Item[]
      */
-    protected $items = [];
+    protected $orderChangeItemList = [];
 
     /**
      * @Serializer\Expose
-     * @Serializer\Type("Naugrim\OpenTrans\Nodes\Order\Summary")
+     * @Serializer\Type("Naugrim\OpenTrans\Nodes\Order\OrderSummary")
      * @Serializer\SerializedName("ORDERCHANGE_SUMMARY")
      *
-     * @var Summary
+     * @var OrderSummary
      */
-    protected $summary;
+    protected $orderChangeSummary;
 
     /**
-     * @return Header
+     * @return OrderChangeHeader
      */
-    public function getHeader(): Header
+    public function getOrderChangeHeader(): OrderChangeHeader
     {
-        return $this->header;
+        return $this->orderChangeHeader;
     }
 
     /**
-     * @param Header $header
+     * @param OrderChangeHeader $orderChangeHeader
+     *
      * @return OrderChange
      */
-    public function setHeader(Header $header): OrderChange
+    public function setOrderChangeHeader(OrderChangeHeader $orderChangeHeader): OrderChange
     {
-        $this->header = $header;
+        $this->orderChangeHeader = $orderChangeHeader;
         return $this;
     }
 
     /**
      * @return Item[]
      */
-    public function getItems(): array
+    public function getOrderChangeItemList(): array
     {
-        return $this->items;
+        return $this->orderChangeItemList;
     }
 
     /**
-     * @param Item[] $items
+     * @param Item[] $orderChangeItemList
+     *
      * @return OrderChange
      * @throws InvalidSetterException
      * @throws UnknownKeyException
      */
-    public function setItems(array $items): OrderChange
+    public function setOrderChangeItemList(array $orderChangeItemList): OrderChange
     {
-        foreach ($items as $item) {
+        foreach ($orderChangeItemList as $item) {
             if (!$item instanceof Item) {
                 $item = NodeBuilder::fromArray($item, new Item());
             }
@@ -101,25 +103,26 @@ class OrderChange implements NodeInterface
      */
     public function addItem(Item $item): OrderChange
     {
-        $this->items[] = $item;
+        $this->orderChangeItemList[] = $item;
         return $this;
     }
 
     /**
-     * @return Summary
+     * @return OrderSummary
      */
-    public function getSummary(): Summary
+    public function getOrderChangeSummary(): OrderSummary
     {
-        return $this->summary;
+        return $this->orderChangeSummary;
     }
 
     /**
-     * @param Summary $summary
+     * @param OrderSummary $orderChangeSummary
+     *
      * @return OrderChange
      */
-    public function setSummary(Summary $summary): OrderChange
+    public function setOrderChangeSummary(OrderSummary $orderChangeSummary): OrderChange
     {
-        $this->summary = $summary;
+        $this->orderChangeSummary = $orderChangeSummary;
         return $this;
     }
 }
