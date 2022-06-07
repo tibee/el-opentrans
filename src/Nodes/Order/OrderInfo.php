@@ -48,7 +48,7 @@ class OrderInfo implements NodeInterface
      *
      * @var PartiesReference
      */
-    protected $partiesReference;
+    protected $orderPartiesReference;
 
     /**
      * @return string
@@ -127,19 +127,19 @@ class OrderInfo implements NodeInterface
     /**
      * @return PartiesReference
      */
-    public function getPartiesReference(): PartiesReference
+    public function getOrderPartiesReference(): PartiesReference
     {
-        return $this->partiesReference;
+        return $this->orderPartiesReference;
     }
 
     /**
-     * @param PartiesReference $partiesReference
+     * @param PartiesReference $orderPartiesReference
      *
      * @return OrderInfo
      */
-    public function setPartiesReference(PartiesReference $partiesReference): OrderInfo
+    public function setOrderPartiesReference(PartiesReference $orderPartiesReference): OrderInfo
     {
-        $this->partiesReference = $partiesReference;
+        $this->orderPartiesReference = $orderPartiesReference;
         return $this;
     }
 }
