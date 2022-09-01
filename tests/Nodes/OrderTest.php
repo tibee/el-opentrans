@@ -29,9 +29,13 @@ class OrderTest extends TestCase
     public function testOrder(string $file, array $data): void
     {
         $node = NodeBuilder::fromArray($data, new Order());
-        $xml = $this->serializer->serialize($node, 'xml');
+        try {
+            $xml = $this->serializer->serialize($node, 'xml');
+        } catch (\Throwable $exception) {
+            $this->fail($exception->getMessage());
+        }
 
-        $this->assertEquals(file_get_contents(__DIR__ . $file), $xml);
+        $this->assertEquals(file_get_contents($file), $xml);
         $this->assertTrue(SchemaValidator::isValid($xml, '2.1'));
     }
 
@@ -39,7 +43,157 @@ class OrderTest extends TestCase
     {
         return [
             [
-                'file' => '/../assets/minimal_valid_order_with_udx.xml',
+                'file' => __DIR__.'/../assets/minimal_valid_order_with_delivery_date_in_order_item.xml',
+                'data' => [
+                    'header' => [
+                        'info' => [
+                            'id' => 'order-id-1',
+                            'date' => (new DateTimeImmutable('2020-01-27'))->format('Y-m-d'),
+                            'parties' => [
+                                [
+                                    'id' => ['value' => 'org.de.supplier']
+                                ],
+                                [
+                                    'id' => ['value' => 'org.de.buyer', 'type' => 'buyer']
+                                ],
+                            ],
+                            'partiesReference' => [
+                                'buyerIdRef' => [
+                                    'value' => 'org.de.buyer',
+                                ],
+                                'supplierIdRef' => [
+                                    'value' => 'org.de.buyer',
+                                ],
+                            ]
+                        ]
+                    ],
+                    'items' => [
+                        [
+                            'lineItemId' => 'line-item-id-1',
+                            'productId' => [
+                                'supplierPid' => [
+                                    'value' => 'product-number-1'
+                                ]
+                            ],
+                            'quantity' => 10,
+                            'orderUnit' => 'C62',
+                            'deliveryDate' => [
+                                'deliveryStartDate' => (new DateTimeImmutable('2020-02-27'))->format('Y-m-d'),
+                                'deliveryEndDate' => (new DateTimeImmutable('2020-02-27'))->format('Y-m-d'),
+                            ],
+                        ]
+                    ],
+                    'summary' => [
+                        'totalItemNum' => 1,
+                    ]
+                ]
+            ],
+            [
+                'file' => __DIR__.'/../assets/minimal_valid_order_with_delivery_date.xml',
+                'data' => [
+                    'header' => [
+                        'info' => [
+                            'id' => 'order-id-1',
+                            'date' => (new DateTimeImmutable('2020-01-27'))->format('Y-m-d'),
+                            'deliveryDate' => [
+                                'deliveryStartDate' => (new DateTimeImmutable('2020-02-27'))->format('Y-m-d'),
+                                'deliveryEndDate' => (new DateTimeImmutable('2020-02-27'))->format('Y-m-d'),
+                            ],
+                            'parties' => [
+                                [
+                                    'id' => ['value' => 'org.de.supplier']
+                                ],
+                                [
+                                    'id' => ['value' => 'org.de.buyer', 'type' => 'buyer']
+                                ],
+                            ],
+                            'partiesReference' => [
+                                'buyerIdRef' => [
+                                    'value' => 'org.de.buyer',
+                                ],
+                                'supplierIdRef' => [
+                                    'value' => 'org.de.buyer',
+                                ],
+                            ]
+                        ]
+                    ],
+                    'items' => [
+                        [
+                            'lineItemId' => 'line-item-id-1',
+                            'productId' => [
+                                'supplierPid' => [
+                                    'value' => 'product-number-1'
+                                ]
+                            ],
+                            'quantity' => 10,
+                            'orderUnit' => 'C62',
+                        ]
+                    ],
+                    'summary' => [
+                        'totalItemNum' => 1,
+                    ]
+                ]
+            ],
+            [
+                'file' => __DIR__.'/../assets/minimal_valid_order_with_contactdetails.xml',
+                'data' => [
+                    'header' => [
+                        'info' => [
+                            'id' => 'order-id-1',
+                            'date' => (new DateTimeImmutable('2020-01-27'))->format('Y-m-d'),
+                            'parties' => [
+                                [
+                                    'id' => ['type' => 'supplier_specific', 'value' => 'supplier ID'],
+                                    'role' => ['role' => 'supplier']
+                                ],
+                                [
+                                    'id' => ['value' => 'org.de.buyer', 'type' => 'buyer'],
+                                    'address' => [
+                                        'name' => 'Test Example',
+                                        'contactDetails' => [
+                                            'name' => 'Example',
+                                            'firstName' => 'Test',
+                                            'emails' => [
+                                                'email' => 'test@example.com'
+                                            ],
+                                        ],
+                                        'street' => 'Testweg',
+                                        'zip' => '42',
+                                        'city' => 'Springfield',
+                                        'country' => 'DE',
+                                        'email' => 'test@example.com',
+                                    ]
+                                ],
+                            ],
+                            'partiesReference' => [
+                                'buyerIdRef' => [
+                                    'value' => 'org.de.buyer',
+                                ],
+                                'supplierIdRef' => [
+                                    'value' => 'org.de.buyer',
+                                ],
+                            ]
+                        ]
+                    ],
+                    'items' => [
+                        [
+                            'lineItemId' => 'line-item-id-1',
+                            'productId' => [
+                                'supplierPid' => [
+                                    'value' => 'product-number-1'
+                                ]
+                            ],
+                            'quantity' => 10,
+                            'orderUnit' => 'C62',
+                        ]
+                    ],
+                    'summary' => [
+                        'totalItemNum' => 1,
+                    ]
+                ]
+            ],
+            [
+                'file' => __DIR__.'/../assets/minimal_valid_order_with_udx.xml',
                 'data' => [
                     'orderHeader' => [
                         'orderInfo' => [
@@ -90,7 +244,7 @@ class OrderTest extends TestCase
                 ]
             ],
             [
-                'file' => '/../assets/minimal_valid_order_with_address.xml',
+                'file' => __DIR__.'/../assets/minimal_valid_order_with_address.xml',
                 'data' => [
                     'orderHeader' => [
                         'orderInfo' => [
@@ -155,7 +309,7 @@ class OrderTest extends TestCase
                 ]
             ],
             [
-                'file' => '/../assets/minimal_valid_order.xml',
+                'file' => __DIR__.'/../assets/minimal_valid_order.xml',
                 'data' => [
                     'orderHeader' => [
                         'orderInfo' => [
