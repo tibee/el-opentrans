@@ -3,7 +3,9 @@
 namespace Naugrim\OpenTrans\Tests\Nodes;
 
 use JMS\Serializer\SerializerInterface;
+use Naugrim\BMEcat\Exception\SchemaValidationException;
 use Naugrim\OpenTrans\Nodes\Order;
+use Naugrim\OpenTrans\SchemaValidator;
 use PHPUnit\Framework\TestCase;
 use JMS\Serializer\SerializerBuilder;
 
@@ -28,6 +30,12 @@ class OrderIngoingTest extends TestCase
         $this->assertInstanceOf(Order::class, $data);
 
         $this->assertInstanceOf(Order\OrderHeader::class, $data->getOrderHeader());
+        try {
+            $this->assertTrue(SchemaValidator::isValid($xml, '2.1'));
+        } catch (SchemaValidationException $exception) {
+            echo $exception->__toString();
+        }
+
         $this->assertEquals(4711, $data->getOrderHeader()->getOrderInfo()->getOrderId());
     }
 }

@@ -14,7 +14,8 @@ class Details implements NodeInterface
     /**
      * @Serializer\Expose
      * @Serializer\Type("string")
-     * @Serializer\SerializedName("bme:CONTACT_ID")
+     * @Serializer\SerializedName("CONTACT_ID")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.bmecat.org/bmecat/2005")
      *
      * @var string
      */
@@ -23,7 +24,8 @@ class Details implements NodeInterface
     /**
      * @Serializer\Expose
      * @Serializer\Type("string")
-     * @Serializer\SerializedName("bme:CONTACT_NAME")
+     * @Serializer\SerializedName("CONTACT_NAME")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.bmecat.org/bmecat/2005")
      *
      * @var string
      */
@@ -32,7 +34,8 @@ class Details implements NodeInterface
     /**
      * @Serializer\Expose
      * @Serializer\Type("string")
-     * @Serializer\SerializedName("bme:FIRST_NAME")
+     * @Serializer\SerializedName("FIRST_NAME")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.bmecat.org/bmecat/2005")
      *
      * @var string
      */
@@ -41,7 +44,8 @@ class Details implements NodeInterface
     /**
      * @Serializer\Expose
      * @Serializer\Type("string")
-     * @Serializer\SerializedName("bme:TITLE")
+     * @Serializer\SerializedName("TITLE")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.bmecat.org/bmecat/2005")
      *
      * @var string
      */
@@ -50,7 +54,8 @@ class Details implements NodeInterface
     /**
      * @Serializer\Expose
      * @Serializer\Type("string")
-     * @Serializer\SerializedName("bme:ACADEMIC_TITLE")
+     * @Serializer\SerializedName("ACADEMIC_TITLE")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.bmecat.org/bmecat/2005")
      *
      * @var string
      */
@@ -59,7 +64,8 @@ class Details implements NodeInterface
     /**
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\BMEcat\Nodes\Contact\Role")
-     * @Serializer\SerializedName("bme:CONTACT_ROLE")
+     * @Serializer\SerializedName("CONTACT_ROLE")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.bmecat.org/bmecat/2005")
      *
      * @var Role
      */
@@ -68,7 +74,8 @@ class Details implements NodeInterface
     /**
      * @Serializer\Expose
      * @Serializer\Type("string")
-     * @Serializer\SerializedName("bme:CONTACT_DESCRIPTION")
+     * @Serializer\SerializedName("CONTACT_DESCRIPTION")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.bmecat.org/bmecat/2005")
      *
      * @var string
      */
@@ -77,7 +84,8 @@ class Details implements NodeInterface
     /**
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\BMEcat\Nodes\Phone")
-     * @Serializer\SerializedName("bme:PHONE")
+     * @Serializer\SerializedName("PHONE")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.bmecat.org/bmecat/2005")
      *
      * @var Phone
      */
@@ -86,7 +94,8 @@ class Details implements NodeInterface
     /**
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\BMEcat\Nodes\Fax")
-     * @Serializer\SerializedName("bme:FAX")
+     * @Serializer\SerializedName("FAX")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.bmecat.org/bmecat/2005")
      *
      * @var Fax
      */
@@ -95,7 +104,8 @@ class Details implements NodeInterface
     /**
      * @Serializer\Expose
      * @Serializer\Type("string")
-     * @Serializer\SerializedName("bme:URL")
+     * @Serializer\SerializedName("URL")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.bmecat.org/bmecat/2005")
      *
      * @var string
      */
@@ -104,7 +114,8 @@ class Details implements NodeInterface
     /**
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\Emails")
-     * @Serializer\SerializedName("bme:EMAILS")
+     * @Serializer\SerializedName("EMAILS")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.bmecat.org/bmecat/2005")
      *
      * @var Emails
      */
