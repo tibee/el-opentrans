@@ -40,7 +40,15 @@ class OrderInfo implements NodeInterface
     protected $deliveryDate;
 
     /**
+     * @Serializer\Expose
+     * @Serializer\Type("string")
+     * @Serializer\SerializedName("LANGUAGE")
      *
+     * @var string
+     */
+    protected $language;
+
+    /**
      * @Serializer\Expose
      * @Serializer\SerializedName("PARTIES")
      * @Serializer\Type("array<Naugrim\OpenTrans\Nodes\Party>")
@@ -49,6 +57,15 @@ class OrderInfo implements NodeInterface
      * @var Party[]
      */
     protected $parties = [];
+
+    /**
+     * @Serializer\Expose
+     * @Serializer\SerializedName("CUSTOMER_ORDER_REFERENCE")
+     * @Serializer\Type("Naugrim\OpenTrans\Nodes\Order\CustomerOrderReference")
+     *
+     * @var CustomerOrderReference
+     */
+    protected $customerOrderReference;
 
     /**
      * @Serializer\Expose
@@ -106,11 +123,19 @@ class OrderInfo implements NodeInterface
         return $this;
     }
 
+    /**
+     * @return DeliveryDate
+     */
     public function getDeliveryDate(): DeliveryDate
     {
         return $this->deliveryDate;
     }
 
+    /**
+     * @param DeliveryDate $deliveryDate
+     *
+     * @return $this
+     */
     public function setDeliveryDate(DeliveryDate $deliveryDate): self
     {
         $this->deliveryDate = $deliveryDate;
@@ -172,6 +197,11 @@ class OrderInfo implements NodeInterface
         return $this;
     }
 
+    /**
+     * @param bool $partialShipmentAllowed
+     *
+     * @return $this
+     */
     public function setPartialShipmentAllowed(bool $partialShipmentAllowed): self
     {
         $this->partialShipmentAllowed = $partialShipmentAllowed;
@@ -184,5 +214,43 @@ class OrderInfo implements NodeInterface
     public function isPartialShipmentAllowed(): bool
     {
         return $this->partialShipmentAllowed;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLanguage(): string
+    {
+        return $this->language;
+    }
+
+    /**
+     * @param string $language
+     *
+     * @return OrderInfo
+     */
+    public function setLanguage(string $language): self
+    {
+        $this->language = $language;
+        return $this;
+    }
+
+    /**
+     * @return CustomerOrderReference
+     */
+    public function getCustomerOrderReference(): CustomerOrderReference
+    {
+        return $this->customerOrderReference;
+    }
+
+    /**
+     * @param CustomerOrderReference $customerOrderReference
+     *
+     * @return OrderInfo
+     */
+    public function setCustomerOrderReference(CustomerOrderReference $customerOrderReference): self
+    {
+        $this->customerOrderReference = $customerOrderReference;
+        return $this;
     }
 }

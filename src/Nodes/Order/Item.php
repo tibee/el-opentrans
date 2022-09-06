@@ -87,6 +87,15 @@ class Item implements NodeInterface
     protected $priceLineAmount;
 
     /**
+     * @Serializer\Expose
+     * @Serializer\Type("Naugrim\OpenTrans\Nodes\Order\CustomerOrderReference")
+     * @Serializer\SerializedName("CUSTOMER_ORDER_REFERENCE")
+     *
+     * @var CustomerOrderReference
+     */
+    protected $customerOrderReference;
+
+    /**
      * @return string
      */
     public function getLineItemId(): string
@@ -195,17 +204,30 @@ class Item implements NodeInterface
         return $this;
     }
 
+    /**
+     * @return DeliveryDate
+     */
     public function getDeliveryDate(): DeliveryDate
     {
         return $this->deliveryDate;
     }
 
+    /**
+     * @param DeliveryDate $deliveryDate
+     *
+     * @return $this
+     */
     public function setDeliveryDate(DeliveryDate $deliveryDate): self
     {
         $this->deliveryDate = $deliveryDate;
         return $this;
     }
 
+    /**
+     * @param bool $partialShipmentAllowed
+     *
+     * @return $this
+     */
     public function setPartialShipmentAllowed(bool $partialShipmentAllowed): self
     {
         $this->partialShipmentAllowed = $partialShipmentAllowed;
@@ -218,5 +240,21 @@ class Item implements NodeInterface
     public function isPartialShipmentAllowed(): bool
     {
         return $this->partialShipmentAllowed;
+    }
+
+    /**
+     * @return CustomerOrderReference
+     */
+    public function getCustomerOrderReference(): CustomerOrderReference
+    {
+        return $this->customerOrderReference;
+    }
+
+    /**
+     * @param CustomerOrderReference $customerOrderReference
+     */
+    public function setCustomerOrderReference(CustomerOrderReference $customerOrderReference): void
+    {
+        $this->customerOrderReference = $customerOrderReference;
     }
 }
