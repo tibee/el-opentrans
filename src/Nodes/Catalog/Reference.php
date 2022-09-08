@@ -11,6 +11,7 @@ class Reference implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("CATALOG_ID")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.bmecat.org/bmecat/2005")
      *
      * @var string
      */
@@ -20,6 +21,7 @@ class Reference implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("CATALOG_VERSION")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.bmecat.org/bmecat/2005")
      *
      * @var string
      */
@@ -29,6 +31,7 @@ class Reference implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("CATALOG_NAME")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.bmecat.org/bmecat/2005")
      *
      * @var string
      */
