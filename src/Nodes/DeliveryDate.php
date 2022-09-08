@@ -68,5 +68,4 @@ class DeliveryDate implements NodeInterface
         $this->deliveryEndDate = $deliveryEndDate;
         return $this;
     }
-
 }

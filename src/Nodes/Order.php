@@ -8,8 +8,8 @@ use Naugrim\BMEcat\Exception\InvalidSetterException;
 use Naugrim\BMEcat\Exception\UnknownKeyException;
 use Naugrim\BMEcat\Nodes\Contracts\NodeInterface;
 use Naugrim\OpenTrans\Nodes\Concerns\IsRootNode;
-use Naugrim\OpenTrans\Nodes\Order\OrderHeader;
 use Naugrim\OpenTrans\Nodes\Order\Item;
+use Naugrim\OpenTrans\Nodes\Order\OrderHeader;
 use Naugrim\OpenTrans\Nodes\Order\OrderSummary;
 
 /**

@@ -1,8 +1,15 @@
 <?php
 
-use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use PhpCsFixer\Fixer\ArrayNotation\ArraySyntaxFixer;
+use Symplify\EasyCodingStandard\Config\ECSConfig;
 use Symplify\EasyCodingStandard\ValueObject\Set\SetList;
 
-return function (ContainerConfigurator $containerConfigurator): void {
-    $containerConfigurator->import(SetList::PSR_12);
+return static function (ECSConfig $ecsConfig): void {
+    // A. full sets
+    $ecsConfig->sets([SetList::PSR_12]);
+
+    // B. standalone rule
+    $ecsConfig->ruleWithConfiguration(ArraySyntaxFixer::class, [
+        'syntax' => 'short',
+    ]);
 };
