@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Naugrim\OpenTrans\Nodes;
 
 use JMS\Serializer\Annotation as Serializer;
@@ -27,37 +29,23 @@ class AllowOrChargesFix implements NodeInterface
      */
     protected $allowOrChargesTotalAmount;
 
-    /**
-     * @return AllowOrCharge
-     */
     public function getAllowOrCharge(): AllowOrCharge
     {
         return $this->allowOrCharge;
     }
 
-    /**
-     * @param AllowOrCharge $allowOrCharge
-     * @return AllowOrChargesFix
-     */
-    public function setAllowOrCharge(AllowOrCharge $allowOrCharge): AllowOrChargesFix
+    public function setAllowOrCharge(AllowOrCharge $allowOrCharge): self
     {
         $this->allowOrCharge = $allowOrCharge;
         return $this;
     }
 
-    /**
-     * @return float
-     */
     public function getAllowOrChargesTotalAmount(): float
     {
         return $this->allowOrChargesTotalAmount;
     }
 
-    /**
-     * @param float $allowOrChargesTotalAmount
-     * @return AllowOrChargesFix
-     */
-    public function setAllowOrChargesTotalAmount(float $allowOrChargesTotalAmount): AllowOrChargesFix
+    public function setAllowOrChargesTotalAmount(float $allowOrChargesTotalAmount): self
     {
         $this->allowOrChargesTotalAmount = $allowOrChargesTotalAmount;
         return $this;

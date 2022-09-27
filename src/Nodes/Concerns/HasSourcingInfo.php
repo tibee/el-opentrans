@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Naugrim\OpenTrans\Nodes\Concerns;
 
 use JMS\Serializer\Annotation as Serializer;
@@ -18,18 +20,11 @@ trait HasSourcingInfo
      */
     protected $sourcingInfo;
 
-    /**
-     * @return SourcingInfo
-     */
     public function getSourcingInfo(): SourcingInfo
     {
         return $this->sourcingInfo;
     }
 
-    /**
-     * @param SourcingInfo $sourcingInfo
-     * @return NodeInterface
-     */
     public function setSourcingInfo(SourcingInfo $sourcingInfo): NodeInterface
     {
         $this->sourcingInfo = $sourcingInfo;

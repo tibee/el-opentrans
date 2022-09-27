@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Naugrim\OpenTrans\Nodes;
 
 use JMS\Serializer\Annotation as Serializer;
@@ -13,7 +15,6 @@ use Naugrim\OpenTrans\Nodes\Invoice\Item;
 use Naugrim\OpenTrans\Nodes\Invoice\Summary;
 
 /**
- *
  * @Serializer\XmlRoot("INVOICE")
  * @Serializer\ExclusionPolicy("all")
  * @Serializer\XmlNamespace(uri="http://www.opentrans.org/XMLSchema/2.1")
@@ -34,7 +35,6 @@ class Invoice implements NodeInterface
     protected $header;
 
     /**
-     *
      * @Serializer\Expose
      * @Serializer\SerializedName("INVOICE_ITEM_LIST")
      * @Serializer\Type("array<Naugrim\OpenTrans\Nodes\Invoice\Item>")
@@ -55,19 +55,12 @@ class Invoice implements NodeInterface
      */
     protected $summary;
 
-    /**
-     * @return Header
-     */
     public function getHeader(): Header
     {
         return $this->header;
     }
 
-    /**
-     * @param Header $header
-     * @return Invoice
-     */
-    public function setHeader(Header $header): Invoice
+    public function setHeader(Header $header): self
     {
         $this->header = $header;
         return $this;
@@ -83,16 +76,15 @@ class Invoice implements NodeInterface
 
     /**
      * @param Item[] $items
-     * @return Invoice
      * @throws InvalidSetterException
      * @throws UnknownKeyException
      */
-    public function setItems(array $items): Invoice
+    public function setItems(array $items): self
     {
         foreach ($items as $item) {
-            if (!$item instanceof Item) {
+            if (! $item instanceof Item) {
                 /** @var Item $item */
-                $item = NodeBuilder::fromArray((array)$item, new Item());
+                $item = NodeBuilder::fromArray((array) $item, new Item());
             }
             $this->addItem($item);
         }
@@ -100,28 +92,20 @@ class Invoice implements NodeInterface
     }
 
     /**
-     * @param Item $item
      * @return $this
      */
-    public function addItem(Item $item): Invoice
+    public function addItem(Item $item): self
     {
         $this->items[] = $item;
         return $this;
     }
 
-    /**
-     * @return Summary
-     */
     public function getSummary(): Summary
     {
         return $this->summary;
     }
 
-    /**
-     * @param Summary $summary
-     * @return Invoice
-     */
-    public function setSummary(Summary $summary): Invoice
+    public function setSummary(Summary $summary): self
     {
         $this->summary = $summary;
         return $this;

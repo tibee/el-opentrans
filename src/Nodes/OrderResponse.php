@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Naugrim\OpenTrans\Nodes;
 
 use JMS\Serializer\Annotation as Serializer;
@@ -13,7 +15,6 @@ use Naugrim\OpenTrans\Nodes\OrderResponse\OrderResponseHeader;
 use Naugrim\OpenTrans\Nodes\OrderResponse\OrderResponseSummary;
 
 /**
- *
  * @Serializer\XmlRoot("ORDERRESPONSE")
  * @Serializer\ExclusionPolicy("all")
  * @Serializer\XmlNamespace(uri="http://www.opentrans.org/XMLSchema/2.1")
@@ -34,7 +35,6 @@ class OrderResponse implements NodeInterface
     protected $orderResponseHeader;
 
     /**
-     *
      * @Serializer\Expose
      * @Serializer\SerializedName("ORDERRESPONSE_ITEM_LIST")
      * @Serializer\Type("array<Naugrim\OpenTrans\Nodes\OrderResponse\Item>")
@@ -55,20 +55,12 @@ class OrderResponse implements NodeInterface
      */
     protected $orderResponseSummary;
 
-    /**
-     * @return OrderResponseHeader
-     */
     public function getOrderResponseHeader(): OrderResponseHeader
     {
         return $this->orderResponseHeader;
     }
 
-    /**
-     * @param OrderResponseHeader $orderResponseHeader
-     *
-     * @return OrderResponse
-     */
-    public function setOrderResponseHeader(OrderResponseHeader $orderResponseHeader): OrderResponse
+    public function setOrderResponseHeader(OrderResponseHeader $orderResponseHeader): self
     {
         $this->orderResponseHeader = $orderResponseHeader;
         return $this;
@@ -85,16 +77,15 @@ class OrderResponse implements NodeInterface
     /**
      * @param Item[] $orderResponseItemList
      *
-     * @return OrderResponse
      * @throws InvalidSetterException
      * @throws UnknownKeyException
      */
-    public function setOrderResponseItemList(array $orderResponseItemList): OrderResponse
+    public function setOrderResponseItemList(array $orderResponseItemList): self
     {
         foreach ($orderResponseItemList as $item) {
-            if (!$item instanceof Item) {
+            if (! $item instanceof Item) {
                 /** @var Item $item */
-                $item = NodeBuilder::fromArray((array)$item, new Item());
+                $item = NodeBuilder::fromArray((array) $item, new Item());
             }
             $this->addItem($item);
         }
@@ -102,29 +93,20 @@ class OrderResponse implements NodeInterface
     }
 
     /**
-     * @param Item $item
      * @return $this
      */
-    public function addItem(Item $item): OrderResponse
+    public function addItem(Item $item): self
     {
         $this->orderResponseItemList[] = $item;
         return $this;
     }
 
-    /**
-     * @return OrderResponseSummary
-     */
     public function getOrderResponseSummary(): OrderResponseSummary
     {
         return $this->orderResponseSummary;
     }
 
-    /**
-     * @param OrderResponseSummary $orderResponseSummary
-     *
-     * @return OrderResponse
-     */
-    public function setOrderResponseSummary(OrderResponseSummary $orderResponseSummary): OrderResponse
+    public function setOrderResponseSummary(OrderResponseSummary $orderResponseSummary): self
     {
         $this->orderResponseSummary = $orderResponseSummary;
         return $this;

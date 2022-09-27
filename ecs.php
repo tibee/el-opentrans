@@ -7,5 +7,5 @@ return static function (ECSConfig $ecsConfig): void {
     // A. full sets
     $ecsConfig->sets([SetList::PSR_12]);
     $ecsConfig->sets([SetList::CLEAN_CODE]);
-    //$ecsConfig->sets([SetList::COMMON]);
+    $ecsConfig->sets([SetList::COMMON]);
 };

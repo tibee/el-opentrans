@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Naugrim\OpenTrans\Nodes\Invoice;
 
 use JMS\Serializer\Annotation as Serializer;
@@ -43,7 +45,6 @@ class Info implements NodeInterface
     protected $deliveryDate;
 
     /**
-     *
      * @Serializer\Expose
      * @Serializer\SerializedName("PARTIES")
      * @Serializer\Type("array<Naugrim\OpenTrans\Nodes\Party>")
@@ -84,37 +85,23 @@ class Info implements NodeInterface
      */
     protected $currency;
 
-    /**
-     * @return string
-     */
     public function getId(): string
     {
         return $this->id;
     }
 
-    /**
-     * @param string $id
-     * @return Info
-     */
-    public function setId(string $id): Info
+    public function setId(string $id): self
     {
         $this->id = $id;
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getDate(): string
     {
         return $this->date;
     }
 
-    /**
-     * @param string $date
-     * @return Info
-     */
-    public function setDate(string $date): Info
+    public function setDate(string $date): self
     {
         $this->date = $date;
         return $this;
@@ -141,16 +128,15 @@ class Info implements NodeInterface
 
     /**
      * @param Party[] $parties
-     * @return Info
      * @throws InvalidSetterException
      * @throws UnknownKeyException
      */
-    public function setParties(array $parties): Info
+    public function setParties(array $parties): self
     {
         foreach ($parties as $party) {
-            if (!$party instanceof Party) {
+            if (! $party instanceof Party) {
                 /** @var Party $party */
-                $party = NodeBuilder::fromArray((array)$party, new Party());
+                $party = NodeBuilder::fromArray((array) $party, new Party());
             }
             $this->addParty($party);
         }
@@ -158,7 +144,6 @@ class Info implements NodeInterface
     }
 
     /**
-     * @param Party $party
      * @return $this
      */
     public function addParty(Party $party)
@@ -167,55 +152,34 @@ class Info implements NodeInterface
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getIssuerIdRef(): string
     {
         return $this->issuerIdRef;
     }
 
-    /**
-     * @param string $issuerIdRef
-     * @return Info
-     */
-    public function setIssuerIdRef(string $issuerIdRef): Info
+    public function setIssuerIdRef(string $issuerIdRef): self
     {
         $this->issuerIdRef = $issuerIdRef;
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getRcptIdRef(): string
     {
         return $this->rcptIdRef;
     }
 
-    /**
-     * @param string $rcptIdRef
-     * @return Info
-     */
-    public function setRcptIdRef(string $rcptIdRef): Info
+    public function setRcptIdRef(string $rcptIdRef): self
     {
         $this->rcptIdRef = $rcptIdRef;
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getCurrency(): string
     {
         return $this->currency;
     }
 
-    /**
-     * @param string $currency
-     * @return Info
-     */
-    public function setCurrency(string $currency): Info
+    public function setCurrency(string $currency): self
     {
         $this->currency = $currency;
         return $this;

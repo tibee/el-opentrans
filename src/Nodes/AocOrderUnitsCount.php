@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Naugrim\OpenTrans\Nodes;
 
 use Naugrim\BMEcat\Nodes\Contracts\NodeInterface;

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Naugrim\OpenTrans\Nodes\Concerns;
 
 use JMS\Serializer\Annotation as Serializer;
@@ -19,18 +21,11 @@ trait HasTypeAttribute
      */
     protected $type;
 
-    /**
-     * @return string
-     */
     public function getType(): string
     {
         return $this->type;
     }
 
-    /**
-     * @param string $type
-     * @return NodeInterface
-     */
     public function setType(string $type): NodeInterface
     {
         $this->assertValidConstant($type);

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Naugrim\OpenTrans\Nodes;
 
 use JMS\Serializer\Annotation as Serializer;
@@ -26,7 +28,6 @@ class DeliveryDate implements NodeInterface
      * @var string
      */
     protected $deliveryStartDate;
-
 
     /**
      * @Serializer\Expose

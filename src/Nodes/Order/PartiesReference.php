@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Naugrim\OpenTrans\Nodes\Order;
 
 use JMS\Serializer\Annotation as Serializer;
@@ -51,73 +53,45 @@ class PartiesReference implements NodeInterface
      */
     protected $shipmentPartiesReference;
 
-    /**
-     * @return BuyerIdRef
-     */
     public function getBuyerIdRef(): BuyerIdRef
     {
         return $this->buyerIdRef;
     }
 
-    /**
-     * @param BuyerIdRef $buyerIdRef
-     * @return PartiesReference
-     */
-    public function setBuyerIdRef(BuyerIdRef $buyerIdRef): PartiesReference
+    public function setBuyerIdRef(BuyerIdRef $buyerIdRef): self
     {
         $this->buyerIdRef = $buyerIdRef;
         return $this;
     }
 
-    /**
-     * @return SupplierIdRef
-     */
     public function getSupplierIdRef(): SupplierIdRef
     {
         return $this->supplierIdRef;
     }
 
-    /**
-     * @param SupplierIdRef $supplierIdRef
-     * @return PartiesReference
-     */
-    public function setSupplierIdRef(SupplierIdRef $supplierIdRef): PartiesReference
+    public function setSupplierIdRef(SupplierIdRef $supplierIdRef): self
     {
         $this->supplierIdRef = $supplierIdRef;
         return $this;
     }
 
-    /**
-     * @return InvoiceRcptIdRef
-     */
     public function getInvoiceRcptIdRef(): InvoiceRcptIdRef
     {
         return $this->invoiceRcptIdRef;
     }
 
-    /**
-     * @param InvoiceRcptIdRef $invoiceRcptIdRef
-     * @return PartiesReference
-     */
-    public function setInvoiceRcptIdRef(InvoiceRcptIdRef $invoiceRcptIdRef): PartiesReference
+    public function setInvoiceRcptIdRef(InvoiceRcptIdRef $invoiceRcptIdRef): self
     {
         $this->invoiceRcptIdRef = $invoiceRcptIdRef;
         return $this;
     }
 
-    /**
-     * @return ShipmentPartiesReference
-     */
     public function getShipmentPartiesReference(): ShipmentPartiesReference
     {
         return $this->shipmentPartiesReference;
     }
 
-    /**
-     * @param ShipmentPartiesReference $shipmentPartiesReference
-     * @return PartiesReference
-     */
-    public function setShipmentPartiesReference(ShipmentPartiesReference $shipmentPartiesReference): PartiesReference
+    public function setShipmentPartiesReference(ShipmentPartiesReference $shipmentPartiesReference): self
     {
         $this->shipmentPartiesReference = $shipmentPartiesReference;
         return $this;

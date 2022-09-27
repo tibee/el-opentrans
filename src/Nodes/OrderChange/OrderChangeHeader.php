@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Naugrim\OpenTrans\Nodes\OrderChange;
 
 use JMS\Serializer\Annotation as Serializer;
@@ -24,20 +26,12 @@ class OrderChangeHeader implements NodeInterface
      */
     protected $orderChangeInfo;
 
-    /**
-     * @return OrderChangeInfo
-     */
     public function getOrderChangeInfo(): OrderChangeInfo
     {
         return $this->orderChangeInfo;
     }
 
-    /**
-     * @param OrderChangeInfo $orderChangeInfo
-     *
-     * @return OrderChangeHeader
-     */
-    public function setOrderChangeInfo(OrderChangeInfo $orderChangeInfo): OrderChangeHeader
+    public function setOrderChangeInfo(OrderChangeInfo $orderChangeInfo): self
     {
         $this->orderChangeInfo = $orderChangeInfo;
 

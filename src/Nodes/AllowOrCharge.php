@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Naugrim\OpenTrans\Nodes;
 
 use JMS\Serializer\Annotation as Serializer;
@@ -70,109 +72,67 @@ class AllowOrCharge implements NodeInterface
      */
     protected $base;
 
-    /**
-     * @return int
-     */
     public function getSequence(): int
     {
         return $this->sequence;
     }
 
-    /**
-     * @param int $sequence
-     * @return AllowOrCharge
-     */
-    public function setSequence(int $sequence): AllowOrCharge
+    public function setSequence(int $sequence): self
     {
         $this->sequence = $sequence;
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * @param string $name
-     * @return AllowOrCharge
-     */
-    public function setName(string $name): AllowOrCharge
+    public function setName(string $name): self
     {
         $this->name = $name;
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getType(): string
     {
         return $this->type;
     }
 
-    /**
-     * @param string $type
-     * @return AllowOrCharge
-     */
-    public function setType(string $type): AllowOrCharge
+    public function setType(string $type): self
     {
         $this->type = $type;
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getDescription(): string
     {
         return $this->description;
     }
 
-    /**
-     * @param string $description
-     * @return AllowOrCharge
-     */
-    public function setDescription(string $description): AllowOrCharge
+    public function setDescription(string $description): self
     {
         $this->description = $description;
         return $this;
     }
 
-    /**
-     * @return AllowOrChargeValue
-     */
     public function getValue(): AllowOrChargeValue
     {
         return $this->value;
     }
 
-    /**
-     * @param AllowOrChargeValue $value
-     * @return AllowOrCharge
-     */
-    public function setValue(AllowOrChargeValue $value): AllowOrCharge
+    public function setValue(AllowOrChargeValue $value): self
     {
         $this->value = $value;
         return $this;
     }
 
-    /**
-     * @return float
-     */
     public function getBase(): float
     {
         return $this->base;
     }
 
-    /**
-     * @param float $base
-     * @return AllowOrCharge
-     */
-    public function setBase(float $base): AllowOrCharge
+    public function setBase(float $base): self
     {
         $this->base = $base;
         return $this;

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Naugrim\OpenTrans\Nodes\Concerns;
 
 use JMS\Serializer\Annotation as Serializer;
@@ -17,18 +19,11 @@ trait HasTotalAmount
      */
     protected $totalAmount;
 
-    /**
-     * @return float
-     */
     public function getTotalAmount(): float
     {
         return $this->totalAmount;
     }
 
-    /**
-     * @param float $totalAmount
-     * @return NodeInterface
-     */
     public function setTotalAmount(float $totalAmount): NodeInterface
     {
         $this->totalAmount = $totalAmount;

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Naugrim\OpenTrans\Nodes\Concerns;
 
 use JMS\Serializer\Annotation as Serializer;
@@ -18,18 +20,11 @@ trait HasControlInfo
      */
     protected $controlInfo;
 
-    /**
-     * @return ControlInfo
-     */
     public function getControlInfo(): ControlInfo
     {
         return $this->controlInfo;
     }
 
-    /**
-     * @param ControlInfo $controlInfo
-     * @return NodeInterface
-     */
     public function setControlInfo(ControlInfo $controlInfo): NodeInterface
     {
         $this->controlInfo = $controlInfo;

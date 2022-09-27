@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Naugrim\OpenTrans\Nodes;
 
 use JMS\Serializer\Annotation as Serializer;
@@ -206,7 +208,7 @@ class Address implements NodeInterface
         return $this->name;
     }
 
-    public function setName(string $name): Address
+    public function setName(string $name): self
     {
         $this->name = $name;
         return $this;
@@ -217,7 +219,7 @@ class Address implements NodeInterface
         return $this->name2;
     }
 
-    public function setName2(string $name2): Address
+    public function setName2(string $name2): self
     {
         $this->name2 = $name2;
         return $this;
@@ -228,7 +230,7 @@ class Address implements NodeInterface
         return $this->name3;
     }
 
-    public function setName3(string $name3): Address
+    public function setName3(string $name3): self
     {
         $this->name3 = $name3;
         return $this;
@@ -239,7 +241,7 @@ class Address implements NodeInterface
         return $this->department;
     }
 
-    public function setDepartment(string $department): Address
+    public function setDepartment(string $department): self
     {
         $this->department = $department;
         return $this;
@@ -250,7 +252,7 @@ class Address implements NodeInterface
         return $this->contactDetails;
     }
 
-    public function setContactDetails(Details $contactDetails): Address
+    public function setContactDetails(Details $contactDetails): self
     {
         $this->contactDetails = $contactDetails;
         return $this;
@@ -261,7 +263,7 @@ class Address implements NodeInterface
         return $this->street;
     }
 
-    public function setStreet(string $street): Address
+    public function setStreet(string $street): self
     {
         $this->street = $street;
         return $this;
@@ -272,7 +274,7 @@ class Address implements NodeInterface
         return $this->zip;
     }
 
-    public function setZip(string $zip): Address
+    public function setZip(string $zip): self
     {
         $this->zip = $zip;
         return $this;
@@ -283,7 +285,7 @@ class Address implements NodeInterface
         return $this->boxno;
     }
 
-    public function setBoxno(string $boxno): Address
+    public function setBoxno(string $boxno): self
     {
         $this->boxno = $boxno;
         return $this;
@@ -294,7 +296,7 @@ class Address implements NodeInterface
         return $this->zipbox;
     }
 
-    public function setZipbox(string $zipbox): Address
+    public function setZipbox(string $zipbox): self
     {
         $this->zipbox = $zipbox;
         return $this;
@@ -305,7 +307,7 @@ class Address implements NodeInterface
         return $this->city;
     }
 
-    public function setCity(string $city): Address
+    public function setCity(string $city): self
     {
         $this->city = $city;
         return $this;
@@ -316,7 +318,7 @@ class Address implements NodeInterface
         return $this->country;
     }
 
-    public function setCountry(string $country): Address
+    public function setCountry(string $country): self
     {
         $this->country = $country;
         return $this;
@@ -327,7 +329,7 @@ class Address implements NodeInterface
         return $this->countryCoded;
     }
 
-    public function setCountryCoded(string $countryCoded): Address
+    public function setCountryCoded(string $countryCoded): self
     {
         $this->countryCoded = $countryCoded;
         return $this;
@@ -338,7 +340,7 @@ class Address implements NodeInterface
         return $this->vatId;
     }
 
-    public function setVatId(string $vatId): Address
+    public function setVatId(string $vatId): self
     {
         $this->vatId = $vatId;
         return $this;
@@ -349,7 +351,7 @@ class Address implements NodeInterface
         return $this->phone;
     }
 
-    public function setPhone(Phone $phone): Address
+    public function setPhone(Phone $phone): self
     {
         $this->phone = $phone;
         return $this;
@@ -360,7 +362,7 @@ class Address implements NodeInterface
         return $this->fax;
     }
 
-    public function setFax(Fax $fax): Address
+    public function setFax(Fax $fax): self
     {
         $this->fax = $fax;
         return $this;
@@ -371,7 +373,7 @@ class Address implements NodeInterface
         return $this->email;
     }
 
-    public function setEmail(string $email): Address
+    public function setEmail(string $email): self
     {
         $this->email = $email;
         return $this;
@@ -382,7 +384,7 @@ class Address implements NodeInterface
         return $this->publicKey;
     }
 
-    public function setPublicKey(PublicKey $publicKey): Address
+    public function setPublicKey(PublicKey $publicKey): self
     {
         $this->publicKey = $publicKey;
         return $this;
@@ -393,7 +395,7 @@ class Address implements NodeInterface
         return $this->url;
     }
 
-    public function setUrl(string $url): Address
+    public function setUrl(string $url): self
     {
         $this->url = $url;
         return $this;
@@ -404,7 +406,7 @@ class Address implements NodeInterface
         return $this->addressRemarks;
     }
 
-    public function setAddressRemarks(string $addressRemarks): Address
+    public function setAddressRemarks(string $addressRemarks): self
     {
         $this->addressRemarks = $addressRemarks;
         return $this;

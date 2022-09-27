@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Naugrim\OpenTrans\Nodes\Catalog;
 
 use JMS\Serializer\Annotation as Serializer;
@@ -37,55 +39,34 @@ class Reference implements NodeInterface
      */
     protected $name;
 
-    /**
-     * @return string
-     */
     public function getId(): string
     {
         return $this->id;
     }
 
-    /**
-     * @param string $id
-     * @return Reference
-     */
-    public function setId(string $id): Reference
+    public function setId(string $id): self
     {
         $this->id = $id;
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getVersion(): string
     {
         return $this->version;
     }
 
-    /**
-     * @param string $version
-     * @return Reference
-     */
-    public function setVersion(string $version): Reference
+    public function setVersion(string $version): self
     {
         $this->version = $version;
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * @param string $name
-     * @return Reference
-     */
-    public function setName(string $name): Reference
+    public function setName(string $name): self
     {
         $this->name = $name;
         return $this;

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Naugrim\OpenTrans\Nodes\Order;
 
 use JMS\Serializer\Annotation as Serializer;
@@ -27,17 +29,12 @@ class CustomerOrderReference implements NodeInterface
      */
     protected $lineItemId;
 
-    /**
-     * @return string
-     */
     public function getOrderId(): string
     {
         return $this->orderId;
     }
 
     /**
-     * @param string $orderId
-     *
      * @return CustomerOrderReference
      */
     public function setOrderId(string $orderId): self
@@ -46,17 +43,12 @@ class CustomerOrderReference implements NodeInterface
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getLineItemId(): string
     {
         return $this->lineItemId;
     }
 
     /**
-     * @param string $lineItemId
-     *
      * @return CustomerOrderReference
      */
     public function setLineItemId(string $lineItemId): self

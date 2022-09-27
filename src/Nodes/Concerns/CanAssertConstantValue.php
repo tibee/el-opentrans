@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Naugrim\OpenTrans\Nodes\Concerns;
 
 use InvalidArgumentException;
@@ -35,7 +37,7 @@ trait CanAssertConstantValue
     private function getClassConstants(): array
     {
         static $constants;
-        if (null === $constants) {
+        if ($constants === null) {
             $reflection = new ReflectionClass(static::class);
             $constants = $reflection->getConstants();
         }

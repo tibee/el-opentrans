@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Naugrim\OpenTrans\Nodes\Order;
 
 use JMS\Serializer\Annotation as Serializer;
@@ -13,7 +15,8 @@ use Naugrim\OpenTrans\Nodes\SourcingInfo;
  */
 class OrderHeader implements NodeInterface
 {
-    use HasControlInfo, HasSourcingInfo;
+    use HasControlInfo;
+    use HasSourcingInfo;
 
     /**
      * @Serializer\Expose
@@ -25,39 +28,23 @@ class OrderHeader implements NodeInterface
      */
     protected $orderInfo;
 
-    /**
-     * @return OrderInfo
-     */
     public function getOrderInfo(): OrderInfo
     {
         return $this->orderInfo;
     }
 
-    /**
-     * @param OrderInfo $orderInfo
-     *
-     * @return OrderHeader
-     */
-    public function setOrderInfo(OrderInfo $orderInfo): OrderHeader
+    public function setOrderInfo(OrderInfo $orderInfo): self
     {
         $this->orderInfo = $orderInfo;
         return $this;
     }
 
-    /**
-     * @return SourcingInfo
-     */
     public function getSourcingInfo(): SourcingInfo
     {
         return $this->sourcingInfo;
     }
 
-    /**
-     * @param SourcingInfo $sourcingInfo
-     *
-     * @return OrderHeader
-     */
-    public function setSourcingInfo(SourcingInfo $sourcingInfo): OrderHeader
+    public function setSourcingInfo(SourcingInfo $sourcingInfo): self
     {
         $this->sourcingInfo = $sourcingInfo;
         return $this;

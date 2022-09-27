@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Naugrim\OpenTrans\Nodes\Concerns;
 
 use JMS\Serializer\Annotation as Serializer;
@@ -17,18 +19,11 @@ trait HasTotalItemNum
      */
     protected $totalItemNum;
 
-    /**
-     * @return int
-     */
     public function getTotalItemNum(): int
     {
         return $this->totalItemNum;
     }
 
-    /**
-     * @param int $totalItemNum
-     * @return NodeInterface
-     */
     public function setTotalItemNum(int $totalItemNum): NodeInterface
     {
         $this->totalItemNum = $totalItemNum;

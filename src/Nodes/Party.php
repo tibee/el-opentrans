@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Naugrim\OpenTrans\Nodes;
 
 use JMS\Serializer\Annotation as Serializer;
@@ -50,75 +52,45 @@ class Party implements NodeInterface
      */
     protected $account;
 
-    /**
-     * @return PartyId
-     */
     public function getPartyId(): PartyId
     {
         return $this->partyId;
     }
 
-    /**
-     * @param PartyId $partyId
-     *
-     * @return Party
-     */
-    public function setPartyId(PartyId $partyId): Party
+    public function setPartyId(PartyId $partyId): self
     {
         $this->partyId = $partyId;
         return $this;
     }
 
-    /**
-     * @return PartyRole
-     */
     public function getPartyRole(): PartyRole
     {
         return $this->partyRole;
     }
 
-    /**
-     * @param PartyRole $partyRole
-     *
-     * @return Party
-     */
-    public function setPartyRole(PartyRole $partyRole): Party
+    public function setPartyRole(PartyRole $partyRole): self
     {
         $this->partyRole = $partyRole;
         return $this;
     }
 
-    /**
-     * @return Address
-     */
     public function getAddress(): Address
     {
         return $this->address;
     }
 
-    /**
-     * @param Address $address
-     * @return Party
-     */
-    public function setAddress(Address $address): Party
+    public function setAddress(Address $address): self
     {
         $this->address = $address;
         return $this;
     }
 
-    /**
-     * @return Account
-     */
     public function getAccount(): Account
     {
         return $this->account;
     }
 
-    /**
-     * @param Account $account
-     * @return Party
-     */
-    public function setAccount(Account $account): Party
+    public function setAccount(Account $account): self
     {
         $this->account = $account;
         return $this;

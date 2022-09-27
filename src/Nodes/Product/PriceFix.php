@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Naugrim\OpenTrans\Nodes\Product;
 
 use JMS\Serializer\Annotation as Serializer;
@@ -17,20 +19,12 @@ class PriceFix implements NodeInterface
      */
     protected $priceAmount;
 
-    /**
-     * @return float
-     */
     public function getPriceAmount(): float
     {
         return $this->priceAmount;
     }
 
-    /**
-     * @param float $priceAmount
-     *
-     * @return PriceFix
-     */
-    public function setPriceAmount(float $priceAmount): PriceFix
+    public function setPriceAmount(float $priceAmount): self
     {
         $this->priceAmount = $priceAmount;
 

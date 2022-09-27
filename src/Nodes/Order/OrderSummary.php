@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Naugrim\OpenTrans\Nodes\Order;
 
 use JMS\Serializer\Annotation as Serializer;
@@ -12,5 +14,6 @@ use Naugrim\OpenTrans\Nodes\Concerns\HasTotalItemNum;
  */
 class OrderSummary implements NodeInterface
 {
-    use HasTotalItemNum, HasTotalAmount;
+    use HasTotalItemNum;
+    use HasTotalAmount;
 }

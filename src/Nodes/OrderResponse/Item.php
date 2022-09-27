@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Naugrim\OpenTrans\Nodes\OrderResponse;
 
 use JMS\Serializer\Annotation as Serializer;
@@ -69,110 +71,67 @@ class Item implements NodeInterface
      */
     protected $priceLineAmount;
 
-    /**
-     * @return string
-     */
     public function getLineItemId(): string
     {
         return $this->lineItemId;
     }
 
-    /**
-     * @param string $lineItemId
-     * @return Item
-     */
-    public function setLineItemId(string $lineItemId): Item
+    public function setLineItemId(string $lineItemId): self
     {
         $this->lineItemId = $lineItemId;
         return $this;
     }
 
-    /**
-     * @return ProductId
-     */
     public function getProductId(): ProductId
     {
         return $this->productId;
     }
 
-    /**
-     * @param ProductId $productId
-     * @return Item
-     */
-    public function setProductId(ProductId $productId): Item
+    public function setProductId(ProductId $productId): self
     {
         $this->productId = $productId;
         return $this;
     }
 
-    /**
-     * @return float
-     */
     public function getQuantity(): float
     {
         return $this->quantity;
     }
 
-    /**
-     * @param float $quantity
-     * @return Item
-     */
-    public function setQuantity(float $quantity): Item
+    public function setQuantity(float $quantity): self
     {
         $this->quantity = $quantity;
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getOrderUnit(): string
     {
         return $this->orderUnit;
     }
 
-    /**
-     * @param string $orderUnit
-     * @return Item
-     */
-    public function setOrderUnit(string $orderUnit): Item
+    public function setOrderUnit(string $orderUnit): self
     {
         $this->orderUnit = $orderUnit;
         return $this;
     }
 
-    /**
-     * @return PriceFix
-     */
     public function getProductPriceFix(): PriceFix
     {
         return $this->productPriceFix;
     }
 
-    /**
-     * @param PriceFix $productPriceFix
-     *
-     * @return Item
-     */
-    public function setProductPriceFix(PriceFix $productPriceFix): Item
+    public function setProductPriceFix(PriceFix $productPriceFix): self
     {
         $this->productPriceFix = $productPriceFix;
         return $this;
     }
 
-    /**
-     * @return float
-     */
     public function getPriceLineAmount(): float
     {
         return $this->priceLineAmount;
     }
 
-    /**
-     * @param float $priceLineAmount
-     * @return Item
-     */
-    public function setPriceLineAmount(float $priceLineAmount): Item
+    public function setPriceLineAmount(float $priceLineAmount): self
     {
         $this->priceLineAmount = $priceLineAmount;
         return $this;

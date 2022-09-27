@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Naugrim\OpenTrans\Nodes;
 
 use Naugrim\BMEcat\Nodes\Contracts\NodeInterface;
@@ -7,6 +9,8 @@ use Naugrim\BMEcat\Nodes\Contracts\NodeInterface;
 interface UdxInterface extends NodeInterface
 {
     public function getVendor(): string;
+
     public function getName(): string;
+
     public function getValue(): string;
 }

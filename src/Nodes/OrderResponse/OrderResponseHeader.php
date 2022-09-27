@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Naugrim\OpenTrans\Nodes\OrderResponse;
 
 use JMS\Serializer\Annotation as Serializer;
@@ -23,20 +25,12 @@ class OrderResponseHeader implements NodeInterface
      */
     protected $orderResponseInfo;
 
-    /**
-     * @return OrderResponseInfo
-     */
     public function getOrderResponseInfo(): OrderResponseInfo
     {
         return $this->orderResponseInfo;
     }
 
-    /**
-     * @param OrderResponseInfo $orderResponseInfo
-     *
-     * @return OrderResponseHeader
-     */
-    public function setOrderResponseInfo(OrderResponseInfo $orderResponseInfo): OrderResponseHeader
+    public function setOrderResponseInfo(OrderResponseInfo $orderResponseInfo): self
     {
         $this->orderResponseInfo = $orderResponseInfo;
         return $this;
