@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Naugrim\OpenTrans\Nodes\Concerns;
 
 use JMS\Serializer\Annotation as Serializer;
@@ -15,18 +17,11 @@ trait HasStringValue
      */
     protected $value;
 
-    /**
-     * @return string
-     */
     public function getValue(): string
     {
         return $this->value;
     }
 
-    /**
-     * @param string $value
-     * @return NodeInterface
-     */
     public function setValue(string $value): NodeInterface
     {
         $this->value = $value;

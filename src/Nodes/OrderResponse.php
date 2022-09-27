@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Naugrim\OpenTrans\Nodes;
 
 use JMS\Serializer\Annotation as Serializer;
@@ -13,7 +15,6 @@ use Naugrim\OpenTrans\Nodes\OrderResponse\OrderResponseHeader;
 use Naugrim\OpenTrans\Nodes\OrderResponse\OrderResponseSummary;
 
 /**
- *
  * @Serializer\XmlRoot("ORDERRESPONSE")
  * @Serializer\ExclusionPolicy("all")
  * @Serializer\XmlNamespace(uri="http://www.opentrans.org/XMLSchema/2.1")
@@ -27,17 +28,18 @@ class OrderResponse implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\OrderResponse\OrderResponseHeader")
      * @Serializer\SerializedName("ORDERRESPONSE_HEADER")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var OrderResponseHeader
      */
     protected $orderResponseHeader;
 
     /**
-     *
      * @Serializer\Expose
      * @Serializer\SerializedName("ORDERRESPONSE_ITEM_LIST")
      * @Serializer\Type("array<Naugrim\OpenTrans\Nodes\OrderResponse\Item>")
      * @Serializer\XmlList(entry = "ORDERRESPONSE_ITEM")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var Item[]
      */
@@ -47,25 +49,18 @@ class OrderResponse implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\OrderResponse\OrderResponseSummary")
      * @Serializer\SerializedName("ORDERRESPONSE_SUMMARY")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var OrderResponseSummary
      */
     protected $orderResponseSummary;
 
-    /**
-     * @return OrderResponseHeader
-     */
     public function getOrderResponseHeader(): OrderResponseHeader
     {
         return $this->orderResponseHeader;
     }
 
-    /**
-     * @param OrderResponseHeader $orderResponseHeader
-     *
-     * @return OrderResponse
-     */
-    public function setOrderResponseHeader(OrderResponseHeader $orderResponseHeader): OrderResponse
+    public function setOrderResponseHeader(OrderResponseHeader $orderResponseHeader): self
     {
         $this->orderResponseHeader = $orderResponseHeader;
         return $this;
@@ -82,15 +77,15 @@ class OrderResponse implements NodeInterface
     /**
      * @param Item[] $orderResponseItemList
      *
-     * @return OrderResponse
      * @throws InvalidSetterException
      * @throws UnknownKeyException
      */
-    public function setOrderResponseItemList(array $orderResponseItemList): OrderResponse
+    public function setOrderResponseItemList(array $orderResponseItemList): self
     {
         foreach ($orderResponseItemList as $item) {
-            if (!$item instanceof Item) {
-                $item = NodeBuilder::fromArray($item, new Item());
+            if (! $item instanceof Item) {
+                /** @var Item $item */
+                $item = NodeBuilder::fromArray((array) $item, new Item());
             }
             $this->addItem($item);
         }
@@ -98,29 +93,20 @@ class OrderResponse implements NodeInterface
     }
 
     /**
-     * @param Item $item
      * @return $this
      */
-    public function addItem(Item $item): OrderResponse
+    public function addItem(Item $item): self
     {
         $this->orderResponseItemList[] = $item;
         return $this;
     }
 
-    /**
-     * @return OrderResponseSummary
-     */
     public function getOrderResponseSummary(): OrderResponseSummary
     {
         return $this->orderResponseSummary;
     }
 
-    /**
-     * @param OrderResponseSummary $orderResponseSummary
-     *
-     * @return OrderResponse
-     */
-    public function setOrderResponseSummary(OrderResponseSummary $orderResponseSummary): OrderResponse
+    public function setOrderResponseSummary(OrderResponseSummary $orderResponseSummary): self
     {
         $this->orderResponseSummary = $orderResponseSummary;
         return $this;

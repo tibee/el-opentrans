@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Naugrim\OpenTrans\Nodes\Concerns;
 
 use JMS\Serializer\Annotation as Serializer;
@@ -17,18 +19,11 @@ trait HasLangAttribute
      */
     protected $lang;
 
-    /**
-     * @return string
-     */
     public function getLang(): string
     {
         return $this->lang;
     }
 
-    /**
-     * @param string $lang
-     * @return NodeInterface
-     */
     public function setLang(string $lang): NodeInterface
     {
         $this->lang = $lang;

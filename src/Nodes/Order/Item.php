@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Naugrim\OpenTrans\Nodes\Order;
 
 use JMS\Serializer\Annotation as Serializer;
@@ -17,6 +19,7 @@ class Item implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("LINE_ITEM_ID")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var string
      */
@@ -26,6 +29,7 @@ class Item implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\ProductId")
      * @Serializer\SerializedName("PRODUCT_ID")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var ProductId
      */
@@ -35,6 +39,7 @@ class Item implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("float")
      * @Serializer\SerializedName("QUANTITY")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var float
      */
@@ -54,6 +59,7 @@ class Item implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("bool")
      * @Serializer\SerializedName("PARTIAL_SHIPMENT_ALLOWED")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var boolean
      */
@@ -63,6 +69,7 @@ class Item implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\DeliveryDate")
      * @Serializer\SerializedName("DELIVERY_DATE")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var DeliveryDate
      */
@@ -72,6 +79,7 @@ class Item implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\Product\PriceFix")
      * @Serializer\SerializedName("PRODUCT_PRICE_FIX")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var PriceFix
      */
@@ -81,6 +89,7 @@ class Item implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("float")
      * @Serializer\SerializedName("PRICE_LINE_AMOUNT")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var float
      */
@@ -90,131 +99,84 @@ class Item implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\Order\CustomerOrderReference")
      * @Serializer\SerializedName("CUSTOMER_ORDER_REFERENCE")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var CustomerOrderReference
      */
     protected $customerOrderReference;
 
-    /**
-     * @return string
-     */
     public function getLineItemId(): string
     {
         return $this->lineItemId;
     }
 
-    /**
-     * @param string $lineItemId
-     * @return Item
-     */
-    public function setLineItemId(string $lineItemId): Item
+    public function setLineItemId(string $lineItemId): self
     {
         $this->lineItemId = $lineItemId;
         return $this;
     }
 
-    /**
-     * @return ProductId
-     */
     public function getProductId(): ProductId
     {
         return $this->productId;
     }
 
-    /**
-     * @param ProductId $productId
-     * @return Item
-     */
-    public function setProductId(ProductId $productId): Item
+    public function setProductId(ProductId $productId): self
     {
         $this->productId = $productId;
         return $this;
     }
 
-    /**
-     * @return float
-     */
     public function getQuantity(): float
     {
         return $this->quantity;
     }
 
-    /**
-     * @param float $quantity
-     * @return Item
-     */
-    public function setQuantity(float $quantity): Item
+    public function setQuantity(float $quantity): self
     {
         $this->quantity = $quantity;
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getOrderUnit(): string
     {
         return $this->orderUnit;
     }
 
-    /**
-     * @param string $orderUnit
-     * @return Item
-     */
-    public function setOrderUnit(string $orderUnit): Item
+    public function setOrderUnit(string $orderUnit): self
     {
         $this->orderUnit = $orderUnit;
         return $this;
     }
 
-    /**
-     * @return PriceFix
-     */
     public function getProductPriceFix(): PriceFix
     {
         return $this->productPriceFix;
     }
 
-    /**
-     * @param PriceFix $productPriceFix
-     *
-     * @return Item
-     */
-    public function setProductPriceFix(PriceFix $productPriceFix): Item
+    public function setProductPriceFix(PriceFix $productPriceFix): self
     {
         $this->productPriceFix = $productPriceFix;
         return $this;
     }
 
-    /**
-     * @return float
-     */
     public function getPriceLineAmount(): float
     {
         return $this->priceLineAmount;
     }
 
-    /**
-     * @param float $priceLineAmount
-     * @return Item
-     */
-    public function setPriceLineAmount(float $priceLineAmount): Item
+    public function setPriceLineAmount(float $priceLineAmount): self
     {
         $this->priceLineAmount = $priceLineAmount;
         return $this;
     }
 
-    /**
-     * @return DeliveryDate
-     */
     public function getDeliveryDate(): DeliveryDate
     {
         return $this->deliveryDate;
     }
 
     /**
-     * @param DeliveryDate $deliveryDate
-     *
      * @return $this
      */
     public function setDeliveryDate(DeliveryDate $deliveryDate): self
@@ -224,8 +186,6 @@ class Item implements NodeInterface
     }
 
     /**
-     * @param bool $partialShipmentAllowed
-     *
      * @return $this
      */
     public function setPartialShipmentAllowed(bool $partialShipmentAllowed): self
@@ -234,25 +194,16 @@ class Item implements NodeInterface
         return $this;
     }
 
-    /**
-     * @return bool
-     */
     public function isPartialShipmentAllowed(): bool
     {
         return $this->partialShipmentAllowed;
     }
 
-    /**
-     * @return CustomerOrderReference
-     */
     public function getCustomerOrderReference(): CustomerOrderReference
     {
         return $this->customerOrderReference;
     }
 
-    /**
-     * @param CustomerOrderReference $customerOrderReference
-     */
     public function setCustomerOrderReference(CustomerOrderReference $customerOrderReference): void
     {
         $this->customerOrderReference = $customerOrderReference;

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Naugrim\OpenTrans\Nodes\Invoice;
 
 use JMS\Serializer\Annotation as Serializer;
@@ -16,6 +18,7 @@ class Info implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("INVOICE_ID")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var string
      */
@@ -25,6 +28,7 @@ class Info implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("INVOICE_DATE")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var string
      */
@@ -34,17 +38,18 @@ class Info implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\DeliveryDate")
      * @Serializer\SerializedName("DELIVERY_DATE")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var DeliveryDate
      */
     protected $deliveryDate;
 
     /**
-     *
      * @Serializer\Expose
      * @Serializer\SerializedName("PARTIES")
      * @Serializer\Type("array<Naugrim\OpenTrans\Nodes\Party>")
      * @Serializer\XmlList(entry = "PARTY")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var Party[]
      */
@@ -54,6 +59,7 @@ class Info implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("INVOICE_ISSUER_IDREF")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var string
      */
@@ -63,6 +69,7 @@ class Info implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("INVOICE_RECIPIENT_IDREF")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var string
      */
@@ -72,43 +79,29 @@ class Info implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("CURRENCY")
-     * @Serializer\XmlElement(namespace="http://www.bmecat.org/bmecat/2005")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.bmecat.org/bmecat/2005")
      *
      * @var string
      */
     protected $currency;
 
-    /**
-     * @return string
-     */
     public function getId(): string
     {
         return $this->id;
     }
 
-    /**
-     * @param string $id
-     * @return Info
-     */
-    public function setId(string $id): Info
+    public function setId(string $id): self
     {
         $this->id = $id;
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getDate(): string
     {
         return $this->date;
     }
 
-    /**
-     * @param string $date
-     * @return Info
-     */
-    public function setDate(string $date): Info
+    public function setDate(string $date): self
     {
         $this->date = $date;
         return $this;
@@ -135,15 +128,15 @@ class Info implements NodeInterface
 
     /**
      * @param Party[] $parties
-     * @return Info
      * @throws InvalidSetterException
      * @throws UnknownKeyException
      */
-    public function setParties(array $parties): Info
+    public function setParties(array $parties): self
     {
         foreach ($parties as $party) {
-            if (!$party instanceof Party) {
-                $party = NodeBuilder::fromArray($party, new Party());
+            if (! $party instanceof Party) {
+                /** @var Party $party */
+                $party = NodeBuilder::fromArray((array) $party, new Party());
             }
             $this->addParty($party);
         }
@@ -151,7 +144,6 @@ class Info implements NodeInterface
     }
 
     /**
-     * @param Party $party
      * @return $this
      */
     public function addParty(Party $party)
@@ -160,55 +152,34 @@ class Info implements NodeInterface
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getIssuerIdRef(): string
     {
         return $this->issuerIdRef;
     }
 
-    /**
-     * @param string $issuerIdRef
-     * @return Info
-     */
-    public function setIssuerIdRef(string $issuerIdRef): Info
+    public function setIssuerIdRef(string $issuerIdRef): self
     {
         $this->issuerIdRef = $issuerIdRef;
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getRcptIdRef(): string
     {
         return $this->rcptIdRef;
     }
 
-    /**
-     * @param string $rcptIdRef
-     * @return Info
-     */
-    public function setRcptIdRef(string $rcptIdRef): Info
+    public function setRcptIdRef(string $rcptIdRef): self
     {
         $this->rcptIdRef = $rcptIdRef;
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getCurrency(): string
     {
         return $this->currency;
     }
 
-    /**
-     * @param string $currency
-     * @return Info
-     */
-    public function setCurrency(string $currency): Info
+    public function setCurrency(string $currency): self
     {
         $this->currency = $currency;
         return $this;

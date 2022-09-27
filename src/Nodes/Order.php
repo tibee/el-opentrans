@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Naugrim\OpenTrans\Nodes;
 
 use JMS\Serializer\Annotation as Serializer;
@@ -13,7 +15,6 @@ use Naugrim\OpenTrans\Nodes\Order\OrderHeader;
 use Naugrim\OpenTrans\Nodes\Order\OrderSummary;
 
 /**
- *
  * @Serializer\XmlRoot("ORDER")
  * @Serializer\ExclusionPolicy("all")
  * @Serializer\XmlNamespace(uri="http://www.opentrans.org/XMLSchema/2.1")
@@ -36,17 +37,18 @@ class Order implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\Order\OrderHeader")
      * @Serializer\SerializedName("ORDER_HEADER")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var OrderHeader
      */
     protected $orderHeader;
 
     /**
-     *
      * @Serializer\Expose
      * @Serializer\SerializedName("ORDER_ITEM_LIST")
      * @Serializer\Type("array<Naugrim\OpenTrans\Nodes\Order\Item>")
      * @Serializer\XmlList(entry = "ORDER_ITEM")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var Item[]
      */
@@ -56,6 +58,7 @@ class Order implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\Order\OrderSummary")
      * @Serializer\SerializedName("ORDER_SUMMARY")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var OrderSummary
      */
@@ -79,20 +82,12 @@ class Order implements NodeInterface
         return $this;
     }
 
-    /**
-     * @return OrderHeader
-     */
     public function getOrderHeader(): OrderHeader
     {
         return $this->orderHeader;
     }
 
-    /**
-     * @param OrderHeader $orderHeader
-     *
-     * @return Order
-     */
-    public function setOrderHeader(OrderHeader $orderHeader): Order
+    public function setOrderHeader(OrderHeader $orderHeader): self
     {
         $this->orderHeader = $orderHeader;
         return $this;
@@ -109,15 +104,15 @@ class Order implements NodeInterface
     /**
      * @param Item[] $orderItemList
      *
-     * @return Order
      * @throws InvalidSetterException
      * @throws UnknownKeyException
      */
-    public function setOrderItemList(array $orderItemList): Order
+    public function setOrderItemList(array $orderItemList): self
     {
         foreach ($orderItemList as $item) {
-            if (!$item instanceof Item) {
-                $item = NodeBuilder::fromArray($item, new Item());
+            if (! $item instanceof Item) {
+                /** @var Item $item */
+                $item = NodeBuilder::fromArray((array) $item, new Item());
             }
             $this->addItem($item);
         }
@@ -126,30 +121,21 @@ class Order implements NodeInterface
     }
 
     /**
-     * @param Item $item
      * @return $this
      */
-    public function addItem(Item $item): Order
+    public function addItem(Item $item): self
     {
         $this->orderItemList[] = $item;
 
         return $this;
     }
 
-    /**
-     * @return OrderSummary
-     */
     public function getOrderSummary(): OrderSummary
     {
         return $this->orderSummary;
     }
 
-    /**
-     * @param OrderSummary $orderSummary
-     *
-     * @return Order
-     */
-    public function setOrderSummary(OrderSummary $orderSummary): Order
+    public function setOrderSummary(OrderSummary $orderSummary): self
     {
         $this->orderSummary = $orderSummary;
 

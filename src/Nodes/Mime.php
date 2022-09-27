@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Naugrim\OpenTrans\Nodes;
 
 use JMS\Serializer\Annotation as Serializer;
@@ -33,22 +35,22 @@ class Mime implements NodeInterface
     protected $source;
 
     /**
-     *
      * @Serializer\Expose
      * @Serializer\SerializedName("FILE_HASH_VALUE")
      * @Serializer\Type("array<Naugrim\OpenTrans\Nodes\File\HashValue>")
      * @Serializer\XmlList(inline = true)
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var HashValue[]
      */
     protected $fileHashValue = [];
 
     /**
-     *
      * @Serializer\Expose
      * @Serializer\SerializedName("MIME_EMBEDDED")
      * @Serializer\Type("array<Naugrim\OpenTrans\Nodes\Mime\Embedded>")
      * @Serializer\XmlList(entry = "MIME_EMBEDDED")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var Embedded[]
      */
@@ -58,7 +60,7 @@ class Mime implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("MIME_DESCR")
-     * @Serializer\XmlElement(namespace="http://www.bmecat.org/bmecat/2005")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.bmecat.org/bmecat/2005")
      *
      * @var string
      */
@@ -68,6 +70,7 @@ class Mime implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("MIME_ALT")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var string
      */
@@ -77,6 +80,7 @@ class Mime implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("MIME_PURPOSE")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var string
      */
@@ -86,42 +90,29 @@ class Mime implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("int")
      * @Serializer\SerializedName("MIME_ORDER")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var int
      */
     protected $order;
 
-    /**
-     * @return string
-     */
     public function getType(): string
     {
         return $this->type;
     }
 
-    /**
-     * @param string $type
-     * @return Mime
-     */
-    public function setType(string $type): Mime
+    public function setType(string $type): self
     {
         $this->type = $type;
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getSource(): string
     {
         return $this->source;
     }
 
-    /**
-     * @param string $source
-     * @return Mime
-     */
-    public function setSource(string $source): Mime
+    public function setSource(string $source): self
     {
         $this->source = $source;
         return $this;
@@ -136,28 +127,24 @@ class Mime implements NodeInterface
     }
 
     /**
-     * @param array $fileHashValues
-     * @return Mime
+     * @param array<HashValue|array<int|string, mixed>> $fileHashValues
      * @throws InvalidSetterException
      * @throws UnknownKeyException
      */
-    public function setFileHashValue(array $fileHashValues): Mime
+    public function setFileHashValue(array $fileHashValues): self
     {
         $this->fileHashValue = [];
         foreach ($fileHashValues as $fileHashValue) {
-            if (!$fileHashValue instanceof HashValue) {
-                $fileHashValue = NodeBuilder::fromArray($fileHashValue, new HashValue());
+            if (! $fileHashValue instanceof HashValue) {
+                /** @var HashValue $fileHashValue */
+                $fileHashValue = NodeBuilder::fromArray((array) $fileHashValue, new HashValue());
             }
             $this->addFileHashValue($fileHashValue);
         }
         return $this;
     }
 
-    /**
-     * @param HashValue $fileHashValue
-     * @return Mime
-     */
-    public function addFileHashValue(HashValue $fileHashValue): Mime
+    public function addFileHashValue(HashValue $fileHashValue): self
     {
         $this->fileHashValue[] = $fileHashValue;
         return $this;
@@ -173,99 +160,67 @@ class Mime implements NodeInterface
 
     /**
      * @param Embedded[] $embeddeds
-     * @return Mime
      * @throws InvalidSetterException
      * @throws UnknownKeyException
      */
-    public function setEmbedded(array $embeddeds): Mime
+    public function setEmbedded(array $embeddeds): self
     {
         $this->embedded = [];
         foreach ($embeddeds as $embedded) {
-            if (!$embedded instanceof Embedded) {
-                $embedded = NodeBuilder::fromArray($embedded, new Embedded());
+            if (! $embedded instanceof Embedded) {
+                /** @var Embedded $embedded */
+                $embedded = NodeBuilder::fromArray((array) $embedded, new Embedded());
             }
             $this->addEmbedded($embedded);
         }
         return $this;
     }
 
-    /**
-     * @param Embedded $embedded
-     * @return Mime
-     */
-    public function addEmbedded(Embedded $embedded): Mime
+    public function addEmbedded(Embedded $embedded): self
     {
         $this->embedded[] = $embedded;
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getDescription(): string
     {
         return $this->description;
     }
 
-    /**
-     * @param string $description
-     * @return Mime
-     */
-    public function setDescription(string $description): Mime
+    public function setDescription(string $description): self
     {
         $this->description = $description;
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getAlt(): string
     {
         return $this->alt;
     }
 
-    /**
-     * @param string $alt
-     * @return Mime
-     */
-    public function setAlt(string $alt): Mime
+    public function setAlt(string $alt): self
     {
         $this->alt = $alt;
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getPurpose(): string
     {
         return $this->purpose;
     }
 
-    /**
-     * @param string $purpose
-     * @return Mime
-     */
-    public function setPurpose(string $purpose): Mime
+    public function setPurpose(string $purpose): self
     {
         $this->purpose = $purpose;
         return $this;
     }
 
-    /**
-     * @return int
-     */
     public function getOrder(): int
     {
         return $this->order;
     }
 
-    /**
-     * @param int $order
-     * @return Mime
-     */
-    public function setOrder(int $order): Mime
+    public function setOrder(int $order): self
     {
         $this->order = $order;
         return $this;

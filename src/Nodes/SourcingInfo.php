@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Naugrim\OpenTrans\Nodes;
 
 use JMS\Serializer\Annotation as Serializer;
@@ -12,6 +14,7 @@ class SourcingInfo implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("QUOTATION_ID")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var string
      */
@@ -21,6 +24,7 @@ class SourcingInfo implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\Agreement")
      * @Serializer\SerializedName("AGREEMENT")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var Agreement
      */
@@ -30,60 +34,40 @@ class SourcingInfo implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\Catalog\Reference")
      * @Serializer\SerializedName("CATALOG_REFERENCE")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var Reference
      */
     protected $catalogReference;
 
-    /**
-     * @return string
-     */
     public function getQuotationId(): string
     {
         return $this->quotationId;
     }
 
-    /**
-     * @param string $quotationId
-     * @return SourcingInfo
-     */
-    public function setQuotationId(string $quotationId): SourcingInfo
+    public function setQuotationId(string $quotationId): self
     {
         $this->quotationId = $quotationId;
         return $this;
     }
 
-    /**
-     * @return Agreement
-     */
     public function getAgreement(): Agreement
     {
         return $this->agreement;
     }
 
-    /**
-     * @param Agreement $agreement
-     * @return SourcingInfo
-     */
-    public function setAgreement(Agreement $agreement): SourcingInfo
+    public function setAgreement(Agreement $agreement): self
     {
         $this->agreement = $agreement;
         return $this;
     }
 
-    /**
-     * @return Catalog\Reference
-     */
     public function getCatalogReference(): Catalog\Reference
     {
         return $this->catalogReference;
     }
 
-    /**
-     * @param Catalog\Reference $catalogReference
-     * @return SourcingInfo
-     */
-    public function setCatalogReference(Catalog\Reference $catalogReference): SourcingInfo
+    public function setCatalogReference(Catalog\Reference $catalogReference): self
     {
         $this->catalogReference = $catalogReference;
         return $this;

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Naugrim\OpenTrans\Nodes;
 
 use JMS\Serializer\Annotation as Serializer;
@@ -83,161 +85,106 @@ class Agreement implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("AGREEMENT_DESCR")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var string
      */
     protected $description;
 
     /**
-     *
      * @Serializer\Expose
      * @Serializer\SerializedName("MIME_INFO")
      * @Serializer\Type("array<Naugrim\OpenTrans\Nodes\Mime>")
      * @Serializer\XmlList(entry = "MIME")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var Mime[]
      */
     protected $mimeInfo = [];
 
-    /**
-     * @return string
-     */
     public function getType(): string
     {
         return $this->type;
     }
 
-    /**
-     * @param string $type
-     * @return Agreement
-     */
-    public function setType(string $type): Agreement
+    public function setType(string $type): self
     {
         $this->type = $type;
         return $this;
     }
 
-    /**
-     * @return bool
-     */
     public function isDefault(): bool
     {
         return $this->default;
     }
 
-    /**
-     * @param bool $default
-     * @return Agreement
-     */
-    public function setDefault(bool $default): Agreement
+    public function setDefault(bool $default): self
     {
         $this->default = $default;
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getId(): string
     {
         return $this->id;
     }
 
-    /**
-     * @param string $id
-     * @return Agreement
-     */
-    public function setId(string $id): Agreement
+    public function setId(string $id): self
     {
         $this->id = $id;
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getLineId(): string
     {
         return $this->lineId;
     }
 
-    /**
-     * @param string $lineId
-     * @return Agreement
-     */
-    public function setLineId(string $lineId): Agreement
+    public function setLineId(string $lineId): self
     {
         $this->lineId = $lineId;
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getStartDate(): string
     {
         return $this->startDate;
     }
 
-    /**
-     * @param string $startDate
-     * @return Agreement
-     */
-    public function setStartDate(string $startDate): Agreement
+    public function setStartDate(string $startDate): self
     {
         $this->startDate = $startDate;
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getEndDate(): string
     {
         return $this->endDate;
     }
 
-    /**
-     * @param string $endDate
-     * @return Agreement
-     */
-    public function setEndDate(string $endDate): Agreement
+    public function setEndDate(string $endDate): self
     {
         $this->endDate = $endDate;
         return $this;
     }
 
-    /**
-     * @return SupplierIdRef
-     */
     public function getSupplierIdRef(): SupplierIdRef
     {
         return $this->supplierIdRef;
     }
 
-    /**
-     * @param SupplierIdRef $supplierIdRef
-     * @return Agreement
-     */
-    public function setSupplierIdRef(SupplierIdRef $supplierIdRef): Agreement
+    public function setSupplierIdRef(SupplierIdRef $supplierIdRef): self
     {
         $this->supplierIdRef = $supplierIdRef;
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getDescription(): string
     {
         return $this->description;
     }
 
-    /**
-     * @param string $description
-     * @return Agreement
-     */
-    public function setDescription(string $description): Agreement
+    public function setDescription(string $description): self
     {
         $this->description = $description;
         return $this;
@@ -253,28 +200,24 @@ class Agreement implements NodeInterface
 
     /**
      * @param Mime[] $mimeInfos
-     * @return Agreement
      * @throws InvalidSetterException
      * @throws UnknownKeyException
      */
-    public function setMimeInfo(array $mimeInfos): Agreement
+    public function setMimeInfo(array $mimeInfos): self
     {
         $this->mimeInfo = [];
 
         foreach ($mimeInfos as $mimeInfo) {
-            if (!$mimeInfo instanceof Mime) {
-                $mimeInfo = NodeBuilder::fromArray($mimeInfo, new Mime());
+            if (! $mimeInfo instanceof Mime) {
+                /** @var Mime $mimeInfo */
+                $mimeInfo = NodeBuilder::fromArray((array) $mimeInfo, new Mime());
             }
             $this->addMimeInfo($mimeInfo);
         }
         return $this;
     }
 
-    /**
-     * @param Mime $mimeInfo
-     * @return Agreement
-     */
-    public function addMimeInfo(Mime $mimeInfo): Agreement
+    public function addMimeInfo(Mime $mimeInfo): self
     {
         $this->mimeInfo[] = $mimeInfo;
         return $this;

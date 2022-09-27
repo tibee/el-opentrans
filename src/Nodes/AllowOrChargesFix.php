@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Naugrim\OpenTrans\Nodes;
 
 use JMS\Serializer\Annotation as Serializer;
@@ -11,6 +13,7 @@ class AllowOrChargesFix implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\AllowOrCharge")
      * @Serializer\SerializedName("ALLOW_OR_CHARGE")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var AllowOrCharge
      */
@@ -20,42 +23,29 @@ class AllowOrChargesFix implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("float")
      * @Serializer\SerializedName("ALLOW_OR_CHARGES_TOTAL_AMOUNT")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var float
      */
     protected $allowOrChargesTotalAmount;
 
-    /**
-     * @return AllowOrCharge
-     */
     public function getAllowOrCharge(): AllowOrCharge
     {
         return $this->allowOrCharge;
     }
 
-    /**
-     * @param AllowOrCharge $allowOrCharge
-     * @return AllowOrChargesFix
-     */
-    public function setAllowOrCharge(AllowOrCharge $allowOrCharge): AllowOrChargesFix
+    public function setAllowOrCharge(AllowOrCharge $allowOrCharge): self
     {
         $this->allowOrCharge = $allowOrCharge;
         return $this;
     }
 
-    /**
-     * @return float
-     */
     public function getAllowOrChargesTotalAmount(): float
     {
         return $this->allowOrChargesTotalAmount;
     }
 
-    /**
-     * @param float $allowOrChargesTotalAmount
-     * @return AllowOrChargesFix
-     */
-    public function setAllowOrChargesTotalAmount(float $allowOrChargesTotalAmount): AllowOrChargesFix
+    public function setAllowOrChargesTotalAmount(float $allowOrChargesTotalAmount): self
     {
         $this->allowOrChargesTotalAmount = $allowOrChargesTotalAmount;
         return $this;

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Naugrim\OpenTrans\Nodes\OrderChange;
 
 use JMS\Serializer\Annotation as Serializer;
@@ -16,6 +18,7 @@ class OrderChangeInfo implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("ORDER_ID")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var string
      */
@@ -25,6 +28,7 @@ class OrderChangeInfo implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("ORDERCHANGE_DATE")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var string
      */
@@ -34,17 +38,18 @@ class OrderChangeInfo implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("ORDERCHANGE_SEQUENCE_ID")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var int
      */
     protected $orderChangeSequenceId;
 
     /**
-     *
      * @Serializer\Expose
      * @Serializer\SerializedName("PARTIES")
      * @Serializer\Type("array<Naugrim\OpenTrans\Nodes\Party>")
      * @Serializer\XmlList(entry = "PARTY")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var Party[]
      */
@@ -54,65 +59,42 @@ class OrderChangeInfo implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\Order\PartiesReference")
      * @Serializer\SerializedName("ORDER_PARTIES_REFERENCE")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var PartiesReference
      */
     protected $orderPartiesReference;
 
-    /**
-     * @return string
-     */
     public function getOrderId(): string
     {
         return $this->orderId;
     }
 
-    /**
-     * @param string $orderId
-     *
-     * @return OrderChangeInfo
-     */
-    public function setOrderId(string $orderId): OrderChangeInfo
+    public function setOrderId(string $orderId): self
     {
         $this->orderId = $orderId;
 
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getOrderChangeDate(): string
     {
         return $this->orderChangeDate;
     }
 
-    /**
-     * @param string $orderChangeDate
-     *
-     * @return OrderChangeInfo
-     */
-    public function setOrderChangeDate(string $orderChangeDate): OrderChangeInfo
+    public function setOrderChangeDate(string $orderChangeDate): self
     {
         $this->orderChangeDate = $orderChangeDate;
 
         return $this;
     }
 
-    /**
-     * @return int
-     */
     public function getOrderChangeSequenceId(): int
     {
         return $this->orderChangeSequenceId;
     }
 
-    /**
-     * @param int $orderChangeSequenceId
-     *
-     * @return OrderChangeInfo
-     */
-    public function setOrderChangeSequenceId(int $orderChangeSequenceId): OrderChangeInfo
+    public function setOrderChangeSequenceId(int $orderChangeSequenceId): self
     {
         $this->orderChangeSequenceId = $orderChangeSequenceId;
 
@@ -130,15 +112,15 @@ class OrderChangeInfo implements NodeInterface
     /**
      * @param Party[] $parties
      *
-     * @return OrderChangeInfo
      * @throws InvalidSetterException
      * @throws UnknownKeyException
      */
-    public function setParties(array $parties): OrderChangeInfo
+    public function setParties(array $parties): self
     {
         foreach ($parties as $party) {
-            if (!$party instanceof Party) {
-                $party = NodeBuilder::fromArray($party, new Party());
+            if (! $party instanceof Party) {
+                /** @var Party $party */
+                $party = NodeBuilder::fromArray((array) $party, new Party());
             }
             $this->addParty($party);
         }
@@ -147,7 +129,6 @@ class OrderChangeInfo implements NodeInterface
     }
 
     /**
-     * @param Party $party
      * @return $this
      */
     public function addParty(Party $party)
@@ -157,20 +138,12 @@ class OrderChangeInfo implements NodeInterface
         return $this;
     }
 
-    /**
-     * @return PartiesReference
-     */
     public function getOrderPartiesReference(): PartiesReference
     {
         return $this->orderPartiesReference;
     }
 
-    /**
-     * @param PartiesReference $orderPartiesReference
-     *
-     * @return OrderChangeInfo
-     */
-    public function setOrderPartiesReference(PartiesReference $orderPartiesReference): OrderChangeInfo
+    public function setOrderPartiesReference(PartiesReference $orderPartiesReference): self
     {
         $this->orderPartiesReference = $orderPartiesReference;
 

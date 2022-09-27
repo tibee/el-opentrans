@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Naugrim\OpenTrans\Nodes\Concerns;
 
 use JMS\Serializer\Annotation as Serializer;
@@ -11,6 +13,8 @@ trait IsRootNode
      * @Serializer\Expose
      * @Serializer\XmlAttribute
      * @Serializer\Type("string")
+     *
+     * @var string
      */
     protected $version = OpenTrans::OPENTRANS_VERSION;
 }

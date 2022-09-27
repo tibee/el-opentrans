@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Naugrim\OpenTrans\Nodes;
 
 use JMS\Serializer\Annotation as Serializer;
@@ -11,6 +13,7 @@ class AllowOrChargeValue implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("float")
      * @Serializer\SerializedName("AOC_PERCENTAGE_FACTOR")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var float
      */
@@ -20,6 +23,7 @@ class AllowOrChargeValue implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("float")
      * @Serializer\SerializedName("AOC_MONETARY_AMOUNT")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var float
      */
@@ -29,6 +33,7 @@ class AllowOrChargeValue implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\AocOrderUnitsCount")
      * @Serializer\SerializedName("AOC_ORDER_UNITS_COUNT")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var AocOrderUnitsCount
      */
@@ -38,78 +43,51 @@ class AllowOrChargeValue implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("AOC_ADDITIONAL_ITEMS")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var string
      */
     protected $additionalItems;
 
-    /**
-     * @return float
-     */
     public function getPercentageFactor(): float
     {
         return $this->percentageFactor;
     }
 
-    /**
-     * @param float $percentageFactor
-     * @return AllowOrChargeValue
-     */
-    public function setPercentageFactor(float $percentageFactor): AllowOrChargeValue
+    public function setPercentageFactor(float $percentageFactor): self
     {
         $this->percentageFactor = $percentageFactor;
         return $this;
     }
 
-    /**
-     * @return float
-     */
     public function getMonetaryAmount(): float
     {
         return $this->monetaryAmount;
     }
 
-    /**
-     * @param float $monetaryAmount
-     * @return AllowOrChargeValue
-     */
-    public function setMonetaryAmount(float $monetaryAmount): AllowOrChargeValue
+    public function setMonetaryAmount(float $monetaryAmount): self
     {
         $this->monetaryAmount = $monetaryAmount;
         return $this;
     }
 
-    /**
-     * @return AocOrderUnitsCount
-     */
     public function getOrderUnitsCount(): AocOrderUnitsCount
     {
         return $this->orderUnitsCount;
     }
 
-    /**
-     * @param AocOrderUnitsCount $orderUnitsCount
-     * @return AllowOrChargeValue
-     */
-    public function setOrderUnitsCount(AocOrderUnitsCount $orderUnitsCount): AllowOrChargeValue
+    public function setOrderUnitsCount(AocOrderUnitsCount $orderUnitsCount): self
     {
         $this->orderUnitsCount = $orderUnitsCount;
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getAdditionalItems(): string
     {
         return $this->additionalItems;
     }
 
-    /**
-     * @param string $additionalItems
-     * @return AllowOrChargeValue
-     */
-    public function setAdditionalItems(string $additionalItems): AllowOrChargeValue
+    public function setAdditionalItems(string $additionalItems): self
     {
         $this->additionalItems = $additionalItems;
         return $this;

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Naugrim\OpenTrans\Nodes;
 
 use JMS\Serializer\Annotation as Serializer;
@@ -10,6 +12,8 @@ class UdxAggregate
      * @Serializer\XmlKeyValuePairs
      * @Serializer\Inline
      * @Serializer\Type("array")
+     *
+     * @var array<string, UdxInterface>
      */
     protected $values = [];
 

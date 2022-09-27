@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Naugrim\OpenTrans\Nodes\Concerns;
 
 use JMS\Serializer\Annotation as Serializer;
@@ -12,23 +14,17 @@ trait HasSourcingInfo
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\SourcingInfo")
      * @Serializer\SerializedName("SOURCING_INFO")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var SourcingInfo
      */
     protected $sourcingInfo;
 
-    /**
-     * @return SourcingInfo
-     */
     public function getSourcingInfo(): SourcingInfo
     {
         return $this->sourcingInfo;
     }
 
-    /**
-     * @param SourcingInfo $sourcingInfo
-     * @return NodeInterface
-     */
     public function setSourcingInfo(SourcingInfo $sourcingInfo): NodeInterface
     {
         $this->sourcingInfo = $sourcingInfo;

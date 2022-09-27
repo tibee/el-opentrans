@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Naugrim\OpenTrans\Nodes\OrderResponse;
 
 use JMS\Serializer\Annotation as Serializer;
@@ -17,25 +19,18 @@ class OrderResponseHeader implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\OrderResponse\OrderResponseInfo")
      * @Serializer\SerializedName("ORDERRESPONSE_INFO")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var OrderResponseInfo
      */
     protected $orderResponseInfo;
 
-    /**
-     * @return OrderResponseInfo
-     */
     public function getOrderResponseInfo(): OrderResponseInfo
     {
         return $this->orderResponseInfo;
     }
 
-    /**
-     * @param OrderResponseInfo $orderResponseInfo
-     *
-     * @return OrderResponseHeader
-     */
-    public function setOrderResponseInfo(OrderResponseInfo $orderResponseInfo): OrderResponseHeader
+    public function setOrderResponseInfo(OrderResponseInfo $orderResponseInfo): self
     {
         $this->orderResponseInfo = $orderResponseInfo;
         return $this;

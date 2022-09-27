@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Naugrim\OpenTrans\Nodes;
 
 use JMS\Serializer\Annotation as Serializer;
@@ -35,6 +37,7 @@ class ProductId implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("CONFIG_CODE_FIX")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var string
      */
@@ -44,6 +47,7 @@ class ProductId implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("LOT_NUMBER")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var string
      */
@@ -53,6 +57,7 @@ class ProductId implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("SERIAL_NUMBER")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var string
      */
@@ -82,7 +87,7 @@ class ProductId implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("DESCRIPTION_SHORT")
-     * @Serializer\XmlElement(cdata=false, namespace="http://www.bmecat.org/bmecat/2005")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.bmecat.org/bmecat/2005")
      *
      * @var string
      */
@@ -92,7 +97,7 @@ class ProductId implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("DESCRIPTION_LONG")
-     * @Serializer\XmlElement(cdata=false, namespace="http://www.bmecat.org/bmecat/2005")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.bmecat.org/bmecat/2005")
      *
      * @var string
      */
@@ -102,187 +107,117 @@ class ProductId implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("PRODUCT_TYPE")
-     * @Serializer\XmlElement(cdata=false, namespace="http://www.bmecat.org/bmecat/2005")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.bmecat.org/bmecat/2005")
      *
      * @var string
      */
     protected $productType;
 
-    /**
-     * @return SupplierPid
-     */
     public function getSupplierPid(): SupplierPid
     {
         return $this->supplierPid;
     }
 
-    /**
-     * @param SupplierPid $supplierPid
-     * @return ProductId
-     */
-    public function setSupplierPid(SupplierPid $supplierPid): ProductId
+    public function setSupplierPid(SupplierPid $supplierPid): self
     {
         $this->supplierPid = $supplierPid;
         return $this;
     }
 
-    /**
-     * @return SupplierIdRef
-     */
     public function getSupplierIdRef(): SupplierIdRef
     {
         return $this->supplierIdRef;
     }
 
-    /**
-     * @param SupplierIdRef $supplierIdRef
-     * @return ProductId
-     */
-    public function setSupplierIdRef(SupplierIdRef $supplierIdRef): ProductId
+    public function setSupplierIdRef(SupplierIdRef $supplierIdRef): self
     {
         $this->supplierIdRef = $supplierIdRef;
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getConfigCodeFix(): string
     {
         return $this->configCodeFix;
     }
 
-    /**
-     * @param string $configCodeFix
-     * @return ProductId
-     */
-    public function setConfigCodeFix(string $configCodeFix): ProductId
+    public function setConfigCodeFix(string $configCodeFix): self
     {
         $this->configCodeFix = $configCodeFix;
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getLotNumber(): string
     {
         return $this->lotNumber;
     }
 
-    /**
-     * @param string $lotNumber
-     * @return ProductId
-     */
-    public function setLotNumber(string $lotNumber): ProductId
+    public function setLotNumber(string $lotNumber): self
     {
         $this->lotNumber = $lotNumber;
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getSerialNumber(): string
     {
         return $this->serialNumber;
     }
 
-    /**
-     * @param string $serialNumber
-     * @return ProductId
-     */
-    public function setSerialNumber(string $serialNumber): ProductId
+    public function setSerialNumber(string $serialNumber): self
     {
         $this->serialNumber = $serialNumber;
         return $this;
     }
 
-    /**
-     * @return InternationalPid
-     */
     public function getInternationalPid(): InternationalPid
     {
         return $this->internationalPid;
     }
 
-    /**
-     * @param InternationalPid $internationalPid
-     * @return ProductId
-     */
-    public function setInternationalPid(InternationalPid $internationalPid): ProductId
+    public function setInternationalPid(InternationalPid $internationalPid): self
     {
         $this->internationalPid = $internationalPid;
         return $this;
     }
 
-    /**
-     * @return BuyerPid
-     */
     public function getBuyerPid(): BuyerPid
     {
         return $this->buyerPid;
     }
 
-    /**
-     * @param BuyerPid $buyerPid
-     * @return ProductId
-     */
-    public function setBuyerPid(BuyerPid $buyerPid): ProductId
+    public function setBuyerPid(BuyerPid $buyerPid): self
     {
         $this->buyerPid = $buyerPid;
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getDescriptionShort(): string
     {
         return $this->descriptionShort;
     }
 
-    /**
-     * @param string $descriptionShort
-     * @return ProductId
-     */
-    public function setDescriptionShort(string $descriptionShort): ProductId
+    public function setDescriptionShort(string $descriptionShort): self
     {
         $this->descriptionShort = $descriptionShort;
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getDescriptionLong(): string
     {
         return $this->descriptionLong;
     }
 
-    /**
-     * @param string $descriptionLong
-     * @return ProductId
-     */
-    public function setDescriptionLong(string $descriptionLong): ProductId
+    public function setDescriptionLong(string $descriptionLong): self
     {
         $this->descriptionLong = $descriptionLong;
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getProductType(): string
     {
         return $this->productType;
     }
 
-    /**
-     * @param string $productType
-     * @return ProductId
-     */
-    public function setProductType(string $productType): ProductId
+    public function setProductType(string $productType): self
     {
         $this->productType = $productType;
         return $this;

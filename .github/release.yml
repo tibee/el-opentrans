@@ -1,0 +1,29 @@
+# .github/release.yml
+changelog:
+  exclude:
+    labels:
+      - ignore-for-release
+      - release
+    authors:
+      - loeffelhardt-bot
+  categories:
+    - title: Breaking Changes 💥
+      labels:
+        - breaking-change
+    - title: New Features 🎉
+      labels:
+        - feature
+    - title: Enhancement ⚡️
+      labels:
+        - enhancement
+    - title: Fixed bugs 🐛
+      labels:
+        - bug
+    - title: Dependencies 📦
+      labels:
+        - dependencies
+        - npm
+        - composer
+    - title: Other Changes
+      labels:
+        - "*"

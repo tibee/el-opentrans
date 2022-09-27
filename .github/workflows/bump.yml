@@ -1,0 +1,35 @@
+name: Bump version
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - 'VERSION'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@main
+        with:
+          token: ${{ secrets.ACCESS_TOKEN }}
+          fetch-depth: "0"
+
+      - name: Bump version and push tag
+        id: bump
+        uses: Loeffelhardt/el-github-tag-action@main
+        env:
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          GITHUB_ACTOR: loeffelhardt-bot
+
+      - name: Notify ms teams channel
+        if: success() && steps.bump.outputs.new_tag
+        uses: Loeffelhardt/el-ms-teams-notification-action@main
+        with:
+          github-token: ${{ secrets.ACCESS_TOKEN }}
+          ms-teams-webhook-uri: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
+          notification-summary: "&#x1F680 Tag ${{ steps.bump.outputs.new_tag }} (${{ steps.bump.outputs.part }}) created in ${{ github.repository }}"
+          notification-color: 17a2b8
+          release-title: Tag (Branch ${{ github.ref_name }})
+          notification-text: ${{ github.ref_name }} tagged with ${{ steps.bump.outputs.new_tag }}
+          timezone: Europe/Berlin

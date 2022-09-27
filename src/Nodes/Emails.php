@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Naugrim\OpenTrans\Nodes;
 
 use JMS\Serializer\Annotation as Serializer;
@@ -7,7 +9,7 @@ use Naugrim\BMEcat\Builder\NodeBuilder;
 use Naugrim\BMEcat\Exception\InvalidSetterException;
 use Naugrim\BMEcat\Exception\UnknownKeyException;
 use Naugrim\BMEcat\Nodes\Contracts\NodeInterface;
-use Naugrim\BMEcat\nodes\Crypto\PublicKey;
+use Naugrim\BMEcat\Nodes\Crypto\PublicKey;
 
 class Emails implements NodeInterface
 {
@@ -26,24 +28,18 @@ class Emails implements NodeInterface
      * @Serializer\SerializedName("bme:PUBLIC_KEY")
      * @Serializer\Type("array<Naugrim\BMEcat\Nodes\Crypto\PublicKey>")
      * @Serializer\XmlList(inline = "true")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var PublicKey[]
      */
     protected $publicKeys = [];
 
-    /**
-     * @return string
-     */
     public function getEmail(): string
     {
         return $this->email;
     }
 
-    /**
-     * @param string $email
-     * @return Emails
-     */
-    public function setEmail(string $email): Emails
+    public function setEmail(string $email): self
     {
         $this->email = $email;
         return $this;
@@ -59,27 +55,23 @@ class Emails implements NodeInterface
 
     /**
      * @param PublicKey[] $publicKeys
-     * @return Emails
      * @throws InvalidSetterException
      * @throws UnknownKeyException
      */
-    public function setPublicKeys(array $publicKeys): Emails
+    public function setPublicKeys(array $publicKeys): self
     {
         $this->publicKeys = [];
         foreach ($publicKeys as $publicKey) {
-            if (!$publicKey instanceof PublicKey) {
-                $publicKey = NodeBuilder::fromArray($publicKey, new PublicKey());
+            if (! $publicKey instanceof PublicKey) {
+                /** @var PublicKey $publicKey */
+                $publicKey = NodeBuilder::fromArray((array) $publicKey, new PublicKey());
             }
             $this->addPublicKey($publicKey);
         }
         return $this;
     }
 
-    /**
-     * @param PublicKey $publicKey
-     * @return Emails
-     */
-    public function addPublicKey(PublicKey $publicKey): Emails
+    public function addPublicKey(PublicKey $publicKey): self
     {
         $this->publicKeys[] = $publicKey;
         return $this;

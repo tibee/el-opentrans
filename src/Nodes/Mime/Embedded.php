@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Naugrim\OpenTrans\Nodes\Mime;
 
 use JMS\Serializer\Annotation as Serializer;
@@ -14,6 +16,7 @@ class Embedded implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\Mime\Data")
      * @Serializer\SerializedName("MIME_DATA")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var Data
      */
@@ -23,6 +26,7 @@ class Embedded implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("FILE_NAME")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var string
      */
@@ -32,60 +36,40 @@ class Embedded implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("int")
      * @Serializer\SerializedName("FILE_SIZE")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var int
      */
     protected $fileSize;
 
-    /**
-     * @return Data
-     */
     public function getData(): Data
     {
         return $this->data;
     }
 
-    /**
-     * @param Data $data
-     * @return Embedded
-     */
-    public function setData(Data $data): Embedded
+    public function setData(Data $data): self
     {
         $this->data = $data;
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getFileName(): string
     {
         return $this->fileName;
     }
 
-    /**
-     * @param string $fileName
-     * @return Embedded
-     */
-    public function setFileName(string $fileName): Embedded
+    public function setFileName(string $fileName): self
     {
         $this->fileName = $fileName;
         return $this;
     }
 
-    /**
-     * @return int
-     */
     public function getFileSize(): int
     {
         return $this->fileSize;
     }
 
-    /**
-     * @param int $fileSize
-     * @return Embedded
-     */
-    public function setFileSize(int $fileSize): Embedded
+    public function setFileSize(int $fileSize): self
     {
         $this->fileSize = $fileSize;
         return $this;

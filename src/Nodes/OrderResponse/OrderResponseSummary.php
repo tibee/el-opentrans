@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Naugrim\OpenTrans\Nodes\OrderResponse;
 
 use JMS\Serializer\Annotation as Serializer;
@@ -13,31 +15,25 @@ use Naugrim\OpenTrans\Nodes\Concerns\HasTotalItemNum;
  */
 class OrderResponseSummary implements NodeInterface
 {
-    use HasTotalItemNum, HasTotalAmount;
+    use HasTotalItemNum;
+    use HasTotalAmount;
 
     /**
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\AllowOrChargesFix")
      * @Serializer\SerializedName("ALLOW_OR_CHARGES_FIX")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var AllowOrChargesFix
      */
     protected $allowOrChargesFix;
 
-    /**
-     * @return AllowOrChargesFix
-     */
     public function getAllowOrChargesFix(): AllowOrChargesFix
     {
         return $this->allowOrChargesFix;
     }
 
-    /**
-     * @param AllowOrChargesFix $allowOrChargesFix
-     *
-     * @return OrderResponseSummary
-     */
-    public function setAllowOrChargesFix(AllowOrChargesFix $allowOrChargesFix): OrderResponseSummary
+    public function setAllowOrChargesFix(AllowOrChargesFix $allowOrChargesFix): self
     {
         $this->allowOrChargesFix = $allowOrChargesFix;
         return $this;

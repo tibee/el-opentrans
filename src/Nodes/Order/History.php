@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Naugrim\OpenTrans\Nodes\Order;
 
 use JMS\Serializer\Annotation as Serializer;
@@ -13,6 +15,7 @@ class History implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("ORDER_ID")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var string
      */
@@ -22,6 +25,7 @@ class History implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("ALT_CUSTOMER_ORDER_ID")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var string
      */
@@ -31,6 +35,7 @@ class History implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("SUPPLIER_ORDER_ID")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var string
      */
@@ -40,6 +45,7 @@ class History implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("ORDER_DATE")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var string
      */
@@ -49,6 +55,7 @@ class History implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("ORDER_DESCR")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var string
      */
@@ -58,6 +65,7 @@ class History implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("DELIVERYNOTE_ID")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var string
      */
@@ -67,6 +75,7 @@ class History implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("DELIVERYNOTE_DATE")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var string
      */
@@ -76,6 +85,7 @@ class History implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\Agreement")
      * @Serializer\SerializedName("AGREEMENT")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var Agreement
      */
@@ -85,169 +95,106 @@ class History implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\Catalog\Reference")
      * @Serializer\SerializedName("CATALOG_REFERENCE")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var Reference
      */
     protected $catalogReference;
 
-    /**
-     * @return string
-     */
     public function getOrderId(): string
     {
         return $this->orderId;
     }
 
-    /**
-     * @param string $orderId
-     * @return History
-     */
-    public function setOrderId(string $orderId): History
+    public function setOrderId(string $orderId): self
     {
         $this->orderId = $orderId;
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getAltCustomerOrderId(): string
     {
         return $this->altCustomerOrderId;
     }
 
-    /**
-     * @param string $altCustomerOrderId
-     * @return History
-     */
-    public function setAltCustomerOrderId(string $altCustomerOrderId): History
+    public function setAltCustomerOrderId(string $altCustomerOrderId): self
     {
         $this->altCustomerOrderId = $altCustomerOrderId;
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getSupplierOrderId(): string
     {
         return $this->supplierOrderId;
     }
 
-    /**
-     * @param string $supplierOrderId
-     * @return History
-     */
-    public function setSupplierOrderId(string $supplierOrderId): History
+    public function setSupplierOrderId(string $supplierOrderId): self
     {
         $this->supplierOrderId = $supplierOrderId;
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getOrderDate(): string
     {
         return $this->orderDate;
     }
 
-    /**
-     * @param string $orderDate
-     * @return History
-     */
-    public function setOrderDate(string $orderDate): History
+    public function setOrderDate(string $orderDate): self
     {
         $this->orderDate = $orderDate;
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getOrderDescr(): string
     {
         return $this->orderDescr;
     }
 
-    /**
-     * @param string $orderDescr
-     *
-     * @return History
-     */
-    public function setOrderDescr(string $orderDescr): History
+    public function setOrderDescr(string $orderDescr): self
     {
         $this->orderDescr = $orderDescr;
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getDeliverynoteId(): string
     {
         return $this->deliverynoteId;
     }
 
-    /**
-     * @param string $deliverynoteId
-     * @return History
-     */
-    public function setDeliverynoteId(string $deliverynoteId): History
+    public function setDeliverynoteId(string $deliverynoteId): self
     {
         $this->deliverynoteId = $deliverynoteId;
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getDeliverynoteDate(): string
     {
         return $this->deliverynoteDate;
     }
 
-    /**
-     * @param string $deliverynoteDate
-     * @return History
-     */
-    public function setDeliverynoteDate(string $deliverynoteDate): History
+    public function setDeliverynoteDate(string $deliverynoteDate): self
     {
         $this->deliverynoteDate = $deliverynoteDate;
         return $this;
     }
 
-    /**
-     * @return Agreement
-     */
     public function getAgreement(): Agreement
     {
         return $this->agreement;
     }
 
-    /**
-     * @param Agreement $agreement
-     * @return History
-     */
-    public function setAgreement(Agreement $agreement): History
+    public function setAgreement(Agreement $agreement): self
     {
         $this->agreement = $agreement;
         return $this;
     }
 
-    /**
-     * @return Reference
-     */
     public function getCatalogReference(): Reference
     {
         return $this->catalogReference;
     }
 
-    /**
-     * @param Reference $catalogReference
-     * @return History
-     */
-    public function setCatalogReference(Reference $catalogReference): History
+    public function setCatalogReference(Reference $catalogReference): self
     {
         $this->catalogReference = $catalogReference;
         return $this;

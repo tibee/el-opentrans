@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Naugrim\OpenTrans\Nodes\Invoice;
 
 use JMS\Serializer\Annotation as Serializer;
@@ -18,6 +20,7 @@ class Header implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\Invoice\Info")
      * @Serializer\SerializedName("INVOICE_INFO")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var Info
      */
@@ -27,42 +30,29 @@ class Header implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\Order\History")
      * @Serializer\SerializedName("ORDER_HISTORY")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var History
      */
     protected $orderHistory;
 
-    /**
-     * @return Info
-     */
     public function getInfo(): Info
     {
         return $this->info;
     }
 
-    /**
-     * @param Info $info
-     * @return Header
-     */
-    public function setInfo(Info $info): Header
+    public function setInfo(Info $info): self
     {
         $this->info = $info;
         return $this;
     }
 
-    /**
-     * @return History
-     */
     public function getOrderHistory(): History
     {
         return $this->orderHistory;
     }
 
-    /**
-     * @param History $orderHistory
-     * @return Header
-     */
-    public function setOrderHistory(History $orderHistory): Header
+    public function setOrderHistory(History $orderHistory): self
     {
         $this->orderHistory = $orderHistory;
         return $this;

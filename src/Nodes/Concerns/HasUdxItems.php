@@ -1,11 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Naugrim\OpenTrans\Nodes\Concerns;
 
 use InvalidArgumentException;
 use JMS\Serializer\Annotation as Serializer;
 use Naugrim\BMEcat\Builder\NodeBuilder;
 use Naugrim\BMEcat\Exception\UnknownKeyException;
+use Naugrim\OpenTrans\Nodes\Order\Item;
 use Naugrim\OpenTrans\Nodes\Udx;
 use Naugrim\OpenTrans\Nodes\UdxAggregate;
 use Naugrim\OpenTrans\Nodes\UdxInterface;
@@ -21,12 +24,18 @@ trait HasUdxItems
      */
     protected $udxItem;
 
+    /**
+     * @param array<UdxInterface|array<int|string, mixed>> $udxItems
+     *
+     * @return Item
+     * @throws UnknownKeyException
+     */
     public function setUdxItems(array $udxItems): self
     {
         $this->udxItem = new UdxAggregate();
 
         foreach ($udxItems as $udxItem) {
-            if (!$udxItem instanceof UdxInterface) {
+            if (! $udxItem instanceof UdxInterface) {
                 $udxItem = $this->convertToUdx($udxItem);
             }
 
@@ -36,16 +45,24 @@ trait HasUdxItems
         return $this;
     }
 
+    /**
+     * @param array<int|string, mixed> $udxItem
+     *
+     * @throws UnknownKeyException
+     * @throws \Naugrim\BMEcat\Exception\InvalidSetterException
+     * @throws \ReflectionException
+     */
     private function convertToUdx($udxItem): UdxInterface
     {
-        if (!is_array($udxItem)) {
+        if (! is_array($udxItem)) {
             throw new UnknownKeyException('Invalid UDX structure given, Expected array<string,string>.');
         }
 
         $udxData = $this->parseUdxData($udxItem);
         $udxClass = $udxData['class'];
+        /* @phpstan-ignore-next-line */
         $reflection = new ReflectionClass($udxClass);
-        if (!$reflection->implementsInterface(UdxInterface::class)) {
+        if (! $reflection->implementsInterface(UdxInterface::class)) {
             throw new UnknownKeyException(sprintf('"%s" needs to implement UdxInterface', $udxClass));
         }
 
@@ -59,7 +76,7 @@ trait HasUdxItems
     }
 
     /**
-     * @param array<string, mixed> $udxData
+     * @param array<int|string, mixed> $udxData
      *
      * @return array<string, string>
      * @throws UnknownKeyException
@@ -69,13 +86,13 @@ trait HasUdxItems
         $mandatoryKeys = [
             'vendor',
             'name',
-            'value'
+            'value',
         ];
 
         $data = [];
 
         foreach ($mandatoryKeys as $key) {
-            if (!array_key_exists($key, $udxData)) {
+            if (! array_key_exists($key, $udxData)) {
                 throw new UnknownKeyException(
                     sprintf(
                         'Key "%s" is not available in UDX data. Expected one of [%s]',
@@ -85,7 +102,7 @@ trait HasUdxItems
                 );
             }
 
-            if (!is_scalar($udxData[$key])) {
+            if (! is_scalar($udxData[$key])) {
                 throw new InvalidArgumentException(
                     sprintf(
                         'UDX value of "%s" must be scalar, "%s" given',

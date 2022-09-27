@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Naugrim\OpenTrans\Nodes\Contact;
 
 use JMS\Serializer\Annotation as Serializer;
@@ -80,7 +82,7 @@ class Details implements NodeInterface
      * @var string
      */
     protected $description;
-    
+
     /**
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\BMEcat\Nodes\Phone")
@@ -110,7 +112,7 @@ class Details implements NodeInterface
      * @var string
      */
     protected $url;
-    
+
     /**
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\Emails")
@@ -121,182 +123,111 @@ class Details implements NodeInterface
      */
     protected $emails;
 
-
-    /**
-     * @return string
-     */
     public function getId(): string
     {
         return $this->id;
     }
 
-    /**
-     * @param string $id
-     * @return Details
-     */
-    public function setId(string $id): Details
+    public function setId(string $id): self
     {
         $this->id = $id;
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * @param string $name
-     * @return Details
-     */
-    public function setName(string $name): Details
+    public function setName(string $name): self
     {
         $this->name = $name;
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getFirstName(): string
     {
         return $this->firstName;
     }
 
-    /**
-     * @param string $firstName
-     * @return Details
-     */
-    public function setFirstName(string $firstName): Details
+    public function setFirstName(string $firstName): self
     {
         $this->firstName = $firstName;
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getTitle(): string
     {
         return $this->title;
     }
 
-    /**
-     * @param string $title
-     * @return Details
-     */
-    public function setTitle(string $title): Details
+    public function setTitle(string $title): self
     {
         $this->title = $title;
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getAcademicTitle(): string
     {
         return $this->academicTitle;
     }
 
-    /**
-     * @param string $academicTitle
-     * @return Details
-     */
-    public function setAcademicTitle(string $academicTitle): Details
+    public function setAcademicTitle(string $academicTitle): self
     {
         $this->academicTitle = $academicTitle;
         return $this;
     }
 
-    /**
-     * @return Role
-     */
     public function getRole(): Role
     {
         return $this->role;
     }
 
-    /**
-     * @param Role $role
-     * @return Details
-     */
-    public function setRole(Role $role): Details
+    public function setRole(Role $role): self
     {
         $this->role = $role;
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getDescription(): string
     {
         return $this->description;
     }
 
-    /**
-     * @param string $description
-     * @return Details
-     */
-    public function setDescription(string $description): Details
+    public function setDescription(string $description): self
     {
         $this->description = $description;
         return $this;
     }
 
-    /**
-     * @return Phone
-     */
     public function getPhone(): Phone
     {
         return $this->phone;
     }
 
-    /**
-     * @param Phone $phone
-     * @return Details
-     */
-    public function setPhone(Phone $phone): Details
+    public function setPhone(Phone $phone): self
     {
         $this->phone = $phone;
         return $this;
     }
 
-    /**
-     * @return Fax
-     */
     public function getFax(): Fax
     {
         return $this->fax;
     }
 
-    /**
-     * @param Fax $fax
-     * @return Details
-     */
-    public function setFax(Fax $fax): Details
+    public function setFax(Fax $fax): self
     {
         $this->fax = $fax;
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getUrl(): string
     {
         return $this->url;
     }
 
-    /**
-     * @param string $url
-     * @return Details
-     */
-    public function setUrl(string $url): Details
+    public function setUrl(string $url): self
     {
         $this->url = $url;
         return $this;
@@ -307,7 +238,7 @@ class Details implements NodeInterface
         return $this->emails;
     }
 
-    public function setEmails(Emails $emails): Details
+    public function setEmails(Emails $emails): self
     {
         $this->emails = $emails;
         return $this;

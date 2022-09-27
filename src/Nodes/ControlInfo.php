@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Naugrim\OpenTrans\Nodes;
 
 use JMS\Serializer\Annotation as Serializer;
@@ -11,6 +13,7 @@ class ControlInfo implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("STOP_AUTOMATIC_PROCESSING")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var string
      */
@@ -20,6 +23,7 @@ class ControlInfo implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("GENERATOR_INFO")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var string
      */
@@ -29,60 +33,40 @@ class ControlInfo implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("GENERATOR_DATE")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var string
      */
     protected $generatorDate;
 
-    /**
-     * @return string
-     */
     public function getStopAutomaticProcessing(): string
     {
         return $this->stopAutomaticProcessing;
     }
 
-    /**
-     * @param string $stopAutomaticProcessing
-     * @return ControlInfo
-     */
-    public function setStopAutomaticProcessing(string $stopAutomaticProcessing): ControlInfo
+    public function setStopAutomaticProcessing(string $stopAutomaticProcessing): self
     {
         $this->stopAutomaticProcessing = $stopAutomaticProcessing;
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getGeneratorInfo(): string
     {
         return $this->generatorInfo;
     }
 
-    /**
-     * @param string $generatorInfo
-     * @return ControlInfo
-     */
-    public function setGeneratorInfo(string $generatorInfo): ControlInfo
+    public function setGeneratorInfo(string $generatorInfo): self
     {
         $this->generatorInfo = $generatorInfo;
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getGeneratorDate(): string
     {
         return $this->generatorDate;
     }
 
-    /**
-     * @param string $generatorDate
-     * @return ControlInfo
-     */
-    public function setGeneratorDate(string $generatorDate): ControlInfo
+    public function setGeneratorDate(string $generatorDate): self
     {
         $this->generatorDate = $generatorDate;
         return $this;

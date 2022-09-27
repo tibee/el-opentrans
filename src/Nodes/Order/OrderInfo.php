@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Naugrim\OpenTrans\Nodes\Order;
 
 use JMS\Serializer\Annotation as Serializer;
@@ -16,6 +18,7 @@ class OrderInfo implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("ORDER_ID")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var string
      */
@@ -25,6 +28,7 @@ class OrderInfo implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("ORDER_DATE")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var string
      */
@@ -34,6 +38,7 @@ class OrderInfo implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\DeliveryDate")
      * @Serializer\SerializedName("DELIVERY_DATE")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var DeliveryDate
      */
@@ -43,6 +48,7 @@ class OrderInfo implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("LANGUAGE")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var string
      */
@@ -53,6 +59,7 @@ class OrderInfo implements NodeInterface
      * @Serializer\SerializedName("PARTIES")
      * @Serializer\Type("array<Naugrim\OpenTrans\Nodes\Party>")
      * @Serializer\XmlList(entry = "PARTY")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var Party[]
      */
@@ -62,6 +69,7 @@ class OrderInfo implements NodeInterface
      * @Serializer\Expose
      * @Serializer\SerializedName("CUSTOMER_ORDER_REFERENCE")
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\Order\CustomerOrderReference")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var CustomerOrderReference
      */
@@ -71,6 +79,7 @@ class OrderInfo implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\Order\PartiesReference")
      * @Serializer\SerializedName("ORDER_PARTIES_REFERENCE")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var PartiesReference
      */
@@ -80,60 +89,40 @@ class OrderInfo implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("bool")
      * @Serializer\SerializedName("PARTIAL_SHIPMENT_ALLOWED")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var boolean
      */
     protected $partialShipmentAllowed;
 
-    /**
-     * @return string
-     */
     public function getOrderId(): string
     {
         return $this->orderId;
     }
 
-    /**
-     * @param string $orderId
-     *
-     * @return OrderInfo
-     */
-    public function setOrderId(string $orderId): OrderInfo
+    public function setOrderId(string $orderId): self
     {
         $this->orderId = $orderId;
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getOrderDate(): string
     {
         return $this->orderDate;
     }
 
-    /**
-     * @param string $orderDate
-     *
-     * @return OrderInfo
-     */
-    public function setOrderDate(string $orderDate): OrderInfo
+    public function setOrderDate(string $orderDate): self
     {
         $this->orderDate = $orderDate;
         return $this;
     }
 
-    /**
-     * @return DeliveryDate
-     */
     public function getDeliveryDate(): DeliveryDate
     {
         return $this->deliveryDate;
     }
 
     /**
-     * @param DeliveryDate $deliveryDate
-     *
      * @return $this
      */
     public function setDeliveryDate(DeliveryDate $deliveryDate): self
@@ -153,15 +142,15 @@ class OrderInfo implements NodeInterface
     /**
      * @param Party[] $parties
      *
-     * @return OrderInfo
      * @throws InvalidSetterException
      * @throws UnknownKeyException
      */
-    public function setParties(array $parties): OrderInfo
+    public function setParties(array $parties): self
     {
         foreach ($parties as $party) {
-            if (!$party instanceof Party) {
-                $party = NodeBuilder::fromArray($party, new Party());
+            if (! $party instanceof Party) {
+                /** @var Party $party */
+                $party = NodeBuilder::fromArray((array) $party, new Party());
             }
             $this->addParty($party);
         }
@@ -169,7 +158,6 @@ class OrderInfo implements NodeInterface
     }
 
     /**
-     * @param Party $party
      * @return $this
      */
     public function addParty(Party $party)
@@ -178,28 +166,18 @@ class OrderInfo implements NodeInterface
         return $this;
     }
 
-    /**
-     * @return PartiesReference
-     */
     public function getOrderPartiesReference(): PartiesReference
     {
         return $this->orderPartiesReference;
     }
 
-    /**
-     * @param PartiesReference $orderPartiesReference
-     *
-     * @return OrderInfo
-     */
-    public function setOrderPartiesReference(PartiesReference $orderPartiesReference): OrderInfo
+    public function setOrderPartiesReference(PartiesReference $orderPartiesReference): self
     {
         $this->orderPartiesReference = $orderPartiesReference;
         return $this;
     }
 
     /**
-     * @param bool $partialShipmentAllowed
-     *
      * @return $this
      */
     public function setPartialShipmentAllowed(bool $partialShipmentAllowed): self
@@ -208,25 +186,17 @@ class OrderInfo implements NodeInterface
         return $this;
     }
 
-    /**
-     * @return bool
-     */
     public function isPartialShipmentAllowed(): bool
     {
         return $this->partialShipmentAllowed;
     }
 
-    /**
-     * @return string
-     */
     public function getLanguage(): string
     {
         return $this->language;
     }
 
     /**
-     * @param string $language
-     *
      * @return OrderInfo
      */
     public function setLanguage(string $language): self
@@ -235,17 +205,12 @@ class OrderInfo implements NodeInterface
         return $this;
     }
 
-    /**
-     * @return CustomerOrderReference
-     */
     public function getCustomerOrderReference(): CustomerOrderReference
     {
         return $this->customerOrderReference;
     }
 
     /**
-     * @param CustomerOrderReference $customerOrderReference
-     *
      * @return OrderInfo
      */
     public function setCustomerOrderReference(CustomerOrderReference $customerOrderReference): self

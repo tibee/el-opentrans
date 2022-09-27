@@ -1,13 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Naugrim\OpenTrans\Nodes\Order;
 
 use JMS\Serializer\Annotation as Serializer;
-use Naugrim\BMEcat\Nodes\BuyerIdRef;
 use Naugrim\BMEcat\Nodes\Contracts\NodeInterface;
-use Naugrim\BMEcat\Nodes\SupplierIdRef;
-use Naugrim\OpenTrans\Nodes\InvoiceRcptIdRef;
-use Naugrim\OpenTrans\Nodes\ShipmentPartiesReference;
 
 class CustomerOrderReference implements NodeInterface
 {
@@ -15,6 +13,7 @@ class CustomerOrderReference implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("ORDER_ID")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var string
      */
@@ -24,22 +23,18 @@ class CustomerOrderReference implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("LINE_ITEM_ID")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var string
      */
     protected $lineItemId;
 
-    /**
-     * @return string
-     */
     public function getOrderId(): string
     {
         return $this->orderId;
     }
 
     /**
-     * @param string $orderId
-     *
      * @return CustomerOrderReference
      */
     public function setOrderId(string $orderId): self
@@ -48,17 +43,12 @@ class CustomerOrderReference implements NodeInterface
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getLineItemId(): string
     {
         return $this->lineItemId;
     }
 
     /**
-     * @param string $lineItemId
-     *
      * @return CustomerOrderReference
      */
     public function setLineItemId(string $lineItemId): self

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Naugrim\OpenTrans\Nodes\Invoice;
 
 use JMS\Serializer\Annotation as Serializer;
@@ -16,41 +18,36 @@ use Naugrim\OpenTrans\Nodes\Tax\DetailsFix;
  */
 class Summary implements NodeInterface
 {
-    use HasTotalItemNum, HasTotalAmount;
+    use HasTotalItemNum;
+    use HasTotalAmount;
 
     /**
-     *
      * @Serializer\Expose
      * @Serializer\SerializedName("NET_VALUE_GOODS")
      * @Serializer\Type("float")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var float
      */
     protected $netValueGoods;
+
     /**
-     *
      * @Serializer\Expose
      * @Serializer\SerializedName("TOTAL_TAX")
      * @Serializer\Type("array<Naugrim\OpenTrans\Nodes\Tax\DetailsFix>")
      * @Serializer\XmlList(entry = "TAX_DETAILS_FIX")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var DetailsFix[]
      */
     protected $totalTax = [];
 
-    /**
-     * @return float
-     */
     public function getNetValueGoods(): float
     {
         return $this->netValueGoods;
     }
 
-    /**
-     * @param float $netValueGoods
-     * @return Summary
-     */
-    public function setNetValueGoods(float $netValueGoods): Summary
+    public function setNetValueGoods(float $netValueGoods): self
     {
         $this->netValueGoods = $netValueGoods;
         return $this;
@@ -66,15 +63,15 @@ class Summary implements NodeInterface
 
     /**
      * @param DetailsFix[] $taxes
-     * @return Summary
      * @throws InvalidSetterException
      * @throws UnknownKeyException
      */
-    public function setTotalTax(array $taxes): Summary
+    public function setTotalTax(array $taxes): self
     {
         foreach ($taxes as $tax) {
-            if (!$tax instanceof DetailsFix) {
-                $tax = NodeBuilder::fromArray($tax, new DetailsFix());
+            if (! $tax instanceof DetailsFix) {
+                /** @var DetailsFix $tax */
+                $tax = NodeBuilder::fromArray((array) $tax, new DetailsFix());
             }
             $this->addTotalTax($tax);
         }
@@ -82,10 +79,9 @@ class Summary implements NodeInterface
     }
 
     /**
-     * @param DetailsFix $tax
      * @return $this
      */
-    public function addTotalTax(DetailsFix $tax): Summary
+    public function addTotalTax(DetailsFix $tax): self
     {
         $this->totalTax[] = $tax;
         return $this;

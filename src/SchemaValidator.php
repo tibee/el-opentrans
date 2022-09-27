@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Naugrim\OpenTrans;
 
 use DOMDocument;
@@ -8,19 +10,15 @@ use Naugrim\BMEcat\Exception\UnsupportedVersionException;
 
 class SchemaValidator
 {
+    /**
+     * @var array<string, string|array<string,string>>
+     */
     protected static $SCHEMA_MAP = [
         '2.1' => __DIR__ . '/schemas/opentrans_2_1.xsd',
     ];
 
     /**
      * Validates the given XML-string against the opentrans XSD-files.
-     *
-     * @param string $xml
-     *
-     * @param string $version
-     * @param string|null $type
-     *
-     * @return bool
      *
      * @throws SchemaValidationException
      * @throws UnsupportedVersionException
@@ -33,7 +31,7 @@ class SchemaValidator
         $xmlValidate->loadXML($xml);
         $schemaFile = self::getSchemaForVersion($version, $type);
         $validated = $xmlValidate->schemaValidate($schemaFile);
-        if (!$validated) {
+        if (! $validated) {
             throw SchemaValidationException::withErrors($xml, $schemaFile, libxml_get_errors());
         }
 
@@ -44,11 +42,6 @@ class SchemaValidator
     }
 
     /**
-     * @param string $version
-     * @param string|null $type
-     *
-     * @return string
-     *
      * @throws UnsupportedVersionException
      */
     protected static function getSchemaForVersion(string $version, string $type = null): string
