@@ -120,7 +120,8 @@ class Order implements NodeInterface
     {
         foreach ($orderItemList as $item) {
             if (!$item instanceof Item) {
-                $item = NodeBuilder::fromArray($item, new Item());
+                /** @var Item $item */
+                $item = NodeBuilder::fromArray((array)$item, new Item());
             }
             $this->addItem($item);
         }

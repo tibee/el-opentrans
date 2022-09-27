@@ -6,6 +6,7 @@ use InvalidArgumentException;
 use JMS\Serializer\Annotation as Serializer;
 use Naugrim\BMEcat\Builder\NodeBuilder;
 use Naugrim\BMEcat\Exception\UnknownKeyException;
+use Naugrim\OpenTrans\Nodes\Order\Item;
 use Naugrim\OpenTrans\Nodes\Udx;
 use Naugrim\OpenTrans\Nodes\UdxAggregate;
 use Naugrim\OpenTrans\Nodes\UdxInterface;
@@ -21,6 +22,12 @@ trait HasUdxItems
      */
     protected $udxItem;
 
+    /**
+     * @param array<UdxInterface|array<int|string, mixed>> $udxItems
+     *
+     * @return Item
+     * @throws UnknownKeyException
+     */
     public function setUdxItems(array $udxItems): self
     {
         $this->udxItem = new UdxAggregate();
@@ -36,6 +43,14 @@ trait HasUdxItems
         return $this;
     }
 
+    /**
+     * @param array<int|string, mixed> $udxItem
+     *
+     * @return UdxInterface
+     * @throws UnknownKeyException
+     * @throws \Naugrim\BMEcat\Exception\InvalidSetterException
+     * @throws \ReflectionException
+     */
     private function convertToUdx($udxItem): UdxInterface
     {
         if (!is_array($udxItem)) {
@@ -44,6 +59,7 @@ trait HasUdxItems
 
         $udxData = $this->parseUdxData($udxItem);
         $udxClass = $udxData['class'];
+        /* @phpstan-ignore-next-line */
         $reflection = new ReflectionClass($udxClass);
         if (!$reflection->implementsInterface(UdxInterface::class)) {
             throw new UnknownKeyException(sprintf('"%s" needs to implement UdxInterface', $udxClass));
@@ -59,7 +75,7 @@ trait HasUdxItems
     }
 
     /**
-     * @param array<string, mixed> $udxData
+     * @param array<int|string, mixed> $udxData
      *
      * @return array<string, string>
      * @throws UnknownKeyException

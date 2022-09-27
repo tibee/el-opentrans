@@ -7,7 +7,7 @@ use Naugrim\BMEcat\Builder\NodeBuilder;
 use Naugrim\BMEcat\Exception\InvalidSetterException;
 use Naugrim\BMEcat\Exception\UnknownKeyException;
 use Naugrim\BMEcat\Nodes\Contracts\NodeInterface;
-use Naugrim\BMEcat\nodes\Crypto\PublicKey;
+use Naugrim\BMEcat\Nodes\Crypto\PublicKey;
 
 class Emails implements NodeInterface
 {
@@ -69,7 +69,8 @@ class Emails implements NodeInterface
         $this->publicKeys = [];
         foreach ($publicKeys as $publicKey) {
             if (!$publicKey instanceof PublicKey) {
-                $publicKey = NodeBuilder::fromArray($publicKey, new PublicKey());
+                /** @var PublicKey $publicKey */
+                $publicKey = NodeBuilder::fromArray((array)$publicKey, new PublicKey());
             }
             $this->addPublicKey($publicKey);
         }

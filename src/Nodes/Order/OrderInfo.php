@@ -169,7 +169,8 @@ class OrderInfo implements NodeInterface
     {
         foreach ($parties as $party) {
             if (!$party instanceof Party) {
-                $party = NodeBuilder::fromArray($party, new Party());
+                /** @var Party $party */
+                $party = NodeBuilder::fromArray((array)$party, new Party());
             }
             $this->addParty($party);
         }

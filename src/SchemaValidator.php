@@ -8,6 +8,9 @@ use Naugrim\BMEcat\Exception\UnsupportedVersionException;
 
 class SchemaValidator
 {
+    /**
+     * @var array<string, string|array<string,string>>
+     */
     protected static $SCHEMA_MAP = [
         '2.1' => __DIR__ . '/schemas/opentrans_2_1.xsd',
     ];

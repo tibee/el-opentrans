@@ -1,0 +1,21 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - '[0-9]+.[0-9]+.[0-9]+'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@main
+      - name: Release
+        uses: Loeffelhardt/el-action-gh-release@main
+        with:
+          token: ${{ secrets.ACCESS_TOKEN }}
+          tag_name: ${{github.ref_name}}
+          name: "v${{github.ref_name}}"
+          target_commitish: main
+          generate_release_notes: true

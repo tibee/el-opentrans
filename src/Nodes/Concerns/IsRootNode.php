@@ -11,6 +11,8 @@ trait IsRootNode
      * @Serializer\Expose
      * @Serializer\XmlAttribute
      * @Serializer\Type("string")
+     *
+     * @var string
      */
     protected $version = OpenTrans::OPENTRANS_VERSION;
 }

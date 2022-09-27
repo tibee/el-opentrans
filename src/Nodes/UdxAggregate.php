@@ -10,6 +10,8 @@ class UdxAggregate
      * @Serializer\XmlKeyValuePairs
      * @Serializer\Inline
      * @Serializer\Type("array")
+     *
+     * @var array<string, UdxInterface>
      */
     protected $values = [];
 

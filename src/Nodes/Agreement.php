@@ -265,7 +265,8 @@ class Agreement implements NodeInterface
 
         foreach ($mimeInfos as $mimeInfo) {
             if (!$mimeInfo instanceof Mime) {
-                $mimeInfo = NodeBuilder::fromArray($mimeInfo, new Mime());
+                /** @var Mime $mimeInfo */
+                $mimeInfo = NodeBuilder::fromArray((array)$mimeInfo, new Mime());
             }
             $this->addMimeInfo($mimeInfo);
         }

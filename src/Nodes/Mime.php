@@ -141,7 +141,7 @@ class Mime implements NodeInterface
     }
 
     /**
-     * @param array $fileHashValues
+     * @param array<HashValue|array<int|string, mixed>> $fileHashValues
      * @return Mime
      * @throws InvalidSetterException
      * @throws UnknownKeyException
@@ -151,7 +151,8 @@ class Mime implements NodeInterface
         $this->fileHashValue = [];
         foreach ($fileHashValues as $fileHashValue) {
             if (!$fileHashValue instanceof HashValue) {
-                $fileHashValue = NodeBuilder::fromArray($fileHashValue, new HashValue());
+                /** @var HashValue $fileHashValue */
+                $fileHashValue = NodeBuilder::fromArray((array)$fileHashValue, new HashValue());
             }
             $this->addFileHashValue($fileHashValue);
         }
@@ -187,7 +188,8 @@ class Mime implements NodeInterface
         $this->embedded = [];
         foreach ($embeddeds as $embedded) {
             if (!$embedded instanceof Embedded) {
-                $embedded = NodeBuilder::fromArray($embedded, new Embedded());
+                /** @var Embedded $embedded */
+                $embedded = NodeBuilder::fromArray((array)$embedded, new Embedded());
             }
             $this->addEmbedded($embedded);
         }

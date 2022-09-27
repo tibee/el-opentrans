@@ -16,6 +16,8 @@ class Address implements NodeInterface
      * @Serializer\Type("string")
      * @Serializer\SerializedName("NAME")
      * @Serializer\XmlElement(cdata=true, namespace="http://www.bmecat.org/bmecat/2005")
+     *
+     * @var string
      */
     protected $name;
 
@@ -24,6 +26,8 @@ class Address implements NodeInterface
      * @Serializer\Type("string")
      * @Serializer\SerializedName("NAME2")
      * @Serializer\XmlElement(namespace="http://www.bmecat.org/bmecat/2005")
+     *
+     * @var string
      */
     protected $name2;
 
@@ -32,6 +36,8 @@ class Address implements NodeInterface
      * @Serializer\Type("string")
      * @Serializer\SerializedName("NAME3")
      * @Serializer\XmlElement(namespace="http://www.bmecat.org/bmecat/2005")
+     *
+     * @var string
      */
     protected $name3;
 
@@ -40,6 +46,8 @@ class Address implements NodeInterface
      * @Serializer\Type("string")
      * @Serializer\SerializedName("DEPARTMENT")
      * @Serializer\XmlElement(namespace="http://www.bmecat.org/bmecat/2005")
+     *
+     * @var string
      */
     protected $department;
 
@@ -58,6 +66,8 @@ class Address implements NodeInterface
      * @Serializer\Type("string")
      * @Serializer\SerializedName("STREET")
      * @Serializer\XmlElement(namespace="http://www.bmecat.org/bmecat/2005")
+     *
+     * @var string
      */
     protected $street;
 
@@ -66,6 +76,8 @@ class Address implements NodeInterface
      * @Serializer\Type("string")
      * @Serializer\SerializedName("ZIP")
      * @Serializer\XmlElement(namespace="http://www.bmecat.org/bmecat/2005")
+     *
+     * @var string
      */
     protected $zip;
 
@@ -74,6 +86,8 @@ class Address implements NodeInterface
      * @Serializer\Type("string")
      * @Serializer\SerializedName("BOXNO")
      * @Serializer\XmlElement(namespace="http://www.bmecat.org/bmecat/2005")
+     *
+     * @var string
      */
     protected $boxno;
 
@@ -82,6 +96,8 @@ class Address implements NodeInterface
      * @Serializer\Type("string")
      * @Serializer\SerializedName("ZIPBOX")
      * @Serializer\XmlElement(namespace="http://www.bmecat.org/bmecat/2005")
+     *
+     * @var string
      */
     protected $zipbox;
 
@@ -90,6 +106,8 @@ class Address implements NodeInterface
      * @Serializer\Type("string")
      * @Serializer\SerializedName("CITY")
      * @Serializer\XmlElement(namespace="http://www.bmecat.org/bmecat/2005")
+     *
+     * @var string
      */
     protected $city;
 
@@ -98,6 +116,8 @@ class Address implements NodeInterface
      * @Serializer\Type("string")
      * @Serializer\SerializedName("COUNTRY")
      * @Serializer\XmlElement(namespace="http://www.bmecat.org/bmecat/2005")
+     *
+     * @var string
      */
     protected $country;
 
@@ -106,6 +126,8 @@ class Address implements NodeInterface
      * @Serializer\Type("string")
      * @Serializer\SerializedName("COUNTRY_CODED")
      * @Serializer\XmlElement(namespace="http://www.bmecat.org/bmecat/2005")
+     *
+     * @var string
      */
     protected $countryCoded;
 
@@ -114,6 +136,8 @@ class Address implements NodeInterface
      * @Serializer\Type("string")
      * @Serializer\SerializedName("VATID")
      * @Serializer\XmlElement(namespace="http://www.bmecat.org/bmecat/2005")
+     *
+     * @var string
      */
     protected $vatId;
 
@@ -122,6 +146,8 @@ class Address implements NodeInterface
      * @Serializer\Type("Naugrim\BMEcat\Nodes\Phone")
      * @Serializer\SerializedName("PHONE")
      * @Serializer\XmlElement(namespace="http://www.bmecat.org/bmecat/2005")
+     *
+     * @var Phone
      */
     protected $phone;
 
@@ -130,6 +156,8 @@ class Address implements NodeInterface
      * @Serializer\Type("Naugrim\BMEcat\Nodes\Fax")
      * @Serializer\SerializedName("FAX")
      * @Serializer\XmlElement(namespace="http://www.bmecat.org/bmecat/2005")
+     *
+     * @var Fax
      */
     protected $fax;
 
@@ -138,6 +166,8 @@ class Address implements NodeInterface
      * @Serializer\Type("string")
      * @Serializer\SerializedName("EMAIL")
      * @Serializer\XmlElement(namespace="http://www.bmecat.org/bmecat/2005")
+     *
+     * @var string
      */
     protected $email;
 
@@ -146,6 +176,8 @@ class Address implements NodeInterface
      * @Serializer\Type("Naugrim\BMEcat\Nodes\Crypto\PublicKey")
      * @Serializer\SerializedName("PUBLIC_KEY")
      * @Serializer\XmlElement(namespace="http://www.bmecat.org/bmecat/2005")
+     *
+     * @var PublicKey
      */
     protected $publicKey;
 
@@ -154,6 +186,8 @@ class Address implements NodeInterface
      * @Serializer\Type("string")
      * @Serializer\SerializedName("URL")
      * @Serializer\XmlElement(namespace="http://www.bmecat.org/bmecat/2005")
+     *
+     * @var string
      */
     protected $url;
 
@@ -162,6 +196,8 @@ class Address implements NodeInterface
      * @Serializer\Type("string")
      * @Serializer\SerializedName("ADDRESS_REMARKS")
      * @Serializer\XmlElement(namespace="http://www.bmecat.org/bmecat/2005")
+     *
+     * @var string
      */
     protected $addressRemarks;
 

@@ -76,7 +76,8 @@ class Summary implements NodeInterface
     {
         foreach ($taxes as $tax) {
             if (!$tax instanceof DetailsFix) {
-                $tax = NodeBuilder::fromArray($tax, new DetailsFix());
+                /** @var DetailsFix $tax */
+                $tax = NodeBuilder::fromArray((array)$tax, new DetailsFix());
             }
             $this->addTotalTax($tax);
         }
