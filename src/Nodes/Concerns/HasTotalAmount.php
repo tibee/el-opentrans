@@ -11,6 +11,7 @@ trait HasTotalAmount
      * @Serializer\Expose
      * @Serializer\SerializedName("TOTAL_AMOUNT")
      * @Serializer\Type("float")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var float
      */

@@ -35,6 +35,7 @@ class ProductId implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("CONFIG_CODE_FIX")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var string
      */
@@ -44,6 +45,7 @@ class ProductId implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("LOT_NUMBER")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var string
      */
@@ -53,6 +55,7 @@ class ProductId implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("SERIAL_NUMBER")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var string
      */
@@ -82,7 +85,7 @@ class ProductId implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("DESCRIPTION_SHORT")
-     * @Serializer\XmlElement(cdata=false, namespace="http://www.bmecat.org/bmecat/2005")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.bmecat.org/bmecat/2005")
      *
      * @var string
      */
@@ -92,7 +95,7 @@ class ProductId implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("DESCRIPTION_LONG")
-     * @Serializer\XmlElement(cdata=false, namespace="http://www.bmecat.org/bmecat/2005")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.bmecat.org/bmecat/2005")
      *
      * @var string
      */
@@ -102,7 +105,7 @@ class ProductId implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("PRODUCT_TYPE")
-     * @Serializer\XmlElement(cdata=false, namespace="http://www.bmecat.org/bmecat/2005")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.bmecat.org/bmecat/2005")
      *
      * @var string
      */

@@ -26,6 +26,7 @@ class Emails implements NodeInterface
      * @Serializer\SerializedName("bme:PUBLIC_KEY")
      * @Serializer\Type("array<Naugrim\BMEcat\Nodes\Crypto\PublicKey>")
      * @Serializer\XmlList(inline = "true")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var PublicKey[]
      */

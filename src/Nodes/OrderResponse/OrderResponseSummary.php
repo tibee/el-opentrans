@@ -19,6 +19,7 @@ class OrderResponseSummary implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\AllowOrChargesFix")
      * @Serializer\SerializedName("ALLOW_OR_CHARGES_FIX")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var AllowOrChargesFix
      */

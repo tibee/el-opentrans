@@ -19,6 +19,7 @@ class OrderHeader implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\Order\OrderInfo")
      * @Serializer\SerializedName("ORDER_INFO")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var OrderInfo
      */

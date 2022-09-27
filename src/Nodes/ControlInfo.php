@@ -11,6 +11,7 @@ class ControlInfo implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("STOP_AUTOMATIC_PROCESSING")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var string
      */
@@ -20,6 +21,7 @@ class ControlInfo implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("GENERATOR_INFO")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var string
      */
@@ -29,6 +31,7 @@ class ControlInfo implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("GENERATOR_DATE")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var string
      */

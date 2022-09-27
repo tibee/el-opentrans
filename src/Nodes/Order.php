@@ -36,6 +36,7 @@ class Order implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\Order\OrderHeader")
      * @Serializer\SerializedName("ORDER_HEADER")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var OrderHeader
      */
@@ -47,6 +48,7 @@ class Order implements NodeInterface
      * @Serializer\SerializedName("ORDER_ITEM_LIST")
      * @Serializer\Type("array<Naugrim\OpenTrans\Nodes\Order\Item>")
      * @Serializer\XmlList(entry = "ORDER_ITEM")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var Item[]
      */
@@ -56,6 +58,7 @@ class Order implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\Order\OrderSummary")
      * @Serializer\SerializedName("ORDER_SUMMARY")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var OrderSummary
      */

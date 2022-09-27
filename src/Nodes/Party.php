@@ -24,6 +24,7 @@ class Party implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\PartyRole")
      * @Serializer\SerializedName ("PARTY_ROLE")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var PartyRole
      */
@@ -33,6 +34,7 @@ class Party implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\Address")
      * @Serializer\SerializedName ("ADDRESS")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var Address
      */
@@ -42,6 +44,8 @@ class Party implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\Account")
      * @Serializer\SerializedName("ACCOUNT")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
+     *
      * @var Account
      */
     protected $account;

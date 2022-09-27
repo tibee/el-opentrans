@@ -16,6 +16,7 @@ class OrderChangeInfo implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("ORDER_ID")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var string
      */
@@ -25,6 +26,7 @@ class OrderChangeInfo implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("ORDERCHANGE_DATE")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var string
      */
@@ -34,6 +36,7 @@ class OrderChangeInfo implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("ORDERCHANGE_SEQUENCE_ID")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var int
      */
@@ -45,6 +48,7 @@ class OrderChangeInfo implements NodeInterface
      * @Serializer\SerializedName("PARTIES")
      * @Serializer\Type("array<Naugrim\OpenTrans\Nodes\Party>")
      * @Serializer\XmlList(entry = "PARTY")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var Party[]
      */
@@ -54,6 +58,7 @@ class OrderChangeInfo implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\Order\PartiesReference")
      * @Serializer\SerializedName("ORDER_PARTIES_REFERENCE")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var PartiesReference
      */

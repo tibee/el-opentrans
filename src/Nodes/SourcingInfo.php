@@ -12,6 +12,7 @@ class SourcingInfo implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("QUOTATION_ID")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var string
      */
@@ -21,6 +22,7 @@ class SourcingInfo implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\Agreement")
      * @Serializer\SerializedName("AGREEMENT")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var Agreement
      */
@@ -30,6 +32,7 @@ class SourcingInfo implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\Catalog\Reference")
      * @Serializer\SerializedName("CATALOG_REFERENCE")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var Reference
      */

@@ -38,6 +38,7 @@ class Mime implements NodeInterface
      * @Serializer\SerializedName("FILE_HASH_VALUE")
      * @Serializer\Type("array<Naugrim\OpenTrans\Nodes\File\HashValue>")
      * @Serializer\XmlList(inline = true)
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var HashValue[]
      */
@@ -49,6 +50,7 @@ class Mime implements NodeInterface
      * @Serializer\SerializedName("MIME_EMBEDDED")
      * @Serializer\Type("array<Naugrim\OpenTrans\Nodes\Mime\Embedded>")
      * @Serializer\XmlList(entry = "MIME_EMBEDDED")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var Embedded[]
      */
@@ -58,7 +60,7 @@ class Mime implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("MIME_DESCR")
-     * @Serializer\XmlElement(namespace="http://www.bmecat.org/bmecat/2005")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.bmecat.org/bmecat/2005")
      *
      * @var string
      */
@@ -68,6 +70,7 @@ class Mime implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("MIME_ALT")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var string
      */
@@ -77,6 +80,7 @@ class Mime implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("MIME_PURPOSE")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var string
      */
@@ -86,6 +90,7 @@ class Mime implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("int")
      * @Serializer\SerializedName("MIME_ORDER")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var int
      */

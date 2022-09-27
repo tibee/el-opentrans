@@ -18,6 +18,7 @@ class OrderChangeHeader implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\OrderChange\OrderChangeInfo")
      * @Serializer\SerializedName("ORDERCHANGE_INFO")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var OrderChangeInfo
      */

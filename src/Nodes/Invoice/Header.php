@@ -18,6 +18,7 @@ class Header implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\Invoice\Info")
      * @Serializer\SerializedName("INVOICE_INFO")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var Info
      */
@@ -27,6 +28,7 @@ class Header implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\Order\History")
      * @Serializer\SerializedName("ORDER_HISTORY")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var History
      */

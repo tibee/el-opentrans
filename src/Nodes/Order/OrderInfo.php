@@ -16,6 +16,7 @@ class OrderInfo implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("ORDER_ID")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var string
      */
@@ -25,6 +26,7 @@ class OrderInfo implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("ORDER_DATE")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var string
      */
@@ -34,6 +36,7 @@ class OrderInfo implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\DeliveryDate")
      * @Serializer\SerializedName("DELIVERY_DATE")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var DeliveryDate
      */
@@ -43,6 +46,7 @@ class OrderInfo implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("LANGUAGE")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var string
      */
@@ -53,6 +57,7 @@ class OrderInfo implements NodeInterface
      * @Serializer\SerializedName("PARTIES")
      * @Serializer\Type("array<Naugrim\OpenTrans\Nodes\Party>")
      * @Serializer\XmlList(entry = "PARTY")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var Party[]
      */
@@ -62,6 +67,7 @@ class OrderInfo implements NodeInterface
      * @Serializer\Expose
      * @Serializer\SerializedName("CUSTOMER_ORDER_REFERENCE")
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\Order\CustomerOrderReference")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var CustomerOrderReference
      */
@@ -71,6 +77,7 @@ class OrderInfo implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\Order\PartiesReference")
      * @Serializer\SerializedName("ORDER_PARTIES_REFERENCE")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var PartiesReference
      */
@@ -80,6 +87,7 @@ class OrderInfo implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("bool")
      * @Serializer\SerializedName("PARTIAL_SHIPMENT_ALLOWED")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var boolean
      */

@@ -11,6 +11,8 @@ class Account implements NodeInterface
      * @Serializer\Expose
      * @Serializer\SerializedName("HOLDER")
      * @Serializer\Type("string")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.opentrans.org/XMLSchema/2.1")
+     *
      * @var string
      */
     protected $holder;
@@ -19,6 +21,8 @@ class Account implements NodeInterface
      * @Serializer\Expose
      * @Serializer\SerializedName("BANK_ACCOUNT")
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\BankAccount")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
+     *
      * @var BankAccount
      */
     protected $bankAccount;
@@ -27,20 +31,30 @@ class Account implements NodeInterface
      * @Serializer\Expose
      * @Serializer\SerializedName("BANK_CODE")
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\BankCode")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
+     *
      * @var BankCode
      */
     protected $bankCode;
 
     /**
+     * @Serializer\Expose
      * @Serializer\SerializedName("BANK_NAME")
+     * @Serializer\Type("string")
      * @Serializer\XmlValue
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.opentrans.org/XMLSchema/2.1")
+     *
      * @var string
      */
     protected $bankName;
 
     /**
+     * @Serializer\Expose
      * @Serializer\SerializedName("BANK_COUNTRY")
+     * @Serializer\Type("string")
      * @Serializer\XmlValue
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.opentrans.org/XMLSchema/2.1")
+     *
      * @var string
      */
     protected $bankCountry;

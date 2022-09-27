@@ -11,6 +11,7 @@ class AllowOrChargeValue implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("float")
      * @Serializer\SerializedName("AOC_PERCENTAGE_FACTOR")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var float
      */
@@ -20,6 +21,7 @@ class AllowOrChargeValue implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("float")
      * @Serializer\SerializedName("AOC_MONETARY_AMOUNT")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var float
      */
@@ -29,6 +31,7 @@ class AllowOrChargeValue implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\AocOrderUnitsCount")
      * @Serializer\SerializedName("AOC_ORDER_UNITS_COUNT")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var AocOrderUnitsCount
      */
@@ -38,6 +41,7 @@ class AllowOrChargeValue implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("AOC_ADDITIONAL_ITEMS")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var string
      */

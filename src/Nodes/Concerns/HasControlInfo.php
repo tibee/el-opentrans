@@ -12,6 +12,7 @@ trait HasControlInfo
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\ControlInfo")
      * @Serializer\SerializedName("CONTROL_INFO")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var ControlInfo
      */

@@ -83,6 +83,7 @@ class Agreement implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("AGREEMENT_DESCR")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var string
      */
@@ -94,6 +95,7 @@ class Agreement implements NodeInterface
      * @Serializer\SerializedName("MIME_INFO")
      * @Serializer\Type("array<Naugrim\OpenTrans\Nodes\Mime>")
      * @Serializer\XmlList(entry = "MIME")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var Mime[]
      */

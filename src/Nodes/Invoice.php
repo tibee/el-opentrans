@@ -27,6 +27,7 @@ class Invoice implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\Invoice\Header")
      * @Serializer\SerializedName("INVOICE_HEADER")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var Header
      */
@@ -38,6 +39,7 @@ class Invoice implements NodeInterface
      * @Serializer\SerializedName("INVOICE_ITEM_LIST")
      * @Serializer\Type("array<Naugrim\OpenTrans\Nodes\Invoice\Item>")
      * @Serializer\XmlList(entry = "INVOICE_ITEM")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var Item[]
      */
@@ -47,6 +49,7 @@ class Invoice implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\Invoice\Summary")
      * @Serializer\SerializedName("INVOICE_SUMMARY")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var Summary
      */

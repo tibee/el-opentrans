@@ -17,6 +17,7 @@ class OrderResponseHeader implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\OrderResponse\OrderResponseInfo")
      * @Serializer\SerializedName("ORDERRESPONSE_INFO")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var OrderResponseInfo
      */

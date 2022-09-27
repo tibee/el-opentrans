@@ -47,6 +47,7 @@ class Address implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\Contact\Details")
      * @Serializer\SerializedName("CONTACT_DETAILS")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var Details
      */

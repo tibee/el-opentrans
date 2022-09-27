@@ -14,6 +14,7 @@ class Embedded implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\Mime\Data")
      * @Serializer\SerializedName("MIME_DATA")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var Data
      */
@@ -23,6 +24,7 @@ class Embedded implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("FILE_NAME")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var string
      */
@@ -32,6 +34,7 @@ class Embedded implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("int")
      * @Serializer\SerializedName("FILE_SIZE")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var int
      */

@@ -16,6 +16,7 @@ class Info implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("INVOICE_ID")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var string
      */
@@ -25,6 +26,7 @@ class Info implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("INVOICE_DATE")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var string
      */
@@ -34,6 +36,7 @@ class Info implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\DeliveryDate")
      * @Serializer\SerializedName("DELIVERY_DATE")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var DeliveryDate
      */
@@ -45,6 +48,7 @@ class Info implements NodeInterface
      * @Serializer\SerializedName("PARTIES")
      * @Serializer\Type("array<Naugrim\OpenTrans\Nodes\Party>")
      * @Serializer\XmlList(entry = "PARTY")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var Party[]
      */
@@ -54,6 +58,7 @@ class Info implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("INVOICE_ISSUER_IDREF")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var string
      */
@@ -63,6 +68,7 @@ class Info implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("INVOICE_RECIPIENT_IDREF")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var string
      */
@@ -72,7 +78,7 @@ class Info implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("CURRENCY")
-     * @Serializer\XmlElement(namespace="http://www.bmecat.org/bmecat/2005")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.bmecat.org/bmecat/2005")
      *
      * @var string
      */

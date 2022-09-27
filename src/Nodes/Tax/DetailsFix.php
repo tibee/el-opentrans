@@ -11,6 +11,7 @@ class DetailsFix implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("int")
      * @Serializer\SerializedName("CALCULATION_SEQUENCE")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var int
      */
@@ -20,6 +21,7 @@ class DetailsFix implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("TAX_CATEGORY")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var string
      */
@@ -29,6 +31,7 @@ class DetailsFix implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("TAX_TYPE")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var string
      */
@@ -38,6 +41,7 @@ class DetailsFix implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("float")
      * @Serializer\SerializedName("TAX")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var float
      */
@@ -47,6 +51,7 @@ class DetailsFix implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("float")
      * @Serializer\SerializedName("TAX_AMOUNT")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var float
      */
@@ -56,6 +61,7 @@ class DetailsFix implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("float")
      * @Serializer\SerializedName("TAX_BASE")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var float
      */
@@ -65,6 +71,7 @@ class DetailsFix implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("EXEMPTION_REASON")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var string
      */
@@ -74,6 +81,7 @@ class DetailsFix implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("JURISDICTION")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var string
      */

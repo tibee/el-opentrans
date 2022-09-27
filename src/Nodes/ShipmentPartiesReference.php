@@ -11,6 +11,7 @@ class ShipmentPartiesReference implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\DeliveryIdRef")
      * @Serializer\SerializedName("INVOICE_RECIPIENT_IDREF")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var DeliveryIdRef
      */
@@ -20,6 +21,7 @@ class ShipmentPartiesReference implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\FinalDeliveryIdRef")
      * @Serializer\SerializedName("FINAL_DELIVERY_IDREF")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var FinalDeliveryIdRef
      */
@@ -29,6 +31,7 @@ class ShipmentPartiesReference implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\DelivererIdRef")
      * @Serializer\SerializedName("DELIVERER_IDREF")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var DelivererIdRef
      */

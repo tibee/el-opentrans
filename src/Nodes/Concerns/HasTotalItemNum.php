@@ -11,6 +11,7 @@ trait HasTotalItemNum
      * @Serializer\Expose
      * @Serializer\SerializedName("TOTAL_ITEM_NUM")
      * @Serializer\Type("int")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var int
      */

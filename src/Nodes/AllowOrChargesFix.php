@@ -11,6 +11,7 @@ class AllowOrChargesFix implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\AllowOrCharge")
      * @Serializer\SerializedName("ALLOW_OR_CHARGE")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var AllowOrCharge
      */
@@ -20,6 +21,7 @@ class AllowOrChargesFix implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("float")
      * @Serializer\SerializedName("ALLOW_OR_CHARGES_TOTAL_AMOUNT")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var float
      */

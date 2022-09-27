@@ -27,6 +27,7 @@ class OrderChange implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\OrderChange\OrderChangeHeader")
      * @Serializer\SerializedName("ORDERCHANGE_HEADER")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var OrderChangeHeader
      */
@@ -38,6 +39,7 @@ class OrderChange implements NodeInterface
      * @Serializer\SerializedName("ORDERCHANGE_ITEM_LIST")
      * @Serializer\Type("array<Naugrim\OpenTrans\Nodes\Order\Item>")
      * @Serializer\XmlList(entry = "ORDER_ITEM")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var Item[]
      */
@@ -47,6 +49,7 @@ class OrderChange implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\Order\OrderSummary")
      * @Serializer\SerializedName("ORDERCHANGE_SUMMARY")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var OrderSummary
      */

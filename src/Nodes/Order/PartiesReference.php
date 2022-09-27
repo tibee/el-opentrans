@@ -35,6 +35,7 @@ class PartiesReference implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\InvoiceRcptIdRef")
      * @Serializer\SerializedName("INVOICE_RECIPIENT_IDREF")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var InvoiceRcptIdRef
      */
@@ -44,6 +45,7 @@ class PartiesReference implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\ShipmentPartiesReference")
      * @Serializer\SerializedName("SHIPMENT_PARTIES_REFERENCE")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var ShipmentPartiesReference
      */

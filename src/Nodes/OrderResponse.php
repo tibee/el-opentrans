@@ -27,6 +27,7 @@ class OrderResponse implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\OrderResponse\OrderResponseHeader")
      * @Serializer\SerializedName("ORDERRESPONSE_HEADER")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var OrderResponseHeader
      */
@@ -38,6 +39,7 @@ class OrderResponse implements NodeInterface
      * @Serializer\SerializedName("ORDERRESPONSE_ITEM_LIST")
      * @Serializer\Type("array<Naugrim\OpenTrans\Nodes\OrderResponse\Item>")
      * @Serializer\XmlList(entry = "ORDERRESPONSE_ITEM")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var Item[]
      */
@@ -47,6 +49,7 @@ class OrderResponse implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\OrderResponse\OrderResponseSummary")
      * @Serializer\SerializedName("ORDERRESPONSE_SUMMARY")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var OrderResponseSummary
      */

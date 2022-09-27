@@ -8,20 +8,23 @@ class Udx implements UdxInterface
 {
     /**
      * @Serializer\Exclude
+     *
      * @var string
      */
     protected $vendor;
 
     /**
      * @Serializer\Exclude
+     *
      * @var string
      */
     protected $name;
 
     /**
-     * @var string
      * @Serializer\Type("string")
      * @Serializer\Inline
+     *
+     * @var string
      */
     protected $value;
 

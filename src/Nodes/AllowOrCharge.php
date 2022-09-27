@@ -14,6 +14,7 @@ class AllowOrCharge implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("int")
      * @Serializer\SerializedName("ALLOW_OR_CHARGE_SEQUENCE")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var int
      */
@@ -23,6 +24,7 @@ class AllowOrCharge implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("ALLOW_OR_CHARGE_NAME")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var string
      */
@@ -32,6 +34,7 @@ class AllowOrCharge implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("ALLOW_OR_CHARGE_TYPE")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var string
      */
@@ -41,6 +44,7 @@ class AllowOrCharge implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("ALLOW_OR_CHARGE_DESCR")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var string
      */
@@ -50,6 +54,7 @@ class AllowOrCharge implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\AllowOrChargeValue")
      * @Serializer\SerializedName("ALLOW_OR_CHARGE_VALUE")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var AllowOrChargeValue
      */
@@ -59,6 +64,7 @@ class AllowOrCharge implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("float")
      * @Serializer\SerializedName("ALLOW_OR_CHARGE_BASE")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var float
      */

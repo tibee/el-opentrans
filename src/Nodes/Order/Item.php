@@ -17,6 +17,7 @@ class Item implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("string")
      * @Serializer\SerializedName("LINE_ITEM_ID")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var string
      */
@@ -26,6 +27,7 @@ class Item implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\ProductId")
      * @Serializer\SerializedName("PRODUCT_ID")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var ProductId
      */
@@ -35,6 +37,7 @@ class Item implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("float")
      * @Serializer\SerializedName("QUANTITY")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var float
      */
@@ -54,6 +57,7 @@ class Item implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("bool")
      * @Serializer\SerializedName("PARTIAL_SHIPMENT_ALLOWED")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var boolean
      */
@@ -63,6 +67,7 @@ class Item implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\DeliveryDate")
      * @Serializer\SerializedName("DELIVERY_DATE")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var DeliveryDate
      */
@@ -72,6 +77,7 @@ class Item implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\Product\PriceFix")
      * @Serializer\SerializedName("PRODUCT_PRICE_FIX")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var PriceFix
      */
@@ -81,6 +87,7 @@ class Item implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("float")
      * @Serializer\SerializedName("PRICE_LINE_AMOUNT")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var float
      */
@@ -90,6 +97,7 @@ class Item implements NodeInterface
      * @Serializer\Expose
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\Order\CustomerOrderReference")
      * @Serializer\SerializedName("CUSTOMER_ORDER_REFERENCE")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var CustomerOrderReference
      */

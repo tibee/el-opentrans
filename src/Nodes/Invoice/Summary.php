@@ -23,6 +23,7 @@ class Summary implements NodeInterface
      * @Serializer\Expose
      * @Serializer\SerializedName("NET_VALUE_GOODS")
      * @Serializer\Type("float")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var float
      */
@@ -33,6 +34,7 @@ class Summary implements NodeInterface
      * @Serializer\SerializedName("TOTAL_TAX")
      * @Serializer\Type("array<Naugrim\OpenTrans\Nodes\Tax\DetailsFix>")
      * @Serializer\XmlList(entry = "TAX_DETAILS_FIX")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var DetailsFix[]
      */
