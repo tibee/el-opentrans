@@ -1662,6 +1662,7 @@
 			<xsd:enumeration value="PA"/>
 			<xsd:enumeration value="PAL"/>
 			<xsd:enumeration value="PB"/>
+			<xsd:enumeration value="PCE"/>
 			<xsd:enumeration value="PD"/>
 			<xsd:enumeration value="PE"/>
 			<xsd:enumeration value="PF"/>
@@ -5846,7 +5847,7 @@
 				<xsd:element ref="PARTY_ID" minOccurs="0" maxOccurs="unbounded"/>
 				<xsd:element ref="PARTY_ROLE" minOccurs="0" maxOccurs="unbounded"/>
 				<xsd:element ref="ADDRESS" minOccurs="0"/>
-				<xsd:element ref="MIME_INFO" minOccurs="0"/>
+				<xsd:element ref="MIME_INFO" minOccurs="1"/>
 			</xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>
