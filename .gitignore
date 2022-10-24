@@ -3,3 +3,5 @@
 vendor
 /composer.lock
 /.phpunit.result.cache
+src/.DS_Store
+.DS_Store

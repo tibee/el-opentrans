@@ -2134,7 +2134,7 @@ Fraunhofer IAO und Universität Duisburg-Essen BLI gewähren Ihnen hiermit das d
 	<xsd:element name="PARTY">
 		<xsd:complexType>
 			<xsd:sequence>
-				<xsd:element ref="bmecat:PARTY_ID" maxOccurs="unbounded"/>
+				<xsd:element ref="bmecat:PARTY_ID" minOccurs="0" maxOccurs="unbounded"/>
 				<xsd:element ref="PARTY_ROLE" minOccurs="0" maxOccurs="unbounded"/>
 				<xsd:element ref="ADDRESS" minOccurs="0" maxOccurs="unbounded"/>
 				<xsd:element ref="ACCOUNT" minOccurs="0" maxOccurs="unbounded"/>
