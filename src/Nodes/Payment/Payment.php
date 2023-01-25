@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Naugrim\OpenTrans\Nodes\Payment;
 
 use DateTimeInterface;
@@ -15,6 +17,7 @@ class Payment implements NodeInterface
     /**
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\Payment\Card")
      * @Serializer\SerializedName("CARD")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var Card|null
      */
@@ -23,6 +26,8 @@ class Payment implements NodeInterface
     /**
      * @Serializer\Type("array<Naugrim\OpenTrans\Nodes\Account>")
      * @Serializer\XmlList(entry = "ACCOUNT", inline = true)
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
+     *
      * @var Account[]|null
      */
     private $accounts;
@@ -30,6 +35,7 @@ class Payment implements NodeInterface
     /**
      * @Serializer\Type("boolean")
      * @Serializer\SerializedName("CASH")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var bool|null
      */
@@ -38,6 +44,7 @@ class Payment implements NodeInterface
     /**
      * @Serializer\Type("boolean")
      * @Serializer\SerializedName("DEBIT")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var bool|null
      */
@@ -46,6 +53,7 @@ class Payment implements NodeInterface
     /**
      * @Serializer\Type("boolean")
      * @Serializer\SerializedName("CHECK")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var bool|null
      */
@@ -73,23 +81,23 @@ class Payment implements NodeInterface
         string $cardNumber,
         string $cardHolder,
         DateTimeInterface $expDate
-    ): Payment {
-        return (new Payment())->setCard(Card::create($cartType, $cardNumber, $cardHolder, $expDate));
+    ): self {
+        return (new self())->setCard(Card::create($cartType, $cardNumber, $cardHolder, $expDate));
     }
 
-    public static function createCashPayment(): Payment
+    public static function createCashPayment(): self
     {
-        return (new Payment())->setCash(true);
+        return (new self())->setCash(true);
     }
 
-    public static function createDebitPayment(): Payment
+    public static function createDebitPayment(): self
     {
-        return (new Payment())->setDebit(true);
+        return (new self())->setDebit(true);
     }
 
-    public static function createCheckPayment(): Payment
+    public static function createCheckPayment(): self
     {
-        return (new Payment())->setCheck(true);
+        return (new self())->setCheck(true);
     }
 
     public static function createIbanPayment(
@@ -98,8 +106,7 @@ class Payment implements NodeInterface
         string $bankName,
         string $bic,
         string $country
-    ): Payment
-    {
+    ): self {
         $bankAccount = new BankAccount();
         $bankAccount->setType(BankAccount::TYPE_IBAN);
         $bankAccount->setValue($iban);
@@ -108,7 +115,7 @@ class Payment implements NodeInterface
         $bankCode->setType(BankCode::TYPE_BIC);
         $bankCode->setValue($bic);
 
-        return (new Payment())->addAccount(
+        return (new self())->addAccount(
             (new Account())
                 ->setBankAccount($bankAccount)
                 ->setHolder($accountHolder)
@@ -123,7 +130,7 @@ class Payment implements NodeInterface
         return $this->card;
     }
 
-    public function setCard(Card $card): Payment
+    public function setCard(Card $card): self
     {
         $this->card = $card;
         $this->check = $this->debit = $this->cash = $this->accounts = null;
@@ -141,16 +148,18 @@ class Payment implements NodeInterface
 
     /**
      * @param Account[] $accounts
-     * @return Payment
+     *
+     * @return $this
      */
-    public function setAccounts(array $accounts): Payment
+    public function setAccounts(array $accounts): self
     {
         if (empty($accounts)) {
             return $this;
         }
 
         foreach ($accounts as $account) {
-            if (!$account instanceof Account) {
+            if (! $account instanceof Account) {
+                /** @var Account $account */
                 $account = NodeBuilder::fromArray($account, new Account());
             }
             $this->addAccount($account);
@@ -159,9 +168,9 @@ class Payment implements NodeInterface
         return $this;
     }
 
-    public function addAccount(Account $account): Payment
+    public function addAccount(Account $account): self
     {
-        if (null === $this->accounts) {
+        if ($this->accounts === null) {
             $this->accounts = [];
         }
 
@@ -173,10 +182,10 @@ class Payment implements NodeInterface
 
     public function isCash(): bool
     {
-        return (bool)$this->cash;
+        return (bool) $this->cash;
     }
 
-    public function setCash(bool $cash): Payment
+    public function setCash(bool $cash): self
     {
         $this->cash = $cash;
         $this->debit = $this->check = $this->card = $this->accounts = null;
@@ -186,10 +195,10 @@ class Payment implements NodeInterface
 
     public function isDebit(): bool
     {
-        return (bool)$this->debit;
+        return (bool) $this->debit;
     }
 
-    public function setDebit(bool $debit): Payment
+    public function setDebit(bool $debit): self
     {
         $this->debit = $debit;
         $this->cash = $this->check = $this->accounts = $this->card = null;
@@ -199,10 +208,10 @@ class Payment implements NodeInterface
 
     public function isCheck(): bool
     {
-        return (bool)$this->check;
+        return (bool) $this->check;
     }
 
-    public function setCheck(bool $check): Payment
+    public function setCheck(bool $check): self
     {
         $this->check = $check;
         $this->cash = $this->debit = $this->accounts = $this->card = null;
@@ -212,10 +221,10 @@ class Payment implements NodeInterface
 
     public function isCentralRegulation(): bool
     {
-        return $this->centralRegulation;
+        return (bool) $this->centralRegulation;
     }
 
-    public function setCentralRegulation(bool $hasCentralRegulation): Payment
+    public function setCentralRegulation(bool $hasCentralRegulation): self
     {
         $this->centralRegulation = $hasCentralRegulation;
         return $this;
@@ -226,7 +235,7 @@ class Payment implements NodeInterface
         return $this->paymentTerms;
     }
 
-    public function setPaymentTerms(PaymentTerms $paymentTerms): Payment
+    public function setPaymentTerms(PaymentTerms $paymentTerms): self
     {
         $this->paymentTerms = $paymentTerms;
         return $this;

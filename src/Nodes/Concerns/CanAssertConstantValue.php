@@ -11,7 +11,7 @@ trait CanAssertConstantValue
 {
     protected static function assertValidConstant(string $value, string $constantPrefix = ''): void
     {
-        $constants = static::getClassConstants();
+        $constants = self::getClassConstants();
         if (empty($constants)) {
             return;
         }

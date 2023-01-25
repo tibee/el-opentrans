@@ -99,20 +99,13 @@ class OrderInfo implements NodeInterface
     /**
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\Payment\Payment")
      * @Serializer\SerializedName("PAYMENT")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var Payment
      */
     protected $payment;
 
     public function getOrderId(): string
-    {
-        return $this->orderId;
-    }
-
-    /**
-     * @return string
-     */
-    public function getId(): string
     {
         return $this->orderId;
     }
@@ -241,7 +234,7 @@ class OrderInfo implements NodeInterface
         return $this->payment;
     }
 
-    public function setPayment(Payment $payment): Info
+    public function setPayment(Payment $payment): self
     {
         $this->payment = $payment;
         return $this;

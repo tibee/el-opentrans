@@ -29,6 +29,9 @@
         "symplify/easy-coding-standard": "^10.1"
     },
     "scripts": {
-        "test": "vendor/bin/phpunit"
+        "test": "vendor/bin/phpunit",
+        "phpstan": "vendor/bin/phpstan",
+        "cs-check": "vendor/bin/ecs check src/",
+        "cs-fix": "vendor/bin/ecs check src/ --fix"
     }
 }

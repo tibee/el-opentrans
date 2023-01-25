@@ -312,19 +312,19 @@ class OrderTest extends TestCase
             [
                 'file' => __DIR__.'/../assets/minimal_valid_order_with_payment_account.xml',
                 'data' => [
-                    'header' => [
-                        'info' => [
-                            'id' => 'order-id-1',
-                            'date' => (new DateTimeImmutable('2020-01-27'))->format('Y-m-d'),
+                    'orderHeader' => [
+                        'orderInfo' => [
+                            'orderId' => 'order-id-1',
+                            'orderDate' => (new DateTimeImmutable('2020-01-27'))->format('Y-m-d'),
                             'parties' => [
                                 [
-                                    'id' => ['value' => 'org.de.supplier']
+                                    'partyId' => ['value' => 'org.de.supplier']
                                 ],
                                 [
-                                    'id' => ['value' => 'org.de.buyer', 'type' => 'buyer']
+                                    'partyId' => ['value' => 'org.de.buyer', 'type' => 'buyer']
                                 ],
                             ],
-                            'partiesReference' => [
+                            'orderPartiesReference' => [
                                 'buyerIdRef' => [
                                     'value' => 'org.de.buyer',
                                 ],
@@ -351,7 +351,7 @@ class OrderTest extends TestCase
                             ]
                         ]
                     ],
-                    'items' => [
+                    'orderItemList' => [
                         [
                             'lineItemId' => 'line-item-id-1',
                             'productId' => [
@@ -363,7 +363,7 @@ class OrderTest extends TestCase
                             'orderUnit' => 'C62',
                         ]
                     ],
-                    'summary' => [
+                    'orderSummary' => [
                         'totalItemNum' => 1,
                     ]
                 ]
@@ -371,19 +371,19 @@ class OrderTest extends TestCase
             [
                 'file' => __DIR__.'/../assets/minimal_valid_order_with_payment_card_amex.xml',
                 'data' => [
-                    'header' => [
-                        'info' => [
-                            'id' => 'order-id-1',
-                            'date' => (new DateTimeImmutable('2020-01-27'))->format('Y-m-d'),
+                    'orderHeader' => [
+                        'orderInfo' => [
+                            'orderId' => 'order-id-1',
+                            'orderDate' => (new DateTimeImmutable('2020-01-27'))->format('Y-m-d'),
                             'parties' => [
                                 [
-                                    'id' => ['value' => 'org.de.supplier']
+                                    'partyId' => ['value' => 'org.de.supplier']
                                 ],
                                 [
-                                    'id' => ['value' => 'org.de.buyer', 'type' => 'buyer']
+                                    'partyId' => ['value' => 'org.de.buyer', 'type' => 'buyer']
                                 ],
                             ],
-                            'partiesReference' => [
+                            'orderPartiesReference' => [
                                 'buyerIdRef' => [
                                     'value' => 'org.de.buyer',
                                 ],
@@ -401,7 +401,7 @@ class OrderTest extends TestCase
                             ]
                         ]
                     ],
-                    'items' => [
+                    'orderItemList' => [
                         [
                             'lineItemId' => 'line-item-id-1',
                             'productId' => [
@@ -413,7 +413,7 @@ class OrderTest extends TestCase
                             'orderUnit' => 'C62',
                         ]
                     ],
-                    'summary' => [
+                    'orderSummary' => [
                         'totalItemNum' => 1,
                     ]
                 ]
@@ -421,19 +421,19 @@ class OrderTest extends TestCase
             [
                 'file' => __DIR__.'/../assets/minimal_valid_order_with_payment_debit.xml',
                 'data' => [
-                    'header' => [
-                        'info' => [
-                            'id' => 'order-id-1',
-                            'date' => (new DateTimeImmutable('2020-01-27'))->format('Y-m-d'),
+                    'orderHeader' => [
+                        'orderInfo' => [
+                            'orderId' => 'order-id-1',
+                            'orderDate' => (new DateTimeImmutable('2020-01-27'))->format('Y-m-d'),
                             'parties' => [
                                 [
-                                    'id' => ['value' => 'org.de.supplier']
+                                    'partyId' => ['value' => 'org.de.supplier']
                                 ],
                                 [
-                                    'id' => ['value' => 'org.de.buyer', 'type' => 'buyer']
+                                    'partyId' => ['value' => 'org.de.buyer', 'type' => 'buyer']
                                 ],
                             ],
-                            'partiesReference' => [
+                            'orderPartiesReference' => [
                                 'buyerIdRef' => [
                                     'value' => 'org.de.buyer',
                                 ],
@@ -446,7 +446,7 @@ class OrderTest extends TestCase
                             ]
                         ]
                     ],
-                    'items' => [
+                    'orderItemList' => [
                         [
                             'lineItemId' => 'line-item-id-1',
                             'productId' => [
@@ -458,7 +458,7 @@ class OrderTest extends TestCase
                             'orderUnit' => 'C62',
                         ]
                     ],
-                    'summary' => [
+                    'orderSummary' => [
                         'totalItemNum' => 1,
                     ]
                 ]
@@ -466,19 +466,19 @@ class OrderTest extends TestCase
             [
                 'file' => __DIR__.'/../assets/minimal_valid_order_with_payment_cash.xml',
                 'data' => [
-                    'header' => [
-                        'info' => [
-                            'id' => 'order-id-1',
-                            'date' => (new DateTimeImmutable('2020-01-27'))->format('Y-m-d'),
+                    'orderHeader' => [
+                        'orderInfo' => [
+                            'orderId' => 'order-id-1',
+                            'orderDate' => (new DateTimeImmutable('2020-01-27'))->format('Y-m-d'),
                             'parties' => [
                                 [
-                                    'id' => ['value' => 'org.de.supplier']
+                                    'partyId' => ['value' => 'org.de.supplier']
                                 ],
                                 [
-                                    'id' => ['value' => 'org.de.buyer', 'type' => 'buyer']
+                                    'partyId' => ['value' => 'org.de.buyer', 'type' => 'buyer']
                                 ],
                             ],
-                            'partiesReference' => [
+                            'orderPartiesReference' => [
                                 'buyerIdRef' => [
                                     'value' => 'org.de.buyer',
                                 ],
@@ -491,7 +491,7 @@ class OrderTest extends TestCase
                             ]
                         ]
                     ],
-                    'items' => [
+                    'orderItemList' => [
                         [
                             'lineItemId' => 'line-item-id-1',
                             'productId' => [
@@ -503,7 +503,7 @@ class OrderTest extends TestCase
                             'orderUnit' => 'C62',
                         ]
                     ],
-                    'summary' => [
+                    'orderSummary' => [
                         'totalItemNum' => 1,
                     ]
                 ]
@@ -511,19 +511,19 @@ class OrderTest extends TestCase
             [
                 'file' => __DIR__.'/../assets/minimal_valid_order_with_payment_check.xml',
                 'data' => [
-                    'header' => [
-                        'info' => [
-                            'id' => 'order-id-1',
-                            'date' => (new DateTimeImmutable('2020-01-27'))->format('Y-m-d'),
+                    'orderHeader' => [
+                        'orderInfo' => [
+                            'orderId' => 'order-id-1',
+                            'orderDate' => (new DateTimeImmutable('2020-01-27'))->format('Y-m-d'),
                             'parties' => [
                                 [
-                                    'id' => ['value' => 'org.de.supplier']
+                                    'partyId' => ['value' => 'org.de.supplier']
                                 ],
                                 [
-                                    'id' => ['value' => 'org.de.buyer', 'type' => 'buyer']
+                                    'partyId' => ['value' => 'org.de.buyer', 'type' => 'buyer']
                                 ],
                             ],
-                            'partiesReference' => [
+                            'orderPartiesReference' => [
                                 'buyerIdRef' => [
                                     'value' => 'org.de.buyer',
                                 ],
@@ -536,7 +536,7 @@ class OrderTest extends TestCase
                             ]
                         ]
                     ],
-                    'items' => [
+                    'orderItemList' => [
                         [
                             'lineItemId' => 'line-item-id-1',
                             'productId' => [
@@ -548,7 +548,7 @@ class OrderTest extends TestCase
                             'orderUnit' => 'C62',
                         ]
                     ],
-                    'summary' => [
+                    'orderSummary' => [
                         'totalItemNum' => 1,
                     ]
                 ]
