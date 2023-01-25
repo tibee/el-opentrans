@@ -206,9 +206,6 @@ class OrderInfo implements NodeInterface
         return $this->language;
     }
 
-    /**
-     * @return OrderInfo
-     */
     public function setLanguage(string $language): self
     {
         $this->language = $language;
@@ -220,9 +217,6 @@ class OrderInfo implements NodeInterface
         return $this->customerOrderReference;
     }
 
-    /**
-     * @return OrderInfo
-     */
     public function setCustomerOrderReference(CustomerOrderReference $customerOrderReference): self
     {
         $this->customerOrderReference = $customerOrderReference;
