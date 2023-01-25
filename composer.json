@@ -27,5 +27,8 @@
         "symplify/easy-coding-standard": "^10.1",
         "enlightn/security-checker": "^1.10",
         "phpstan/phpstan": "^1.8"
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
     }
 }

@@ -9,9 +9,9 @@ use ReflectionClass;
 
 trait CanAssertConstantValue
 {
-    protected function assertValidConstant(string $value, string $constantPrefix = ''): void
+    protected static function assertValidConstant(string $value, string $constantPrefix = ''): void
     {
-        $constants = $this->getClassConstants();
+        $constants = static::getClassConstants();
         if (empty($constants)) {
             return;
         }
@@ -34,14 +34,8 @@ trait CanAssertConstantValue
     /**
      * @return array<string,string>
      */
-    private function getClassConstants(): array
+    private static function getClassConstants(): array
     {
-        static $constants;
-        if ($constants === null) {
-            $reflection = new ReflectionClass(static::class);
-            $constants = $reflection->getConstants();
-        }
-
-        return $constants;
+        return (new ReflectionClass(static::class))->getConstants();
     }
 }

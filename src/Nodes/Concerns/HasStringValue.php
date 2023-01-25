@@ -10,7 +10,7 @@ use Naugrim\BMEcat\Nodes\Contracts\NodeInterface;
 trait HasStringValue
 {
     /**
-     * @Serializer\XmlValue
+     * @Serializer\XmlValue()
      * @Serializer\Type("string")
      *
      * @var string
