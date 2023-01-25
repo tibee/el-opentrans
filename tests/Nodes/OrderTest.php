@@ -2,6 +2,7 @@
 
 namespace Naugrim\OpenTrans\Tests\Nodes;
 
+use DateTime;
 use DateTimeImmutable;
 use JMS\Serializer\SerializerInterface;
 use Naugrim\BMEcat\Builder\NodeBuilder;
@@ -288,6 +289,250 @@ class OrderTest extends TestCase
                                 'supplierIdRef' => [
                                     'value' => 'org.de.buyer',
                                 ],
+                            ]
+                        ]
+                    ],
+                    'orderItemList' => [
+                        [
+                            'lineItemId' => 'line-item-id-1',
+                            'productId' => [
+                                'supplierPid' => [
+                                    'value' => 'product-number-1'
+                                ]
+                            ],
+                            'quantity' => 10,
+                            'orderUnit' => 'C62',
+                        ]
+                    ],
+                    'orderSummary' => [
+                        'totalItemNum' => 1,
+                    ]
+                ]
+            ],
+            [
+                'file' => __DIR__.'/../assets/minimal_valid_order_with_payment_account.xml',
+                'data' => [
+                    'orderHeader' => [
+                        'orderInfo' => [
+                            'orderId' => 'order-id-1',
+                            'orderDate' => (new DateTimeImmutable('2020-01-27'))->format('Y-m-d'),
+                            'parties' => [
+                                [
+                                    'partyId' => ['value' => 'org.de.supplier']
+                                ],
+                                [
+                                    'partyId' => ['value' => 'org.de.buyer', 'type' => 'buyer']
+                                ],
+                            ],
+                            'orderPartiesReference' => [
+                                'buyerIdRef' => [
+                                    'value' => 'org.de.buyer',
+                                ],
+                                'supplierIdRef' => [
+                                    'value' => 'org.de.buyer',
+                                ],
+                            ],
+                            'payment' => [
+                                'accounts' => [
+                                    [
+                                        'bankAccount' => [
+                                            'type' => 'iban',
+                                            'value' => 'DE12345678900000'
+                                        ],
+                                        'bankCode' => [
+                                            'type' => 'bic',
+                                            'value' => 'ABCDEF00',
+                                        ],
+                                        'holder' => 'me',
+                                        'bankCountry' => 'DE',
+                                        'bankName' => 'Testbank',
+                                    ]
+                                ]
+                            ]
+                        ]
+                    ],
+                    'orderItemList' => [
+                        [
+                            'lineItemId' => 'line-item-id-1',
+                            'productId' => [
+                                'supplierPid' => [
+                                    'value' => 'product-number-1'
+                                ]
+                            ],
+                            'quantity' => 10,
+                            'orderUnit' => 'C62',
+                        ]
+                    ],
+                    'orderSummary' => [
+                        'totalItemNum' => 1,
+                    ]
+                ]
+            ],
+            [
+                'file' => __DIR__.'/../assets/minimal_valid_order_with_payment_card_amex.xml',
+                'data' => [
+                    'orderHeader' => [
+                        'orderInfo' => [
+                            'orderId' => 'order-id-1',
+                            'orderDate' => (new DateTimeImmutable('2020-01-27'))->format('Y-m-d'),
+                            'parties' => [
+                                [
+                                    'partyId' => ['value' => 'org.de.supplier']
+                                ],
+                                [
+                                    'partyId' => ['value' => 'org.de.buyer', 'type' => 'buyer']
+                                ],
+                            ],
+                            'orderPartiesReference' => [
+                                'buyerIdRef' => [
+                                    'value' => 'org.de.buyer',
+                                ],
+                                'supplierIdRef' => [
+                                    'value' => 'org.de.buyer',
+                                ],
+                            ],
+                            'payment' => [
+                                'card' => [
+                                    'type' => 'AmericanExpress',
+                                    'number' => '123456789',
+                                    'holder' => 'me',
+                                    'expDate' => new DateTime('2025-01'),
+                                ]
+                            ]
+                        ]
+                    ],
+                    'orderItemList' => [
+                        [
+                            'lineItemId' => 'line-item-id-1',
+                            'productId' => [
+                                'supplierPid' => [
+                                    'value' => 'product-number-1'
+                                ]
+                            ],
+                            'quantity' => 10,
+                            'orderUnit' => 'C62',
+                        ]
+                    ],
+                    'orderSummary' => [
+                        'totalItemNum' => 1,
+                    ]
+                ]
+            ],
+            [
+                'file' => __DIR__.'/../assets/minimal_valid_order_with_payment_debit.xml',
+                'data' => [
+                    'orderHeader' => [
+                        'orderInfo' => [
+                            'orderId' => 'order-id-1',
+                            'orderDate' => (new DateTimeImmutable('2020-01-27'))->format('Y-m-d'),
+                            'parties' => [
+                                [
+                                    'partyId' => ['value' => 'org.de.supplier']
+                                ],
+                                [
+                                    'partyId' => ['value' => 'org.de.buyer', 'type' => 'buyer']
+                                ],
+                            ],
+                            'orderPartiesReference' => [
+                                'buyerIdRef' => [
+                                    'value' => 'org.de.buyer',
+                                ],
+                                'supplierIdRef' => [
+                                    'value' => 'org.de.buyer',
+                                ],
+                            ],
+                            'payment' => [
+                                'debit' => true
+                            ]
+                        ]
+                    ],
+                    'orderItemList' => [
+                        [
+                            'lineItemId' => 'line-item-id-1',
+                            'productId' => [
+                                'supplierPid' => [
+                                    'value' => 'product-number-1'
+                                ]
+                            ],
+                            'quantity' => 10,
+                            'orderUnit' => 'C62',
+                        ]
+                    ],
+                    'orderSummary' => [
+                        'totalItemNum' => 1,
+                    ]
+                ]
+            ],
+            [
+                'file' => __DIR__.'/../assets/minimal_valid_order_with_payment_cash.xml',
+                'data' => [
+                    'orderHeader' => [
+                        'orderInfo' => [
+                            'orderId' => 'order-id-1',
+                            'orderDate' => (new DateTimeImmutable('2020-01-27'))->format('Y-m-d'),
+                            'parties' => [
+                                [
+                                    'partyId' => ['value' => 'org.de.supplier']
+                                ],
+                                [
+                                    'partyId' => ['value' => 'org.de.buyer', 'type' => 'buyer']
+                                ],
+                            ],
+                            'orderPartiesReference' => [
+                                'buyerIdRef' => [
+                                    'value' => 'org.de.buyer',
+                                ],
+                                'supplierIdRef' => [
+                                    'value' => 'org.de.buyer',
+                                ],
+                            ],
+                            'payment' => [
+                                'cash' => true
+                            ]
+                        ]
+                    ],
+                    'orderItemList' => [
+                        [
+                            'lineItemId' => 'line-item-id-1',
+                            'productId' => [
+                                'supplierPid' => [
+                                    'value' => 'product-number-1'
+                                ]
+                            ],
+                            'quantity' => 10,
+                            'orderUnit' => 'C62',
+                        ]
+                    ],
+                    'orderSummary' => [
+                        'totalItemNum' => 1,
+                    ]
+                ]
+            ],
+            [
+                'file' => __DIR__.'/../assets/minimal_valid_order_with_payment_check.xml',
+                'data' => [
+                    'orderHeader' => [
+                        'orderInfo' => [
+                            'orderId' => 'order-id-1',
+                            'orderDate' => (new DateTimeImmutable('2020-01-27'))->format('Y-m-d'),
+                            'parties' => [
+                                [
+                                    'partyId' => ['value' => 'org.de.supplier']
+                                ],
+                                [
+                                    'partyId' => ['value' => 'org.de.buyer', 'type' => 'buyer']
+                                ],
+                            ],
+                            'orderPartiesReference' => [
+                                'buyerIdRef' => [
+                                    'value' => 'org.de.buyer',
+                                ],
+                                'supplierIdRef' => [
+                                    'value' => 'org.de.buyer',
+                                ],
+                            ],
+                            'payment' => [
+                                'check' => true
                             ]
                         ]
                     ],

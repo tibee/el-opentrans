@@ -11,6 +11,7 @@ use Naugrim\BMEcat\Exception\UnknownKeyException;
 use Naugrim\BMEcat\Nodes\Contracts\NodeInterface;
 use Naugrim\OpenTrans\Nodes\DeliveryDate;
 use Naugrim\OpenTrans\Nodes\Party;
+use Naugrim\OpenTrans\Nodes\Payment\Payment;
 
 class OrderInfo implements NodeInterface
 {
@@ -94,6 +95,15 @@ class OrderInfo implements NodeInterface
      * @var boolean
      */
     protected $partialShipmentAllowed;
+
+    /**
+     * @Serializer\Type("Naugrim\OpenTrans\Nodes\Payment\Payment")
+     * @Serializer\SerializedName("PAYMENT")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
+     *
+     * @var Payment
+     */
+    protected $payment;
 
     public function getOrderId(): string
     {
@@ -196,9 +206,6 @@ class OrderInfo implements NodeInterface
         return $this->language;
     }
 
-    /**
-     * @return OrderInfo
-     */
     public function setLanguage(string $language): self
     {
         $this->language = $language;
@@ -210,12 +217,20 @@ class OrderInfo implements NodeInterface
         return $this->customerOrderReference;
     }
 
-    /**
-     * @return OrderInfo
-     */
     public function setCustomerOrderReference(CustomerOrderReference $customerOrderReference): self
     {
         $this->customerOrderReference = $customerOrderReference;
+        return $this;
+    }
+
+    public function getPayment(): Payment
+    {
+        return $this->payment;
+    }
+
+    public function setPayment(Payment $payment): self
+    {
+        $this->payment = $payment;
         return $this;
     }
 }

@@ -34,9 +34,6 @@ class CustomerOrderReference implements NodeInterface
         return $this->orderId;
     }
 
-    /**
-     * @return CustomerOrderReference
-     */
     public function setOrderId(string $orderId): self
     {
         $this->orderId = $orderId;
@@ -48,9 +45,6 @@ class CustomerOrderReference implements NodeInterface
         return $this->lineItemId;
     }
 
-    /**
-     * @return CustomerOrderReference
-     */
     public function setLineItemId(string $lineItemId): self
     {
         $this->lineItemId = $lineItemId;

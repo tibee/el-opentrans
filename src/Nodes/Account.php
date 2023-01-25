@@ -43,7 +43,6 @@ class Account implements NodeInterface
      * @Serializer\Expose
      * @Serializer\SerializedName("BANK_NAME")
      * @Serializer\Type("string")
-     * @Serializer\XmlValue
      * @Serializer\XmlElement(cdata=true, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var string
@@ -54,7 +53,6 @@ class Account implements NodeInterface
      * @Serializer\Expose
      * @Serializer\SerializedName("BANK_COUNTRY")
      * @Serializer\Type("string")
-     * @Serializer\XmlValue
      * @Serializer\XmlElement(cdata=true, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var string
