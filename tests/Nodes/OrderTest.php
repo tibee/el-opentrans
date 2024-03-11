@@ -245,6 +245,58 @@ class OrderTest extends TestCase
                 ]
             ],
             [
+                'file' => __DIR__.'/../assets/minimal_valid_order_with_udx_header.xml',
+                'data' => [
+                    'orderHeader' => [
+                        'orderInfo' => [
+                            'orderId' => 'order-id-1',
+                            'orderDate' => (new DateTimeImmutable('2020-01-27'))->format('Y-m-d'),
+                            'parties' => [
+                                [
+                                    'partyId' => ['type' => 'supplier_specific', 'value' => 'supplier ID'],
+                                    'partyRole' => ['role' => 'supplier']
+                                ],
+                                [
+                                    'partyId' => ['value' => 'org.de.buyer', 'type' => 'buyer']
+                                ],
+                            ],
+                            'orderPartiesReference' => [
+                                'buyerIdRef' => [
+                                    'value' => 'org.de.buyer',
+                                ],
+                                'supplierIdRef' => [
+                                    'value' => 'org.de.buyer',
+                                ],
+                            ],
+                            'udxItems' => [
+                                [
+                                    'vendor' => 'acme',
+                                    'name' => 'abc',
+                                    'value' => '123',
+                                ],
+                                (new Udx())->setValue('sfoo')->setName('bar')->setVendor('company')
+                            ]
+
+                        ]
+                    ],
+                    'orderItemList' => [
+                        [
+                            'lineItemId' => 'line-item-id-1',
+                            'productId' => [
+                                'supplierPid' => [
+                                    'value' => 'product-number-1'
+                                ]
+                            ],
+                            'quantity' => 10,
+                            'orderUnit' => 'C62',
+                        ]
+                    ],
+                    'orderSummary' => [
+                        'totalItemNum' => 1,
+                    ]
+                ]
+            ],
+            [
                 'file' => __DIR__.'/../assets/minimal_valid_order_with_address.xml',
                 'data' => [
                     'orderHeader' => [

@@ -9,12 +9,17 @@ use Naugrim\BMEcat\Builder\NodeBuilder;
 use Naugrim\BMEcat\Exception\InvalidSetterException;
 use Naugrim\BMEcat\Exception\UnknownKeyException;
 use Naugrim\BMEcat\Nodes\Contracts\NodeInterface;
+use Naugrim\OpenTrans\Nodes\Concerns\HasUdxItems;
 use Naugrim\OpenTrans\Nodes\DeliveryDate;
 use Naugrim\OpenTrans\Nodes\Party;
 use Naugrim\OpenTrans\Nodes\Payment\Payment;
+use Naugrim\OpenTrans\Nodes\UdxAggregate;
 
 class OrderInfo implements NodeInterface
 {
+
+    use HasUdxItems;
+
     /**
      * @Serializer\Expose
      * @Serializer\Type("string")
@@ -104,6 +109,15 @@ class OrderInfo implements NodeInterface
      * @var Payment
      */
     protected $payment;
+
+    /**
+     * @see HasUdxItems::$udxItem
+     * @Serializer\SerializedName("HEADER_UDX")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
+     *
+     * @var UdxAggregate
+     */
+    protected $udxItem;
 
     public function getOrderId(): string
     {
