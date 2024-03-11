@@ -17,7 +17,6 @@ use Naugrim\OpenTrans\Nodes\UdxAggregate;
 
 class OrderInfo implements NodeInterface
 {
-
     use HasUdxItems;
 
     /**
