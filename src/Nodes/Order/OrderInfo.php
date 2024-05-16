@@ -111,6 +111,7 @@ class OrderInfo implements NodeInterface
 
     /**
      * @see HasUdxItems::$udxItem
+     * @Serializer\Type("Naugrim\OpenTrans\Nodes\Udx")
      * @Serializer\SerializedName("HEADER_UDX")
      * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
