@@ -110,6 +110,16 @@ class OrderInfo implements NodeInterface
     protected $payment;
 
     /**
+     * @Serializer\Expose
+     * @Serializer\Type("string")
+     * @Serializer\SerializedName("CURRENCY")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.bmecat.org/bmecat/2005")
+     *
+     * @var string
+     */
+    protected $currency;
+
+    /**
      * @see HasUdxItems::$udxItem
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\Udx")
      * @Serializer\SerializedName("HEADER_UDX")
@@ -245,6 +255,17 @@ class OrderInfo implements NodeInterface
     public function setPayment(Payment $payment): self
     {
         $this->payment = $payment;
+        return $this;
+    }
+
+    public function getCurrency(): string
+    {
+        return $this->currency;
+    }
+
+    public function setCurrency(string $currency): self
+    {
+        $this->currency = $currency;
         return $this;
     }
 }
