@@ -1,0 +1,1096 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns="http://www.opentrans.org/XMLSchema/2.1" xmlns:bmecat="http://www.bmecat.org/bmecat/2005" xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:xsig="http://www.w3.org/2000/09/xmldsig#" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.opentrans.org/XMLSchema/2.1" elementFormDefault="qualified">
+	<xsd:import namespace="http://www.bmecat.org/bmecat/2005" schemaLocation="bmecat_2005.xsd"/>
+	<xsd:element name="ORDER">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="ORDER_HEADER"/>
+				<xsd:element ref="ORDER_ITEM_LIST"/>
+				<xsd:element ref="ORDER_SUMMARY"/>
+			</xsd:sequence>
+			<xsd:attribute name="version" type="typeOPENTRANS_version" use="required"/>
+			<xsd:attribute name="type" use="required">
+				<xsd:simpleType>
+					<xsd:restriction base="bmecat:dtSTRING">
+						<xsd:minLength value="1"/>
+						<xsd:maxLength value="20"/>
+						<xsd:enumeration value="standard"/>
+						<xsd:enumeration value="express"/>
+						<xsd:enumeration value="release"/>
+						<xsd:enumeration value="consignment"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:attribute>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="ORDER_HEADER">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="CONTROL_INFO" minOccurs="0"/>
+				<xsd:element ref="ORDER_INFO"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="CONTROL_INFO">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="GENERATION_DATE" minOccurs="0"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="GENERATION_DATE" type="bmecat:dtDATETIME"/>
+	<xsd:element name="ORDER_INFO">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="ORDER_ID"/>
+				<xsd:element ref="ORDER_DATE"/>
+				<xsd:element ref="bmecat:LANGUAGE" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="PARTIES"/>
+				<xsd:element ref="CUSTOMER_ORDER_REFERENCE" minOccurs="0"/>
+				<xsd:element ref="ORDER_PARTIES_REFERENCE"/>
+				<xsd:element ref="bmecat:CURRENCY" minOccurs="0"/>
+				<xsd:element ref="HEADER_UDX" minOccurs="0"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="ORDER_ID">
+		<xsd:simpleType>
+			<xsd:restriction base="bmecat:dtSTRING">
+				<xsd:maxLength value="250"/>
+				<xsd:minLength value="1"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	</xsd:element>
+	<xsd:element name="ORDER_DATE" type="bmecat:dtDATETIME"/>
+	<xsd:element name="PARTIES">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="PARTY" maxOccurs="unbounded"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="PARTY">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="bmecat:PARTY_ID" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="PARTY_ROLE" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="ADDRESS" minOccurs="0" maxOccurs="unbounded"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="PARTY_ROLE">
+		<xsd:simpleType>
+			<xsd:restriction base="bmecat:dtSTRING">
+				<xsd:minLength value="1"/>
+				<xsd:maxLength value="20"/>
+				<xsd:enumeration value="buyer"/>
+				<xsd:enumeration value="central_regulator"/>
+				<xsd:enumeration value="customer"/>
+				<xsd:enumeration value="deliverer"/>
+				<xsd:enumeration value="delivery"/>
+				<xsd:enumeration value="document_creator"/>
+				<xsd:enumeration value="final_delivery"/>
+				<xsd:enumeration value="intermediary"/>
+				<xsd:enumeration value="invoice_issuer"/>
+				<xsd:enumeration value="invoice_recipient"/>
+				<xsd:enumeration value="ipp_operator"/>
+				<xsd:enumeration value="manufacturer"/>
+				<xsd:enumeration value="marketplace"/>
+				<xsd:enumeration value="payer"/>
+				<xsd:enumeration value="remittee"/>
+				<xsd:enumeration value="standardization_body"/>
+				<xsd:enumeration value="supplier"/>
+				<xsd:enumeration value="trustedthirdparty"/>
+				<xsd:enumeration value="other"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	</xsd:element>
+	<xsd:element name="ADDRESS">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="bmecat:NAME" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="bmecat:NAME2" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="bmecat:NAME3" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="bmecat:DEPARTMENT" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="CONTACT_DETAILS" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="bmecat:STREET" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="bmecat:ZIP" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="bmecat:BOXNO" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="bmecat:CITY" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="bmecat:COUNTRY" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="bmecat:COUNTRY_CODED" minOccurs="0"/>
+				<xsd:element ref="bmecat:PHONE" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:sequence minOccurs="0" maxOccurs="unbounded">
+					<xsd:element ref="bmecat:EMAIL"/>
+				</xsd:sequence>
+				<xsd:element ref="bmecat:VAT_ID" minOccurs="0" maxOccurs="unbounded"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="CONTACT_DETAILS">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="bmecat:TITLE" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="bmecat:FIRST_NAME" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="bmecat:CONTACT_NAME" maxOccurs="unbounded"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="CUSTOMER_ORDER_REFERENCE">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="ORDER_ID" minOccurs="0"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="ORDER_PARTIES_REFERENCE">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="bmecat:BUYER_IDREF"/>
+				<xsd:element ref="bmecat:SUPPLIER_IDREF"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="HEADER_UDX">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="UDX.DG.CUSTOMER_TYPE" minOccurs="0"/>
+				<xsd:element ref="UDX.DG.DELIVERY_TYPE" minOccurs="0"/>
+				<xsd:element ref="UDX.DG.SATURDAY_DELIVERY_ALLOWED" minOccurs="0"/>
+				<xsd:element ref="UDX.DG.IS_COLLECTIVE_ORDER" minOccurs="0"/>
+				<xsd:element ref="UDX.DG.END_CUSTOMER_ORDER_REFERENCE" minOccurs="0"/>
+				<xsd:element ref="UDX.DG.PHYSICAL_DELIVERY_NOTE_REQUIRED" minOccurs="0"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="ORDER_ITEM_LIST">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="ORDER_ITEM" maxOccurs="unbounded"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="ORDER_ITEM">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="LINE_ITEM_ID"/>
+				<xsd:element ref="PRODUCT_ID"/>
+				<xsd:element ref="QUANTITY"/>
+				<xsd:element ref="bmecat:ORDER_UNIT"/>
+				<xsd:element ref="PRODUCT_PRICE_FIX" minOccurs="0"/>
+				<xsd:element ref="PRICE_LINE_AMOUNT" minOccurs="0"/>
+				<xsd:choice minOccurs="0">
+					<xsd:sequence>
+						<xsd:element ref="DELIVERY_DATE" minOccurs="0"/>
+					</xsd:sequence>
+				</xsd:choice>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="LINE_ITEM_ID">
+		<xsd:simpleType>
+			<xsd:restriction base="bmecat:dtSTRING">
+				<xsd:maxLength value="50"/>
+				<xsd:minLength value="1"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	</xsd:element>
+	<xsd:element name="PRODUCT_ID">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="bmecat:SUPPLIER_PID" minOccurs="0"/>
+				<xsd:element ref="bmecat:INTERNATIONAL_PID" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="bmecat:BUYER_PID" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="bmecat:DESCRIPTION_SHORT" minOccurs="0" maxOccurs="unbounded"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="QUANTITY" type="bmecat:dtNUMBER"/>
+	<xsd:element name="PRODUCT_PRICE_FIX">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="bmecat:PRICE_AMOUNT"/>
+				<xsd:element ref="TAX_DETAILS_FIX" minOccurs="0" maxOccurs="unbounded"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="PRICE_LINE_AMOUNT" type="bmecat:dtNUMBER"/>
+	<xsd:element name="DELIVERY_DATE">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="DELIVERY_START_DATE"/>
+				<xsd:element ref="DELIVERY_END_DATE"/>
+			</xsd:sequence>
+			<xsd:attribute name="type" use="optional" default="fixed">
+				<xsd:simpleType>
+					<xsd:restriction base="bmecat:dtSTRING">
+						<xsd:minLength value="1"/>
+						<xsd:maxLength value="20"/>
+						<xsd:enumeration value="optional"/>
+						<xsd:enumeration value="fixed"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:attribute>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="TAX_AMOUNT" type="bmecat:dtNUMBER"/>
+	<xsd:element name="TAX_BASE" type="bmecat:dtNUMBER"/>
+	<xsd:element name="TAX_DETAILS_FIX">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="bmecat:TAX" minOccurs="0"/>
+				<xsd:element ref="TAX_AMOUNT" minOccurs="0"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="DELIVERY_START_DATE" type="bmecat:dtDATETIME"/>
+	<xsd:element name="DELIVERY_END_DATE" type="bmecat:dtDATETIME"/>
+	<xsd:element name="ORDER_SUMMARY">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="TOTAL_ITEM_NUM"/>
+				<xsd:element ref="TOTAL_AMOUNT" minOccurs="0"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="TOTAL_ITEM_NUM" type="bmecat:dtCOUNT"/>
+	<xsd:element name="TOTAL_AMOUNT" type="bmecat:dtNUMBER"/>
+	<xsd:simpleType name="typeOPENTRANS_version">
+		<xsd:restriction base="bmecat:dtSTRING">
+			<xsd:minLength value="1"/>
+			<xsd:maxLength value="7"/>
+			<xsd:enumeration value="2.1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:element name="ORDERRESPONSE">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="ORDERRESPONSE_HEADER"/>
+				<xsd:element ref="ORDERRESPONSE_ITEM_LIST"/>
+				<xsd:element ref="ORDERRESPONSE_SUMMARY" minOccurs="0" maxOccurs="1"/>
+			</xsd:sequence>
+			<xsd:attribute name="version" type="typeOPENTRANS_version" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="ORDERRESPONSE_HEADER">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="ORDERRESPONSE_INFO"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="ORDERRESPONSE_INFO">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="ORDER_ID"/>
+				<xsd:element ref="ORDERRESPONSE_DATE"/>
+				<xsd:element ref="SUPPLIER_ORDER_ID" minOccurs="0" maxOccurs="1"/>
+				<xsd:element ref="PARTIES" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="ORDER_PARTIES_REFERENCE" minOccurs="0" maxOccurs="1"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="SUPPLIER_ORDER_ID">
+		<xsd:simpleType>
+			<xsd:restriction base="bmecat:dtSTRING">
+				<xsd:maxLength value="250"/>
+				<xsd:minLength value="0"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	</xsd:element>
+	<xsd:element name="ORDERRESPONSE_DATE" type="bmecat:dtDATETIME"/>
+	<xsd:element name="ORDERRESPONSE_ITEM_LIST">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="ORDERRESPONSE_ITEM" minOccurs="0" maxOccurs="unbounded"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="ORDERRESPONSE_ITEM">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="LINE_ITEM_ID" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="PRODUCT_ID"/>
+				<xsd:element ref="QUANTITY"/>
+				<xsd:element ref="bmecat:ORDER_UNIT" minOccurs="0" maxOccurs="1"/>
+				<xsd:choice minOccurs="0">
+					<xsd:element ref="DELIVERY_DATE" minOccurs="0"/>
+				</xsd:choice>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="ORDERRESPONSE_SUMMARY">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="TOTAL_ITEM_NUM"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="DISPATCHNOTIFICATION">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="DISPATCHNOTIFICATION_HEADER"/>
+				<xsd:element ref="DISPATCHNOTIFICATION_ITEM_LIST"/>
+				<xsd:element ref="DISPATCHNOTIFICATION_SUMMARY" minOccurs="0" maxOccurs="1"/>
+			</xsd:sequence>
+			<xsd:attribute name="version" type="typeOPENTRANS_version" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="DISPATCHNOTIFICATION_HEADER">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="CONTROL_INFO" minOccurs="0"/>
+				<xsd:element ref="DISPATCHNOTIFICATION_INFO"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="DISPATCHNOTIFICATION_INFO">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="DISPATCHNOTIFICATION_ID"/>
+				<xsd:element ref="DISPATCHNOTIFICATION_DATE" minOccurs="0"/>
+				<xsd:element ref="DELIVERY_DATE" minOccurs="0"/>
+				<xsd:element ref="PARTIES"/>
+				<xsd:element ref="bmecat:SUPPLIER_IDREF" minOccurs="0" maxOccurs="1"/>
+				<xsd:element ref="bmecat:BUYER_IDREF" minOccurs="0" maxOccurs="1"/>
+				<xsd:element ref="SHIPMENT_PARTIES_REFERENCE" minOccurs="0" maxOccurs="1"/>
+				<xsd:element ref="SHIPMENT_ID" minOccurs="0"/>
+				<xsd:element ref="SHIPMENT_CARRIER" minOccurs="0" maxOccurs="1"/>
+				<xsd:element ref="TRACKING_TRACING_URL" minOccurs="0"/>
+				<xsd:element ref="REMARKS" minOccurs="0" maxOccurs="unbounded"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="DISPATCHNOTIFICATION_ID">
+		<xsd:simpleType>
+			<xsd:restriction base="bmecat:dtSTRING">
+				<xsd:maxLength value="250"/>
+				<xsd:minLength value="1"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	</xsd:element>
+	<xsd:element name="DISPATCHNOTIFICATION_DATE" type="bmecat:dtDATETIME"/>
+	<xsd:element name="SHIPMENT_PARTIES_REFERENCE">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="DELIVERY_IDREF"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="DELIVERY_IDREF" type="bmecat:typePARTY_ID"/>
+	<xsd:element name="SHIPMENT_ID">
+		<xsd:simpleType>
+			<xsd:restriction base="bmecat:dtSTRING">
+				<xsd:maxLength value="250"/>
+				<xsd:minLength value="0"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	</xsd:element>
+	<xsd:element name="SHIPMENT_CARRIER">
+		<xsd:simpleType>
+			<xsd:restriction base="bmecat:dtSTRING">
+				<xsd:minLength value="1"/>
+				<xsd:maxLength value="50"/>
+				<xsd:pattern value="swisspost|dhl|hermes|tnt|dpd|ups|gls"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	</xsd:element>
+	<xsd:element name="TRACKING_TRACING_URL">
+		<xsd:simpleType>
+			<xsd:restriction base="bmecat:dtSTRING">
+				<xsd:minLength value="0"/>
+				<xsd:maxLength value="255"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	</xsd:element>
+	<xsd:element name="PACKAGE_INFO">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="PACKAGE" maxOccurs="unbounded"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="PACKAGE">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="PACKAGE_ID" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="bmecat:PACKING_UNIT_CODE" minOccurs="0"/>
+				<xsd:element ref="PACKAGE_ORDER_UNIT_QUANTITY" minOccurs="0"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="PACKAGE_ID">
+		<xsd:complexType>
+			<xsd:simpleContent>
+				<xsd:extension base="typeSTRING00050">
+					<xsd:attribute name="type" use="optional">
+						<xsd:simpleType>
+							<xsd:restriction base="bmecat:dtSTRING">
+								<xsd:minLength value="1"/>
+								<xsd:maxLength value="50"/>
+								<xsd:pattern value="buyer_specific|deliverer_specific|grai|mtv|nve|sscc|supplier_specific|\w{1,50}"/>
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:attribute>
+				</xsd:extension>
+			</xsd:simpleContent>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:simpleType name="typeSTRING00050">
+		<xsd:restriction base="bmecat:dtSTRING">
+			<xsd:maxLength value="50"/>
+			<xsd:minLength value="1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="udxHEADER">
+		<xsd:complexContent>
+			<xsd:extension base="xsd:anyType"/>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="PACKAGE_ORDER_UNIT_QUANTITY">
+		<xsd:simpleType>
+			<xsd:restriction base="bmecat:dtNUMBER">
+				<xsd:minInclusive value="1"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	</xsd:element>
+	<xsd:element name="DISPATCHNOTIFICATION_ITEM_LIST">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="DISPATCHNOTIFICATION_ITEM" maxOccurs="unbounded"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="DISPATCHNOTIFICATION_ITEM">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="LINE_ITEM_ID" minOccurs="0" maxOccurs="1"/>
+				<xsd:element ref="PRODUCT_ID"/>
+				<xsd:element ref="QUANTITY"/>
+				<xsd:element ref="bmecat:ORDER_UNIT" minOccurs="0" maxOccurs="1"/>
+				<xsd:element ref="ORDER_REFERENCE"/>
+				<xsd:element ref="SHIPMENT_PARTIES_REFERENCE" minOccurs="0" maxOccurs="1"/>
+				<xsd:element ref="LOGISTIC_DETAILS" minOccurs="0"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="LOGISTIC_DETAILS">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="PACKAGE_INFO" minOccurs="0"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="ORDER_REFERENCE">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="ORDER_ID"/>
+				<xsd:element ref="LINE_ITEM_ID" minOccurs="0" maxOccurs="1"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="DISPATCHNOTIFICATION_SUMMARY">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="TOTAL_ITEM_NUM"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="INVOICE">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="INVOICE_HEADER"/>
+				<xsd:element ref="INVOICE_ITEM_LIST"/>
+				<xsd:element ref="INVOICE_SUMMARY"/>
+			</xsd:sequence>
+			<xsd:attribute name="version" type="typeOPENTRANS_version" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="INVOICE_HEADER">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="CONTROL_INFO" minOccurs="0"/>
+				<xsd:element ref="INVOICE_INFO"/>
+				<xsd:element ref="ORDER_HISTORY" minOccurs="0"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="INVOICE_INFO">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="INVOICE_ID"/>
+				<xsd:element ref="INVOICE_DATE"/>
+				<xsd:element ref="DELIVERYNOTE_ID" minOccurs="0" maxOccurs="1"/>
+				<xsd:element ref="DELIVERY_DATE" minOccurs="0" maxOccurs="1"/>
+				<xsd:element ref="PARTIES"/>
+				<xsd:element ref="INVOICE_ISSUER_IDREF" minOccurs="0" maxOccurs="1"/>
+				<xsd:element ref="INVOICE_RECIPIENT_IDREF" minOccurs="0" maxOccurs="1"/>
+				<xsd:element ref="REMARKS" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="bmecat:CURRENCY"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="INVOICE_ID">
+		<xsd:simpleType>
+			<xsd:restriction base="bmecat:dtSTRING">
+				<xsd:minLength value="1"/>
+				<xsd:maxLength value="250"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	</xsd:element>
+	<xsd:element name="INVOICE_DATE" type="bmecat:dtDATETIME"/>
+	<xsd:element name="DELIVERYNOTE_ID">
+		<xsd:simpleType>
+			<xsd:restriction base="bmecat:dtSTRING">
+				<xsd:minLength value="1"/>
+				<xsd:maxLength value="250"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	</xsd:element>
+	<xsd:element name="INVOICE_ISSUER_IDREF" type="bmecat:typePARTY_ID"/>
+	<xsd:element name="INVOICE_RECIPIENT_IDREF" type="bmecat:typePARTY_ID"/>
+	<xsd:element name="REMARKS">
+		<xsd:complexType>
+			<xsd:simpleContent>
+				<xsd:extension base="typeMLSTRING64000">
+					<xsd:attribute name="type" use="optional">
+						<xsd:simpleType>
+							<xsd:restriction base="bmecat:dtSTRING">
+								<xsd:minLength value="1"/>
+								<xsd:maxLength value="250"/>
+								<xsd:pattern value="deliverynote|dispatchnotification|general|invoice|order|orderchange|orderresponse|quotation|receiptacknowledgement|remittanceadvice|invoicelist|rfq|transport|\w{1,250}"/>
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:attribute>
+				</xsd:extension>
+			</xsd:simpleContent>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="typeMLSTRING64000">
+		<xsd:simpleContent>
+			<xsd:restriction base="bmecat:dtMLSTRING">
+				<xsd:maxLength value="64000"/>
+				<xsd:minLength value="1"/>
+			</xsd:restriction>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:element name="ORDER_HISTORY">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="ORDER_ID"/>
+				<xsd:element ref="SUPPLIER_ORDER_ID" minOccurs="0"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="INVOICE_ITEM_LIST">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="INVOICE_ITEM" maxOccurs="unbounded"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="INVOICE_ITEM">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="LINE_ITEM_ID" minOccurs="0" maxOccurs="1"/>
+				<xsd:element ref="PRODUCT_ID"/>
+				<xsd:element ref="QUANTITY"/>
+				<xsd:element ref="bmecat:ORDER_UNIT" minOccurs="0" maxOccurs="1"/>
+				<xsd:element ref="PRODUCT_PRICE_FIX"/>
+				<xsd:element ref="PRICE_LINE_AMOUNT" minOccurs="0" maxOccurs="1"/>
+				<xsd:element ref="ORDER_REFERENCE" minOccurs="0"/>
+				<xsd:element ref="DELIVERY_REFERENCE" minOccurs="0" maxOccurs="1"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="DELIVERY_REFERENCE">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="DELIVERYNOTE_ID"/>
+				<xsd:element ref="DELIVERY_DATE"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="INVOICE_SUMMARY">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="TOTAL_ITEM_NUM" minOccurs="0" maxOccurs="1"/>
+				<xsd:element ref="NET_VALUE_GOODS" minOccurs="0" maxOccurs="1"/>
+				<xsd:element ref="TOTAL_AMOUNT"/>
+				<xsd:element ref="ALLOW_OR_CHARGES_FIX" minOccurs="0" maxOccurs="1"/>
+				<xsd:element ref="TOTAL_TAX" minOccurs="0" maxOccurs="1"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="NET_VALUE_GOODS" type="bmecat:dtNUMBER"/>
+	<xsd:element name="TOTAL_TAX">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="TAX_DETAILS_FIX" maxOccurs="unbounded"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="ALLOW_OR_CHARGES_FIX">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="ALLOW_OR_CHARGE" maxOccurs="unbounded"/>
+				<xsd:element ref="ALLOW_OR_CHARGES_TOTAL_AMOUNT" minOccurs="0"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="ALLOW_OR_CHARGE">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="ALLOW_OR_CHARGE_TYPE" minOccurs="0"/>
+				<xsd:element ref="ALLOW_OR_CHARGE_VALUE" minOccurs="0"/>
+			</xsd:sequence>
+			<xsd:attribute name="type" use="required">
+				<xsd:simpleType>
+					<xsd:restriction base="bmecat:dtSTRING">
+						<xsd:enumeration value="allowance"/>
+						<xsd:enumeration value="surcharge"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:attribute>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="ALLOW_OR_CHARGE_TYPE">
+		<xsd:simpleType>
+			<xsd:restriction base="bmecat:dtSTRING">
+				<xsd:maxLength value="30"/>
+				<xsd:minLength value="1"/>
+				<xsd:pattern value="abroad|administration|bulk_goods|cash_discount|charge|cod|customs|customization|deposit|express|freight|handling|insurance|island|material|packing|partial_quantity|period_bonus|postage|project_bonus|overpackaging|rebate|recycling|small_order|special_work_times|toll|[\w\-\.]{1,30}"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	</xsd:element>
+	<xsd:element name="ALLOW_OR_CHARGE_VALUE">
+		<xsd:complexType>
+			<xsd:choice>
+				<xsd:element ref="AOC_PERCENTAGE_FACTOR"/>
+				<xsd:element ref="AOC_MONETARY_AMOUNT"/>
+				<xsd:element ref="AOC_ORDER_UNITS_COUNT"/>
+				<xsd:element ref="AOC_ADDITIONAL_ITEMS"/>
+			</xsd:choice>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="AOC_PERCENTAGE_FACTOR" type="bmecat:dtFLOAT"/>
+	<xsd:element name="AOC_MONETARY_AMOUNT" type="bmecat:dtFLOAT"/>
+	<xsd:element name="AOC_ORDER_UNITS_COUNT">
+		<xsd:complexType>
+			<xsd:simpleContent>
+				<xsd:extension base="bmecat:dtFLOAT">
+					<xsd:attribute name="type" use="required">
+						<xsd:simpleType>
+							<xsd:restriction base="bmecat:dtSTRING">
+								<xsd:minLength value="1"/>
+								<xsd:maxLength value="20"/>
+								<xsd:enumeration value="inclusive"/>
+								<xsd:enumeration value="exclusive"/>
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:attribute>
+				</xsd:extension>
+			</xsd:simpleContent>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="AOC_ADDITIONAL_ITEMS">
+		<xsd:simpleType>
+			<xsd:restriction base="bmecat:dtSTRING">
+				<xsd:minLength value="1"/>
+				<xsd:maxLength value="250"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	</xsd:element>
+	<xsd:element name="ALLOW_OR_CHARGES_TOTAL_AMOUNT" type="bmecat:dtFLOAT"/>
+	<!-- DG Extensions Start -->
+	<xsd:element name="CANCELREQUEST">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="CANCELREQUEST_HEADER"/>
+				<xsd:element ref="CANCELREQUEST_ITEM_LIST"/>
+				<xsd:element ref="CANCELREQUEST_SUMMARY"/>
+			</xsd:sequence>
+			<xsd:attribute name="version" type="typeOPENTRANS_version" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="CANCELREQUEST_HEADER">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="CANCELREQUEST_INFO"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="CANCELREQUEST_INFO">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="ORDER_ID"/>
+				<xsd:element ref="CANCELREQUEST_DATE"/>
+				<xsd:element ref="bmecat:LANGUAGE" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="PARTIES"/>
+				<xsd:element ref="ORDER_PARTIES_REFERENCE"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="CANCELREQUEST_DATE" type="bmecat:dtDATETIME"/>
+	<xsd:element name="CANCELREQUEST_ITEM_LIST">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="CANCELREQUEST_ITEM" maxOccurs="unbounded"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="CANCELREQUEST_ITEM">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="LINE_ITEM_ID"/>
+				<xsd:element ref="PRODUCT_ID"/>
+				<xsd:element ref="QUANTITY"/>
+				<xsd:element ref="bmecat:ORDER_UNIT"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="CANCELREQUEST_SUMMARY">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="TOTAL_ITEM_NUM"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="CANCELCONFIRMATION">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="CANCELCONFIRMATION_HEADER"/>
+				<xsd:element ref="CANCELCONFIRMATION_ITEM_LIST"/>
+				<xsd:element ref="CANCELCONFIRMATION_SUMMARY" minOccurs="0" maxOccurs="1"/>
+			</xsd:sequence>
+			<xsd:attribute name="version" type="typeOPENTRANS_version" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="CANCELCONFIRMATION_HEADER">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="CANCELCONFIRMATION_INFO"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="CANCELCONFIRMATION_INFO">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="ORDER_ID"/>
+				<xsd:element ref="CANCELCONFIRMATION_DATE"/>
+				<xsd:element ref="PARTIES" minOccurs="0" maxOccurs="1"/>
+				<xsd:element ref="ORDER_PARTIES_REFERENCE" minOccurs="0" maxOccurs="1"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="CANCELCONFIRMATION_DATE" type="bmecat:dtDATETIME"/>
+	<xsd:element name="CANCELCONFIRMATION_ITEM_LIST">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="CANCELCONFIRMATION_ITEM" maxOccurs="unbounded"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="CANCELCONFIRMATION_ITEM">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="LINE_ITEM_ID" minOccurs="0" maxOccurs="1"/>
+				<xsd:element ref="PRODUCT_ID"/>
+				<xsd:element ref="QUANTITY"/>
+				<xsd:element ref="bmecat:ORDER_UNIT" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="REQUESTACCEPTED" type="xsd:boolean"/>
+				<xsd:element ref="RESPONSECOMMENT" minOccurs="0"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="RESPONSECOMMENT">
+		<xsd:simpleType>
+			<xsd:restriction base="bmecat:dtSTRING">
+				<xsd:maxLength value="100"/>
+				<xsd:minLength value="1"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	</xsd:element>
+	<xsd:element name="CANCELCONFIRMATION_SUMMARY">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="TOTAL_ITEM_NUM"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="SUPPLIERCANCELNOTIFICATION">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="SUPPLIERCANCELNOTIFICATION_HEADER"/>
+				<xsd:element ref="SUPPLIERCANCELNOTIFICATION_ITEM_LIST"/>
+				<xsd:element ref="SUPPLIERCANCELNOTIFICATION_SUMMARY" minOccurs="0" maxOccurs="1"/>
+			</xsd:sequence>
+			<xsd:attribute name="version" type="typeOPENTRANS_version" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="SUPPLIERCANCELNOTIFICATION_HEADER">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="SUPPLIERCANCELNOTIFICATION_INFO"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="SUPPLIERCANCELNOTIFICATION_INFO">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="ORDER_ID"/>
+				<xsd:element ref="SUPPLIERCANCELNOTIFICATION_DATE"/>
+				<xsd:element ref="PARTIES" minOccurs="0" maxOccurs="1"/>
+				<xsd:element ref="ORDER_PARTIES_REFERENCE" minOccurs="0" maxOccurs="1"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="SUPPLIERCANCELNOTIFICATION_DATE" type="bmecat:dtDATETIME"/>
+	<xsd:element name="SUPPLIERCANCELNOTIFICATION_ITEM_LIST">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="SUPPLIERCANCELNOTIFICATION_ITEM" maxOccurs="unbounded"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="SUPPLIERCANCELNOTIFICATION_ITEM">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="LINE_ITEM_ID" minOccurs="0" maxOccurs="1"/>
+				<xsd:element ref="PRODUCT_ID"/>
+				<xsd:element ref="QUANTITY"/>
+				<xsd:element ref="bmecat:ORDER_UNIT" minOccurs="0" maxOccurs="1"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="SUPPLIERCANCELNOTIFICATION_SUMMARY">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="TOTAL_ITEM_NUM"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="RETURNREGISTRATION">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="RETURNREGISTRATION_HEADER"/>
+				<xsd:element ref="RETURNREGISTRATION_ITEM_LIST"/>
+				<xsd:element ref="RETURNREGISTRATION_SUMMARY"/>
+			</xsd:sequence>
+			<xsd:attribute name="version" type="typeOPENTRANS_version" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="RETURNREGISTRATION_HEADER">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="RETURNREGISTRATION_INFO"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="RETURNREGISTRATION_INFO">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="ORDER_ID"/>
+				<xsd:element ref="RETURNREGISTRATION_ID"/>
+				<xsd:element ref="RETURNREGISTRATION_DATE"/>
+				<xsd:element ref="bmecat:LANGUAGE" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="PARTIES"/>
+				<xsd:element ref="ORDER_PARTIES_REFERENCE"/>
+				<xsd:element ref="SHIPMENT_ID" minOccurs="0"/>
+				<xsd:element ref="TRACKING_TRACING_URL" minOccurs="0"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="RETURNREGISTRATION_ID">
+		<xsd:simpleType>
+			<xsd:restriction base="bmecat:dtSTRING">
+				<xsd:maxLength value="250"/>
+				<xsd:minLength value="1"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	</xsd:element>
+	<xsd:element name="RETURNREGISTRATION_DATE" type="bmecat:dtDATETIME"/>
+	<xsd:element name="RETURNREGISTRATION_ITEM_LIST">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="RETURNREGISTRATION_ITEM" maxOccurs="unbounded"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="RETURNREGISTRATION_ITEM">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="LINE_ITEM_ID"/>
+				<xsd:element ref="PRODUCT_ID"/>
+				<xsd:element ref="QUANTITY"/>
+				<xsd:element ref="bmecat:ORDER_UNIT"/>
+				<xsd:element ref="RETURNREASON"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="RETURNREASON">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:integer">
+				<xsd:enumeration value="1"/>
+				<!-- DontLike -->
+				<xsd:enumeration value="2"/>
+				<!-- WrongSize -->
+				<xsd:enumeration value="3"/>
+				<!-- WrongProduct -->
+				<xsd:enumeration value="4"/>
+				<!-- DeliveredLate -->
+				<xsd:enumeration value="5"/>
+				<!-- WrongDescription -->
+				<xsd:enumeration value="6"/>
+				<!-- WrongOrdered -->
+			</xsd:restriction>
+		</xsd:simpleType>
+	</xsd:element>
+	<xsd:element name="RETURNREGISTRATION_SUMMARY">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="TOTAL_ITEM_NUM"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="RETURNCONFIRMATION">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="RETURNCONFIRMATION_HEADER"/>
+				<xsd:element ref="RETURNCONFIRMATION_ITEM_LIST"/>
+				<xsd:element ref="RETURNCONFIRMATION_SUMMARY" minOccurs="0" maxOccurs="1"/>
+			</xsd:sequence>
+			<xsd:attribute name="version" type="typeOPENTRANS_version" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="RETURNCONFIRMATION_HEADER">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="RETURNCONFIRMATION_INFO"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="RETURNCONFIRMATION_INFO">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="ORDER_ID"/>
+				<xsd:element ref="RETURNREGISTRATION_ID"/>
+				<xsd:element ref="RETURNCONFIRMATION_DATE"/>
+				<xsd:element ref="PARTIES" minOccurs="0" maxOccurs="1"/>
+				<xsd:element ref="ORDER_PARTIES_REFERENCE" minOccurs="0" maxOccurs="1"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="RETURNCONFIRMATION_DATE" type="bmecat:dtDATETIME"/>
+	<xsd:element name="RETURNCONFIRMATION_ITEM_LIST">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="RETURNCONFIRMATION_ITEM" maxOccurs="unbounded"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="RETURNCONFIRMATION_ITEM">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="LINE_ITEM_ID" minOccurs="0" maxOccurs="1"/>
+				<xsd:element ref="PRODUCT_ID"/>
+				<xsd:element ref="QUANTITY"/>
+				<xsd:element ref="bmecat:ORDER_UNIT" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="REQUESTACCEPTED" type="xsd:boolean"/>
+				<xsd:element ref="RESPONSECOMMENT" minOccurs="0"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="RETURNCONFIRMATION_SUMMARY">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="TOTAL_ITEM_NUM"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="SUPPLIERRETURNNOTIFICATION">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="SUPPLIERRETURNNOTIFICATION_HEADER"/>
+				<xsd:element ref="SUPPLIERRETURNNOTIFICATION_ITEM_LIST"/>
+				<xsd:element ref="SUPPLIERRETURNNOTIFICATION_SUMMARY" minOccurs="0" maxOccurs="1"/>
+			</xsd:sequence>
+			<xsd:attribute name="version" type="typeOPENTRANS_version" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="SUPPLIERRETURNNOTIFICATION_HEADER">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="SUPPLIERRETURNNOTIFICATION_INFO"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="SUPPLIERRETURNNOTIFICATION_INFO">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="ORDER_ID"/>
+				<xsd:element ref="SUPPLIERRETURNNOTIFICATION_DATE"/>
+				<xsd:element ref="PARTIES" minOccurs="0" maxOccurs="1"/>
+				<xsd:element ref="ORDER_PARTIES_REFERENCE" minOccurs="0" maxOccurs="1"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="SUPPLIERRETURNNOTIFICATION_DATE" type="bmecat:dtDATETIME"/>
+	<xsd:element name="SUPPLIERRETURNNOTIFICATION_ITEM_LIST">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="SUPPLIERRETURNNOTIFICATION_ITEM" maxOccurs="unbounded"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="SUPPLIERRETURNNOTIFICATION_ITEM">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="LINE_ITEM_ID" minOccurs="0" maxOccurs="1"/>
+				<xsd:element ref="PRODUCT_ID"/>
+				<xsd:element ref="QUANTITY"/>
+				<xsd:element ref="bmecat:ORDER_UNIT" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="REQUESTACCEPTED" type="xsd:boolean"/>
+				<xsd:element ref="RESPONSECOMMENT" minOccurs="0"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="SUPPLIERRETURNNOTIFICATION_SUMMARY">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="TOTAL_ITEM_NUM"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="udxDgOrderHEADER">
+		<xsd:sequence>
+			<xsd:element ref="UDX.DG.DELIVERY_TYPE" minOccurs="0"/>
+			<xsd:element ref="UDX.DG.CUSTOMER_TYPE" minOccurs="0"/>
+			<xsd:element ref="UDX.DG.SATURDAY_DELIVERY_ALLOWED" minOccurs="0"/>
+			<xsd:element ref="UDX.DG.IS_COLLECTIVE_ORDER" minOccurs="0"/>
+			<xsd:element ref="UDX.DG.END_CUSTOMER_ORDER_REFERENCE" minOccurs="0"/>
+			<xsd:element ref="UDX.DG.PHYSICAL_DELIVERY_NOTE_REQUIRED" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="UDX.DG.CUSTOMER_TYPE">
+		<xsd:simpleType>
+			<xsd:restriction base="bmecat:dtSTRING">
+				<xsd:enumeration value="company"/>
+				<xsd:enumeration value="private_customer"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	</xsd:element>
+	<xsd:element name="UDX.DG.DELIVERY_TYPE">
+		<xsd:simpleType>
+			<xsd:restriction base="bmecat:dtSTRING">
+				<xsd:enumeration value="direct_delivery"/>
+				<xsd:enumeration value="warehouse_delivery"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	</xsd:element>
+	<xsd:element name="UDX.DG.SATURDAY_DELIVERY_ALLOWED" type="xsd:boolean"/>
+	<xsd:element name="UDX.DG.IS_COLLECTIVE_ORDER" type="xsd:boolean"/>
+	<xsd:element name="UDX.DG.PHYSICAL_DELIVERY_NOTE_REQUIRED" type="xsd:boolean"/>
+	<xsd:element name="UDX.DG.END_CUSTOMER_ORDER_REFERENCE" type="bmecat:dtSTRING"/>
+	<!-- DG Extensions End -->
+</xsd:schema>

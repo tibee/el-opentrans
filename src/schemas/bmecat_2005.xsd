@@ -1,58 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-
-  Name:						bmecat_2005.xsd
-  Fileversion:				2005
-  Unchanged since: 			2005.fd
-  Date:						2005-11-04
-  Authors:					Volker Schmitz  (stz),  Universitaet Duisburg-Essen BLI
-							Jörg Leukel (leu),  Universitaet Duisburg-Essen BLI
-							Oliver Kelkar   (olk),  Fraunhofer IAO Stuttgart
-							Stefan Kubitzky (kub),  Universitaet Duisburg-Essen BLI
-
-
-  Copyright © 2005 BME e.V. - BMEcat® Version 2005
-  Copyright © 1998 – 2004 Fraunhofer IAO, Stuttgart; Universität Essen BLI - BMEcat® Version 1.2
-
-  Rechtliche Hinweise:
-  
-  Dem Bundesverband Materialwirtschaft, Einkauf und Logistik e. V. (BME) steht das ausschließliche, 
-  zeitlich, inhaltlich und räumlich unbeschränkte, nicht gewerbliche und gewerbliche Nutzungs- und 
-  Verwertungsrecht an dem E-Business Standard BMEcat und sämtlichen damit verbundenen 
-  Arbeitsergebnissen, Programmversionen und Dokumentationen zu. Ausschließlich der BME kann 
-  Lizenzen zum Implementieren und Verwenden der in den Spezifikationen enthaltenen BMEcat-Tags 
-  und Schemarichtlinien zum Erstellen von Computerprogrammen unter Einhaltung der 
-  urheberechtlichen Schutzrechte und diesen Richtlinien gewähren. Eine Lizenzgabe begründet 
-  keine eigene Rechte der Lizenznehmer; sämtliche Rechte an der Materie und dem Gegenstand der 
-  Spezifikation verbleiben beim BME.
-  
-  Der BME gewährt Ihnen hiermit das dauerhafte, nicht exklusive, gebührenfreie, Recht, die 
-  BMEcat-Spezifikation zu verwenden und dieselbe unter Beachtung des in der Spezifikation 
-  angegebenen Copyrights einzusetzen, zu kopieren, zu veröffentlichen und zu verteilen.
-  
-  Der BME gewährt Ihnen hiermit, gemäß urheberrechtlichen Schutzrechten eine gebührenfreie 
-  Lizenz zum Implementieren und Verwenden der in der Spezifikation enthaltenen BMEcat-Tags 
-  und Schemarichtlinien zum Erstellen von Computerprogrammen nach diesen Richtlinien.
-
-  Legal notes:
-
-  The "Bundesverband Materialwirtschaft, Einkauf und Logistik e.V. (BME)" has the exclusive, 
-  temporal, textual and spatial unrestricted, non-commercial and commercial rights of usage and 
-  exploitation of the eBusiness standard BMEcat and of all work results, program versions and 
-  documentations associated with it.
-  
-  The BME hereby grants you the durable, not exclusive, free of charge right to use the BMEcat 
-  specification.  Using, copying, publishing and distributing the same considering the copyright 
-  indicated in the specification.
-  
-  The BME hereby grants you, in accordance with protective rights on copyright a licence free 
-  of charge for using the BMEcat-Tags and scheme guidelines contained in the specification for 
-  the implemantation of computer programs according to these guidelines.
-  
-  BMEcat:
-  more infos and full specification: http://www.bmecat.org
-  e-mail contact: authors@bmecat.org
--->
 <xsd:schema targetNamespace="http://www.bmecat.org/bmecat/2005" xmlns="http://www.bmecat.org/bmecat/2005" xmlns:blidoc="http://www.bli.uni-essen.de/docu/2005" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
 	<xsd:element name="BMECAT">
 		<xsd:complexType>
@@ -1662,7 +1608,6 @@
 			<xsd:enumeration value="PA"/>
 			<xsd:enumeration value="PAL"/>
 			<xsd:enumeration value="PB"/>
-			<xsd:enumeration value="PCE"/>
 			<xsd:enumeration value="PD"/>
 			<xsd:enumeration value="PE"/>
 			<xsd:enumeration value="PF"/>
@@ -3188,7 +3133,7 @@
 	<xsd:simpleType name="typeSTRING00050">
 		<xsd:restriction base="dtSTRING">
 			<xsd:maxLength value="50"/>
-			<xsd:minLength value="1"/>
+			<xsd:minLength value="0"/>
 		</xsd:restriction>
 	</xsd:simpleType>
 	<xsd:simpleType name="typeSTRING00060">
@@ -3206,7 +3151,7 @@
 	<xsd:simpleType name="typeSTRING00100">
 		<xsd:restriction base="dtSTRING">
 			<xsd:maxLength value="100"/>
-			<xsd:minLength value="1"/>
+			<xsd:minLength value="0"/>
 		</xsd:restriction>
 	</xsd:simpleType>
 	<xsd:simpleType name="typeSTRING00250">
@@ -3224,7 +3169,7 @@
 	<xsd:simpleType name="typeSUPPLIER_PID">
 		<xsd:restriction base="dtSTRING">
 			<xsd:maxLength value="32"/>
-			<xsd:minLength value="1"/>
+			<xsd:minLength value="0"/>
 		</xsd:restriction>
 	</xsd:simpleType>
 	<xsd:complexType name="typeTIME_SPAN">
@@ -3734,7 +3679,7 @@
 			<xsd:simpleContent>
 				<xsd:restriction base="dtMLSTRING">
 					<xsd:maxLength value="20"/>
-					<xsd:minLength value="1"/>
+					<xsd:minLength value="0"/>
 				</xsd:restriction>
 			</xsd:simpleContent>
 		</xsd:complexType>
@@ -3787,7 +3732,7 @@
 		<xsd:simpleType>
 			<xsd:restriction base="dtSTRING">
 				<xsd:maxLength value="50"/>
-				<xsd:minLength value="1"/>
+				<xsd:minLength value="0"/>
 			</xsd:restriction>
 		</xsd:simpleType>
 	</xsd:element>
@@ -3798,9 +3743,9 @@
 					<xsd:attribute name="type" use="optional">
 						<xsd:simpleType>
 							<xsd:restriction base="dtSTRING">
-								<xsd:minLength value="1"/>
+								<xsd:minLength value="0"/>
 								<xsd:maxLength value="50"/>
-								<xsd:pattern value="buyer_specific|ean|gtin|upc|\w{1,50}"/>
+								<xsd:pattern value="buyer_specific|ean|gtin|upc|\w{0,50}"/>
 							</xsd:restriction>
 						</xsd:simpleType>
 					</xsd:attribute>
@@ -3929,7 +3874,7 @@
 			<xsd:simpleContent>
 				<xsd:restriction base="dtMLSTRING">
 					<xsd:maxLength value="50"/>
-					<xsd:minLength value="1"/>
+					<xsd:minLength value="0"/>
 				</xsd:restriction>
 			</xsd:simpleContent>
 		</xsd:complexType>
@@ -4306,7 +4251,7 @@
 			<xsd:simpleContent>
 				<xsd:restriction base="dtMLSTRING">
 					<xsd:maxLength value="50"/>
-					<xsd:minLength value="1"/>
+					<xsd:minLength value="0"/>
 				</xsd:restriction>
 			</xsd:simpleContent>
 		</xsd:complexType>
@@ -4373,7 +4318,7 @@
 			<xsd:simpleContent>
 				<xsd:restriction base="dtMLSTRING">
 					<xsd:maxLength value="50"/>
-					<xsd:minLength value="1"/>
+					<xsd:minLength value="0"/>
 				</xsd:restriction>
 			</xsd:simpleContent>
 		</xsd:complexType>
@@ -4421,7 +4366,7 @@
 			<xsd:simpleContent>
 				<xsd:restriction base="dtMLSTRING">
 					<xsd:maxLength value="50"/>
-					<xsd:minLength value="1"/>
+					<xsd:minLength value="0"/>
 				</xsd:restriction>
 			</xsd:simpleContent>
 		</xsd:complexType>
@@ -4432,7 +4377,7 @@
 			<xsd:simpleContent>
 				<xsd:restriction base="dtMLSTRING">
 					<xsd:maxLength value="64000"/>
-					<xsd:minLength value="1"/>
+					<xsd:minLength value="0"/>
 				</xsd:restriction>
 			</xsd:simpleContent>
 		</xsd:complexType>
@@ -4442,7 +4387,7 @@
 			<xsd:simpleContent>
 				<xsd:restriction base="dtMLSTRING">
 					<xsd:maxLength value="150"/>
-					<xsd:minLength value="1"/>
+					<xsd:minLength value="0"/>
 				</xsd:restriction>
 			</xsd:simpleContent>
 		</xsd:complexType>
@@ -4460,7 +4405,7 @@
 		<xsd:simpleType>
 			<xsd:restriction base="dtSTRING">
 				<xsd:maxLength value="255"/>
-				<xsd:minLength value="1"/>
+				<xsd:minLength value="0"/>
 			</xsd:restriction>
 		</xsd:simpleType>
 	</xsd:element>
@@ -4523,7 +4468,7 @@
 					<xsd:attribute name="type" use="optional">
 						<xsd:simpleType>
 							<xsd:restriction base="dtSTRING">
-								<xsd:minLength value="1"/>
+								<xsd:minLength value="0"/>
 								<xsd:maxLength value="50"/>
 								<xsd:pattern value="office|private|\w{1,50}"/>
 							</xsd:restriction>
@@ -4594,7 +4539,7 @@
 			<xsd:simpleContent>
 				<xsd:restriction base="dtMLSTRING">
 					<xsd:maxLength value="50"/>
-					<xsd:minLength value="1"/>
+					<xsd:minLength value="0"/>
 				</xsd:restriction>
 			</xsd:simpleContent>
 		</xsd:complexType>
@@ -5070,7 +5015,7 @@
 					<xsd:attribute name="type" use="optional">
 						<xsd:simpleType>
 							<xsd:restriction base="dtSTRING">
-								<xsd:minLength value="1"/>
+								<xsd:minLength value="0"/>
 								<xsd:maxLength value="50"/>
 								<xsd:pattern value="ean|gtin|upc|\w{1,50}"/>
 							</xsd:restriction>
@@ -5602,7 +5547,7 @@
 			<xsd:simpleContent>
 				<xsd:restriction base="dtMLSTRING">
 					<xsd:maxLength value="50"/>
-					<xsd:minLength value="1"/>
+					<xsd:minLength value="0"/>
 				</xsd:restriction>
 			</xsd:simpleContent>
 		</xsd:complexType>
@@ -5612,7 +5557,7 @@
 			<xsd:simpleContent>
 				<xsd:restriction base="dtMLSTRING">
 					<xsd:maxLength value="50"/>
-					<xsd:minLength value="1"/>
+					<xsd:minLength value="0"/>
 				</xsd:restriction>
 			</xsd:simpleContent>
 		</xsd:complexType>
@@ -5622,7 +5567,7 @@
 			<xsd:simpleContent>
 				<xsd:restriction base="dtMLSTRING">
 					<xsd:maxLength value="50"/>
-					<xsd:minLength value="1"/>
+					<xsd:minLength value="0"/>
 				</xsd:restriction>
 			</xsd:simpleContent>
 		</xsd:complexType>
@@ -5847,7 +5792,7 @@
 				<xsd:element ref="PARTY_ID" minOccurs="0" maxOccurs="unbounded"/>
 				<xsd:element ref="PARTY_ROLE" minOccurs="0" maxOccurs="unbounded"/>
 				<xsd:element ref="ADDRESS" minOccurs="0"/>
-				<xsd:element ref="MIME_INFO" minOccurs="1"/>
+				<xsd:element ref="MIME_INFO" minOccurs="0"/>
 			</xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>
@@ -5882,7 +5827,7 @@
 					<xsd:attribute name="type" use="optional">
 						<xsd:simpleType>
 							<xsd:restriction base="dtSTRING">
-								<xsd:minLength value="1"/>
+								<xsd:minLength value="0"/>
 								<xsd:maxLength value="50"/>
 								<xsd:pattern value="mobile|office|private|\w{1,50}"/>
 							</xsd:restriction>
@@ -6450,7 +6395,7 @@
 			<xsd:simpleContent>
 				<xsd:restriction base="dtMLSTRING">
 					<xsd:maxLength value="50"/>
-					<xsd:minLength value="1"/>
+					<xsd:minLength value="0"/>
 				</xsd:restriction>
 			</xsd:simpleContent>
 		</xsd:complexType>
@@ -6525,7 +6470,7 @@
 					<xsd:attribute name="type" use="optional">
 						<xsd:simpleType>
 							<xsd:restriction base="dtSTRING">
-								<xsd:minLength value="1"/>
+								<xsd:minLength value="0"/>
 								<xsd:maxLength value="50"/>
 								<xsd:pattern value="buyer_specific|ean|gtin|supplier_specific|upc|\w{1,50}"/>
 							</xsd:restriction>
@@ -7134,7 +7079,7 @@
 		<xsd:simpleType>
 			<xsd:restriction base="dtSTRING">
 				<xsd:maxLength value="50"/>
-				<xsd:minLength value="1"/>
+				<xsd:minLength value="0"/>
 			</xsd:restriction>
 		</xsd:simpleType>
 	</xsd:element>
@@ -7156,7 +7101,7 @@
 			<xsd:simpleContent>
 				<xsd:restriction base="dtMLSTRING">
 					<xsd:maxLength value="20"/>
-					<xsd:minLength value="1"/>
+					<xsd:minLength value="0"/>
 				</xsd:restriction>
 			</xsd:simpleContent>
 		</xsd:complexType>
@@ -7166,7 +7111,7 @@
 			<xsd:simpleContent>
 				<xsd:restriction base="dtMLSTRING">
 					<xsd:maxLength value="20"/>
-					<xsd:minLength value="1"/>
+					<xsd:minLength value="0"/>
 				</xsd:restriction>
 			</xsd:simpleContent>
 		</xsd:complexType>

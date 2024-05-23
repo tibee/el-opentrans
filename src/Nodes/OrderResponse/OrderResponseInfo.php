@@ -37,6 +37,16 @@ class OrderResponseInfo implements NodeInterface
     /**
      * @Serializer\Expose
      * @Serializer\Type("string")
+     * @Serializer\SerializedName("SUPPLIER_ORDER_ID")
+     * @Serializer\XmlElement(cdata=true, namespace="http://www.opentrans.org/XMLSchema/2.1")
+     *
+     * @var string
+     */
+    protected $supplierOrderId;
+
+    /**
+     * @Serializer\Expose
+     * @Serializer\Type("string")
      * @Serializer\SerializedName("ORDERCHANGE_SEQUENCE_ID")
      * @Serializer\XmlElement(cdata=true, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
@@ -84,6 +94,17 @@ class OrderResponseInfo implements NodeInterface
     public function setOrderResponseDate(string $orderResponseDate): self
     {
         $this->orderResponseDate = $orderResponseDate;
+        return $this;
+    }
+
+    public function getSupplierOrderId(): string
+    {
+        return $this->supplierOrderId;
+    }
+
+    public function setSupplierOrderId(string $supplierOrderId): self
+    {
+        $this->supplierOrderId = $supplierOrderId;
         return $this;
     }
 

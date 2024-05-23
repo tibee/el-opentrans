@@ -15,6 +15,7 @@ class SchemaValidator
      */
     protected static $SCHEMA_MAP = [
         '2.1' => __DIR__ . '/schemas/opentrans_2_1.xsd',
+        '2.1_DG_Subset' => __DIR__ . '/schemas/opentrans_2_1_DG_Subset_v20.xsd',
     ];
 
     /**

@@ -17,6 +17,8 @@ use Naugrim\OpenTrans\Nodes\OrderResponse\OrderResponseSummary;
 /**
  * @Serializer\XmlRoot("ORDERRESPONSE")
  * @Serializer\ExclusionPolicy("all")
+ * @Serializer\XmlNamespace(uri="http://www.w3.org/2001/XMLSchema", prefix="xsd")
+ * @Serializer\XmlNamespace(uri="http://www.w3.org/2001/XMLSchema-instance", prefix="xsi")
  * @Serializer\XmlNamespace(uri="http://www.opentrans.org/XMLSchema/2.1")
  * @Serializer\XmlNamespace(uri="http://www.bmecat.org/bmecat/2005", prefix="bme")
  */
