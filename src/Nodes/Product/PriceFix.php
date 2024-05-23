@@ -19,6 +19,17 @@ class PriceFix implements NodeInterface
      */
     protected $priceAmount;
 
+    /**
+     * @Serializer\Expose
+     * @Serializer\Type("Naugrim\OpenTrans\Nodes\Product\TaxDetailsFix")
+     * @Serializer\SerializedName("TAX_DETAILS_FIX")
+     * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
+     *
+     * @var TaxDetailsFix
+     */
+    protected $taxDetailsFix;
+
+
     public function getPriceAmount(): float
     {
         return $this->priceAmount;
@@ -28,6 +39,19 @@ class PriceFix implements NodeInterface
     {
         $this->priceAmount = $priceAmount;
 
+        return $this;
+    }
+
+
+    public function getTaxDetailsFix(): TaxDetailsFix
+    {
+        return $this->taxDetailsFix;
+    }
+
+    public function setTaxDetailsFix(TaxDetailsFix $taxDetailsFix): self
+    {
+        r($taxDetailsFix);
+        $this->taxDetailsFix = $taxDetailsFix;
         return $this;
     }
 }
