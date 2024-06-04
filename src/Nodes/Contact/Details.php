@@ -26,13 +26,13 @@ class Details implements NodeInterface
     /**
      * @Serializer\Expose
      * @Serializer\Type("string")
-     * @Serializer\SerializedName("CONTACT_NAME")
+     * @Serializer\SerializedName("TITLE")
      * @Serializer\XmlElement(cdata=true, namespace="http://www.bmecat.org/bmecat/2005")
      *
      * @var string
      */
-    protected $name;
-
+    protected $title;
+    
     /**
      * @Serializer\Expose
      * @Serializer\Type("string")
@@ -46,12 +46,12 @@ class Details implements NodeInterface
     /**
      * @Serializer\Expose
      * @Serializer\Type("string")
-     * @Serializer\SerializedName("TITLE")
+     * @Serializer\SerializedName("CONTACT_NAME")
      * @Serializer\XmlElement(cdata=true, namespace="http://www.bmecat.org/bmecat/2005")
      *
      * @var string
      */
-    protected $title;
+    protected $name;
 
     /**
      * @Serializer\Expose
