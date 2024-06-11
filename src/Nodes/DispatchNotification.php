@@ -63,7 +63,6 @@ class DispatchNotification implements NodeInterface
      */
     public function getDispatchNotificationItemList(): array
     {
-        r('tibee');die;
         return $this->dispatchNotificationItemList;
     }
 
