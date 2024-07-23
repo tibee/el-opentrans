@@ -34,11 +34,11 @@
 	<xsd:element name="CONTROL_INFO">
 		<xsd:complexType>
 			<xsd:sequence>
-				<xsd:element ref="GENERATOR_DATE" minOccurs="0"/>
+				<xsd:element ref="GENERATION_DATE" minOccurs="0"/>
 			</xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>
-	<xsd:element name="GENERATOR_DATE" type="bmecat:dtDATETIME"/>
+	<xsd:element name="GENERATION_DATE" type="bmecat:dtDATETIME"/>
 	<xsd:element name="ORDER_INFO">
 		<xsd:complexType>
 			<xsd:sequence>
