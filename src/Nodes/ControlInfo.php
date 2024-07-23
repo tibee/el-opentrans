@@ -32,7 +32,7 @@ class ControlInfo implements NodeInterface
     /**
      * @Serializer\Expose
      * @Serializer\Type("string")
-     * @Serializer\SerializedName("GENERATOR_DATE")
+     * @Serializer\SerializedName("GENERATION_DATE")
      * @Serializer\XmlElement(cdata=true, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
      * @var string
