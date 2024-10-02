@@ -5,9 +5,13 @@ declare(strict_types=1);
 namespace Naugrim\OpenTrans\Nodes;
 
 use JMS\Serializer\Annotation as Serializer;
+use Naugrim\OpenTrans\Nodes\Concerns\HasDigitecUdx;
 
 class Udx implements UdxInterface
 {
+
+    use HasDigitecUdx;
+    
     /**
      * @Serializer\Exclude
      *
@@ -68,3 +72,4 @@ class Udx implements UdxInterface
         return $this;
     }
 }
+
