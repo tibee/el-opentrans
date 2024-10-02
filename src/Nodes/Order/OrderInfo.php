@@ -13,6 +13,7 @@ use Naugrim\OpenTrans\Nodes\Concerns\HasUdxItems;
 use Naugrim\OpenTrans\Nodes\DeliveryDate;
 use Naugrim\OpenTrans\Nodes\Party;
 use Naugrim\OpenTrans\Nodes\Payment\Payment;
+use Naugrim\OpenTrans\Nodes\Udx;
 use Naugrim\OpenTrans\Nodes\UdxAggregate;
 
 class OrderInfo implements NodeInterface
@@ -120,12 +121,11 @@ class OrderInfo implements NodeInterface
     protected $currency;
 
     /**
-     * @see HasUdxItems::$udxItem
      * @Serializer\Type("Naugrim\OpenTrans\Nodes\Udx")
      * @Serializer\SerializedName("HEADER_UDX")
      * @Serializer\XmlElement(cdata=false, namespace="http://www.opentrans.org/XMLSchema/2.1")
      *
-     * @var UdxAggregate
+     * @var Udx
      */
     protected $udxItem;
 
@@ -266,6 +266,17 @@ class OrderInfo implements NodeInterface
     public function setCurrency(string $currency): self
     {
         $this->currency = $currency;
+        return $this;
+    }
+
+    public function getUdxItem(): Udx
+    {
+        return $this->udxItem;
+    }
+
+    public function setUdxItem(Udx $udxItem): self
+    {
+        $this->udxItem = $udxItem;
         return $this;
     }
 }
